@@ -1,27 +1,27 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <!--
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-AASIF PORTFOLIO â€” INTERNAL DEVELOPMENT DOCUMENTATION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+AASIF PORTFOLIO ═ INTERNAL DEVELOPMENT DOCUMENTATION
+•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
 This documentation consolidates development history, architectural decisions,
 and maintenance notes from project implementation reports. Last updated: 2026-08-21
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 PROJECT ARCHITECTURE
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
-VISUAL IDENTITY: Editorial Ã— Cinematic Ã— Experimental Ã— Minimal Ã— Premium
-COLOR PALETTE: Beige (#F6ECE3) Ã— Black Ã— Brown Ã— Granite Ã— Mauve (NO additions)
+VISUAL IDENTITY: Editorial × Cinematic × Experimental × Minimal × Premium
+COLOR PALETTE: Beige (#F6ECE3) × Black × Brown × Granite × Mauve (NO additions)
 TYPOGRAPHY: Bricolage Grotesque (Display) / Instrument Sans (Body) / Space Mono (Mono)
 MOTION LANGUAGE: cubic-bezier(.16,.84,.44,1) signature / cubic-bezier(.19,1,.22,1) cinematic
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 PERMANENT SYSTEMS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
-âœ… LIVING INTERFACE (Made Permanent 2026-08-21)
+✅ LIVING INTERFACE (Made Permanent 2026-08-21)
    - Intent-Aware Interface (4 states: ready/exploring/focused/idle)
    - Reflection Memory (1200ms glass material decay after cursor leaves)
    - Interaction Fingerprint (pace/depth/focus detection)
@@ -31,19 +31,19 @@ PERMANENT SYSTEMS
    Mobile: Simplified (fingerprint only, signal hidden, no reflection memory)
    Performance: <0.1% CPU, passive listeners, GPU-accelerated transitions
 
-âœ… ATMOSPHERIC TIME (Made Permanent 2026-08-21)
+✅ ATMOSPHERIC TIME (Made Permanent 2026-08-21)
    - Time-based atmosphere (Morning/Afternoon/Evening/Night)
-   - Background luminosity adjustment (Â±2.5% max, filter on content sections NOT body)
-   - Glass material intensity variation (Â±6% max)
-   - Shadow depth adjustment (Â±6% max)
-   - Motion energy modulation (Â±4% max)
+   - Background luminosity adjustment (±2.5% max, filter on content sections NOT body)
+   - Glass material intensity variation (±6% max)
+   - Shadow depth adjustment (±6% max)
+   - Motion energy modulation (±4% max)
    Purpose: Subtle environmental response to local time of day
    Constraints: Changes within 2-7% range only, background remains #F6ECE3 beige
    Updates: Every 2 minutes, continuous interpolation (no abrupt switches)
    Mobile: Reduced effect intensity, atmosphere brightness forced to baseline
    Critical: Filter on content sections (.nav, .hero, .work, etc) NOT body (preserves cursor fix)
 
-âœ… ATTENTION LENS (Made Permanent 2026-08-21)
+✅ ATTENTION LENS (Made Permanent 2026-08-21)
    - Viewport-based attention detection (dwell threshold: 600ms)
    - Single-project focus enhancement (+2-4% emphasis max)
    - Surrounding content dimming (-1-2% max)
@@ -53,15 +53,15 @@ PERMANENT SYSTEMS
    Mobile: Completely disabled (detection runs but no visual effects)
    Performance: IntersectionObserver (threshold 0.4), 500ms check interval
 
-âœ… WEBSITE MEMORY (Adaptive Memory System)
+✅ WEBSITE MEMORY (Adaptive Memory System)
    - Session-scoped tracking (visited projects, sections, scroll behavior)
-   - Exploration state progression (new â†’ exploring â†’ familiar â†’ deep)
+   - Exploration state progression (new → exploring → familiar → deep)
    - Scroll profile detection (slow/moderate/fast based on avgSpeed)
-   - Adaptive timing (860ms â†’ 671ms as familiarity increases)
+   - Adaptive timing (860ms → 671ms as familiarity increases)
    Storage: sessionStorage only, resets on session end, no personal data
    Privacy: No external transmission, no persistent tracking, no analytics
 
-âœ… PROJECT DNA (Artifact Personalities)
+✅ PROJECT DNA (Artifact Personalities)
    - NEXUS: Precision interface (right-to-left reveal, 740ms, corner marks)
    - Dark File: Archival document (typography-led, 820ms, indexing marks)
    - DEADCORE: Experimental object (diagonal reveal, 900ms, depth field)
@@ -69,15 +69,15 @@ PERMANENT SYSTEMS
    Metadata: TYPE / STATUS / YEAR format (Space Mono, 0.64rem, consistent structure)
    Mobile: Simplified (standard bottom-up reveal, metadata preserved)
 
-âœ… CINEMATIC SCENE CONTINUITY
+✅ CINEMATIC SCENE CONTINUITY
    - Personality-specific receding behaviors when new project enters
-   - NEXUS: scale(0.994) translateY(-4px) â€” precision collapse
-   - Dark File: opacity 0.38, scale(0.996) translateY(-3px) â€” archival fade
-   - DEADCORE: opacity 0.35, scale(0.992) translate(-2px,-5px), saturate(0.6) â€” drift
+   - NEXUS: scale(0.994) translateY(-4px) ═ precision collapse
+   - Dark File: opacity 0.38, scale(0.996) translateY(-3px) ═ archival fade
+   - DEADCORE: opacity 0.35, scale(0.992) translate(-2px,-5px), saturate(0.6) ═ drift
    Duration: 520ms, auto-restore with .is-receding-restore class
    Purpose: Scene-to-scene transitions, not card-to-card
 
-âœ… CINEMATIC SCROLL MOMENTUM
+✅ CINEMATIC SCROLL MOMENTUM
    - Native scroll + subtle continuation after release (100-300px, 400-600ms)
    - Aggressive exponential damping (0.88) for quick settle
    - Immediate cancellation on any user input (user always wins)
@@ -86,16 +86,16 @@ PERMANENT SYSTEMS
    Purpose: "Cinematic physical momentum" NOT "automatic scrolling"
    Constraints: 300px hard cap, 600ms max duration, MIN_VELOCITY 0.15 threshold
 
-âœ… ADMIN AVAILABILITY SYSTEM
+✅ ADMIN AVAILABILITY SYSTEM
    - Schedule-based indicator (IST timezone: 10:00-17:00, 19:30-03:00)
    - Automatic updates at boundaries, 5min backup check
    - No server connection (client-side time calculation only)
    Visual: Glass pill in nav, subtle breathing pulse when ONLINE
    Mobile: Tap to expand schedule, touch-friendly
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 MOTION ARCHITECTURE
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 SCROLL LISTENERS: 4 active (down from 6, -33% reduction)
   1. Line ~3755: Scroll momentum cancellation
@@ -120,14 +120,14 @@ RAF LOOPS: 7-8 distinct (all self-terminating)
   - Attention Lens fade (focus removal)
   - Material lerp (glass refraction, material memory)
 
-VELOCITY TRACKING: Consolidated from 3 â†’ 2 systems
+VELOCITY TRACKING: Consolidated from 3 → 2 systems
   - setupReveal() now writes both --dur-l AND --sv (single calculation, dual output)
   - Removed redundant setupExperiment() velocity tracking
   - setupAdaptiveMemory() continues separate (different purpose: hover timing)
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 PROJECT REVEAL SYSTEM
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 PRE-REVEAL STATE: opacity 0.08-0.15 (NOT 0 - prevents flash)
 TRANSFORM DISTANCES: Reduced 25-37.5% from original (6-10px, smoother entrance)
@@ -141,8 +141,8 @@ INTERSECTION OBSERVER:
   Detection: 'ontouchstart' in window for platform-specific behavior
 
 Flash/Lag Fix (Critical):
-  - Before: opacity 0 â†’ 1 created sudden pop, 16px transforms jarring
-  - After: opacity 0.08 â†’ 1.0 smooth fade, 10px gentle rise
+  - Before: opacity 0 → 1 created sudden pop, 16px transforms jarring
+  - After: opacity 0.08 → 1.0 smooth fade, 10px gentle rise
   - Result: Solid 60fps, no visible flash, silky-smooth reveals at all scroll speeds
 
 Mobile Flash Fix (2026-08-21):
@@ -150,9 +150,9 @@ Mobile Flash Fix (2026-08-21):
   - After: Mobile-specific rootMargin (+5%), immediate pre-reveal on mobile, reverse transitions
   - Result: Zero flash on mobile, smooth bidirectional animation, improved reverse progression
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 BUG FIXES
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 CUSTOM CURSOR DISAPPEARING (CRITICAL FIX)
   Root Cause: CSS filter on body created stacking context, trapped cursor z-index:999
@@ -163,7 +163,7 @@ CUSTOM CURSOR DISAPPEARING (CRITICAL FIX)
   Debug: window.__enableCursorDebug() / __disableCursorDebug() available (inactive by default)
 
 PROJECT FLASH/LAG ON REVEAL (PERFORMANCE FIX)
-  Root Cause: opacity 0 â†’ 1 sudden transition + large transform distances
+  Root Cause: opacity 0 → 1 sudden transition + large transform distances
   Solution: opacity 0.08 pre-state + reduced transforms + GPU hints + RAF timing
   Result: Eliminated flash, 60fps solid, smooth at all scroll speeds
 
@@ -184,14 +184,14 @@ NEXUS TRANSITION CURSOR FADE (MINOR FIX)
   Location: performNexusSpeedTransition() function
   Result: Cursor remains visible during all page transitions
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 PERFORMANCE OPTIMIZATIONS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 MOTION ENGINE CONSOLIDATION (2026-08-21)
-  - Consolidated Living Interface scroll listeners (2 â†’ 1)
+  - Consolidated Living Interface scroll listeners (2 → 1)
   - Removed inactive cursor debug scroll listener
-  - Velocity tracking consolidated (3 systems â†’ 2)
+  - Velocity tracking consolidated (3 systems → 2)
   - Result: -33% scroll listener overhead, cleaner architecture
 
 GPU ACCELERATION
@@ -211,14 +211,14 @@ OPTIMIZED PATTERNS
   - Glass refraction caches element rects
   - Reveal system uses IntersectionObserver (passive, GPU-accelerated)
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 ACCESSIBILITY / REDUCED MOTION
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 REDUCED MOTION DETECTION: matchMedia('(prefers-reduced-motion: reduce)')
 
 WHEN ENABLED:
-  - All animations/transitions â†’ 0.001ms (instant)
+  - All animations/transitions → 0.001ms (instant)
   - Scroll momentum disabled
   - Atmospheric drift disabled
   - Reflection Memory disabled
@@ -231,9 +231,9 @@ KEYBOARD NAVIGATION: Preserved, no custom cursor interference
 FOCUS STATES: Intact, visible, semantic HTML maintained
 SCREEN READERS: Compatible, no ARIA changes, content accessible
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 MOBILE CONSIDERATIONS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 DETECTION: 'ontouchstart' in window, matchMedia("(hover:hover) and (pointer:fine)")
 
@@ -255,28 +255,28 @@ ACTIVE ON MOBILE:
 
 BREAKPOINTS: 768px (mobile), 1024px (tablet/desktop transition)
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 REJECTED / REMOVED SYSTEMS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
-âŒ ADAPTIVE PROJECT STATES (Not Implemented - Recommendation Only)
+❌ ADAPTIVE PROJECT STATES (Not Implemented - Recommendation Only)
    Reason: All 5 states already exist in current architecture
-   - OFF-SCREEN â†’ Reveal Observer (.pre-reveal)
-   - APPROACHING â†’ IntersectionObserver threshold 0.15
-   - ACTIVE â†’ Attention Lens (data-attention-focus)
-   - PASSING â†’ Scene Continuity (.is-receding)
-   - VISITED â†’ Website Memory (data-visited)
+   - OFF-SCREEN → Reveal Observer (.pre-reveal)
+   - APPROACHING → IntersectionObserver threshold 0.15
+   - ACTIVE → Attention Lens (data-attention-focus)
+   - PASSING → Scene Continuity (.is-receding)
+   - VISITED → Website Memory (data-visited)
    Implementing would duplicate existing functionality, add complexity
 
-âŒ PROJECT CONTINUITY SYSTEM (Not Implemented - Recommendation Only)
+❌ PROJECT CONTINUITY SYSTEM (Not Implemented - Recommendation Only)
    Reason: All 4 concepts already exist, would add performance cost
-   - Project Residuals â†’ Scene Continuity .is-receding (520ms)
-   - Contextual Handoff â†’ Scene Continuity coordination
-   - Depth-Stacked â†’ Staggered transitions (80ms) + glass material
-   - Monochrome â†’ Identity â†’ Opacity reveal (0.08 â†’ 1.0) + DNA personalities
+   - Project Residuals → Scene Continuity .is-receding (520ms)
+   - Contextual Handoff → Scene Continuity coordination
+   - Depth-Stacked → Staggered transitions (80ms) + glass material
+   - Monochrome → Identity → Opacity reveal (0.08 → 1.0) + DNA personalities
    Monochrome filter animation would be EXTREMELY EXPENSIVE (forces repaint every frame)
 
-âŒ DEFERRED SYSTEMS (Never Implemented)
+❌ DEFERRED SYSTEMS (Never Implemented)
    - System Breathing
    - Dead Reckoning
    - Motion Genetics
@@ -289,18 +289,18 @@ REMOVED DURING OPTIMIZATION:
    - Living Interface separate scroll sampling listener (consolidated)
    - Cursor debug scroll listener (inactive by default, simplified)
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 DEPLOYMENT PROTECTION
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
-âš ï¸ CRITICAL: .github/workflows/deploy.yml
+⚠️ CRITICAL: .github/workflows/deploy.yml
    - File does NOT exist in this workspace
    - If it exists elsewhere: NEVER modify without explicit task requirement
    - Deployment workflow is protected infrastructure
 
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 MAINTENANCE NOTES
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+───────────────────────────────────────────────────────────────────────────────
 
 CURSOR FIX (CRITICAL - DO NOT MODIFY):
   - Filter MUST be on content sections (.nav, .hero, .work, etc) NOT body
@@ -353,14 +353,14 @@ VISUAL IDENTITY (NEVER CHANGE WITHOUT EXPLICIT REQUEST):
   - Color palette is fixed (5 colors only)
   - Typography system is fixed (3 font families)
   - Motion easing is signature (2 primary curves)
-  - Editorial Ã— Cinematic Ã— Experimental Ã— Minimal Ã— Premium
+  - Editorial × Cinematic × Experimental × Minimal × Premium
 
 DEBUG HELPERS (LOCALHOST ONLY):
-  - window.__debugMemory() â€” Website Memory state
-  - window.__debugLivingInterface() â€” All Living Interface systems
-  - window.__debugAtmosphericTime() â€” Current time profile
-  - window.__debugAttentionLens() â€” Attention state
-  - window.__enableCursorDebug() / __disableCursorDebug() â€” Cursor diagnostics
+  - window.__debugMemory() ═ Website Memory state
+  - window.__debugLivingInterface() ═ All Living Interface systems
+  - window.__debugAtmosphericTime() ═ Current time profile
+  - window.__debugAttentionLens() ═ Attention state
+  - window.__enableCursorDebug() / __disableCursorDebug() ═ Cursor diagnostics
 
 REPORTS LOCATION:
   All implementation reports exist as .md files in workspace root:
@@ -380,14 +380,14 @@ REPORTS LOCATION:
   - ADAPTIVE_PROJECT_STATES_RECOMMENDATION.md (NOT implemented)
   - PROJECT_CONTINUITY_RECOMMENDATION.md (NOT implemented)
 
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-END DOCUMENTATION â€” Last Updated: 2026-08-21
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+END DOCUMENTATION ═ Last Updated: 2026-08-21
+•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 -->
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aasif â€” Student Â· Creator Â· Experimental Web Developer</title>
+<title>Aasif ═ Student &middot; Creator &middot; Experimental Web Developer</title>
 <meta name="description" content="Aasif is a Class 11 Humanities student learning web development and experimenting with photography, video editing, AI, and creative writing. Selected work and ongoing experiments." />
 <meta name="theme-color" content="#F6ECE3" />
 
@@ -397,51 +397,51 @@ END DOCUMENTATION â€” Last Updated: 2026-08-21
 
 <style>
 /* =========================================================================
-   DESIGN TOKENS â€” PERMANENT PALETTE
-   Classic Luxury Editorial: Beige Ã— Black Ã— Brown Ã— Granite Ã— Mauve
+   DESIGN TOKENS ═ PERMANENT PALETTE
+   Classic Luxury Editorial: Beige × Black × Brown × Granite × Mauve
    ========================================================================= */
 :root{
-  /* â”€â”€ CANVAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  --bg:            #F6ECE3; /* Primary Beige â€” dominant editorial canvas  */
-  --bg-soft:       #F0E6DC; /* Warm Beige â€” only 4% darker, no harsh strip */
+  /* ── CANVAS ─────────────────────────────────────────── */
+  --bg:            #F6ECE3; /* Primary Beige ═ dominant editorial canvas  */
+  --bg-soft:       #F0E6DC; /* Warm Beige ═ only 4% darker, no harsh strip */
   --bg-card:       rgba(240, 230, 219, 0.68); /* Glass card base            */
 
-  /* â”€â”€ PALETTE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  --black:         #000000; /* Pure Black â€” typography, high-contrast UI  */
-  --brown:         #91766E; /* Warm Brown â€” structural surfaces, accents  */
-  --granite:       #B7A7A9; /* Granite â€” muted borders, metadata          */
-  --white:         #FFFFFF; /* Pure White â€” micro-highlights only         */
-  --mauve:         #9B8384; /* Soft Mauve â€” signature interactive accent  */
+  /* ── PALETTE ─────────────────────────────────────────── */
+  --black:         #000000; /* Pure Black ═ typography, high-contrast UI  */
+  --brown:         #91766E; /* Warm Brown ═ structural surfaces, accents  */
+  --granite:       #B7A7A9; /* Granite ═ muted borders, metadata          */
+  --white:         #FFFFFF; /* Pure White ═ micro-highlights only         */
+  --mauve:         #9B8384; /* Soft Mauve ═ signature interactive accent  */
 
-  /* â”€â”€ TEXT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  --ink:           #0D0C0B; /* Near-black â€” primary editorial text        */
-  --ink-soft:      #2E2826; /* Warm dark â€” secondary body text            */
-  --ink-light:     #F6ECE3; /* Beige â€” text on brown/black surfaces       */
-  --muted:         #7A6560; /* Warm mid â€” labels, descriptions            */
-  --muted-dim:     #B7A7A9; /* Granite â€” metadata, timecode               */
+  /* ── TEXT ────────────────────────────────────────────── */
+  --ink:           #0D0C0B; /* Near-black ═ primary editorial text        */
+  --ink-soft:      #2E2826; /* Warm dark ═ secondary body text            */
+  --ink-light:     #F6ECE3; /* Beige ═ text on brown/black surfaces       */
+  --muted:         #7A6560; /* Warm mid ═ labels, descriptions            */
+  --muted-dim:     #B7A7A9; /* Granite ═ metadata, timecode               */
 
-  /* â”€â”€ ACCENT (single semantic slot) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-  --accent:        #9B8384; /* = --mauve â€” used by all accent references  */
-  --accent-soft:   #B7A7A9; /* Granite â€” soft accent variant              */
+  /* ── ACCENT (single semantic slot) ──────────────────── */
+  --accent:        #9B8384; /* = --mauve ═ used by all accent references  */
+  --accent-soft:   #B7A7A9; /* Granite ═ soft accent variant              */
   --accent-dim:    rgba(155, 131, 132, 0.14);
 
-  /* â”€â”€ BORDERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── BORDERS ─────────────────────────────────────────── */
   --line:          rgba(145, 118, 110, 0.16); /* Subtle warm line           */
   --line-strong:   rgba(145, 118, 110, 0.28); /* Emphasis warm line         */
   --line-light:    rgba(246, 236, 227, 0.22); /* Light line on dark surface */
 
-  /* â”€â”€ TYPOGRAPHY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── TYPOGRAPHY ──────────────────────────────────────── */
   --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
   --f-body:    "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono:    "Space Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* â”€â”€ LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── LAYOUT ──────────────────────────────────────────── */
   --container:    1280px;
   --pad:          clamp(1.25rem, 5vw, 4rem);
   --section-pad:  clamp(5.5rem, 11vw, 9.5rem);
   --nav-clearance: 6.5rem;
 
-  /* â”€â”€ MOTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── MOTION ──────────────────────────────────────────── */
   --ease:          cubic-bezier(.16,.84,.44,1);  /* Signature deceleration  */
   --ease-out-expo: cubic-bezier(.19,1,.22,1);    /* Cinematic long exit      */
   --ease-in-out:   cubic-bezier(.45,0,.15,1);    /* Smooth bidirectional     */
@@ -452,7 +452,7 @@ END DOCUMENTATION â€” Last Updated: 2026-08-21
   --dur-s:         200ms;  /* Micro-interactions                           */
   --dur-m:         480ms;  /* Component transitions                        */
   --dur-l:         860ms;  /* Reveal animations                            */
-  --dur-hover:     180ms;  /* Hover/tactile â€” snappy                       */
+  --dur-hover:     180ms;  /* Hover/tactile ═ snappy                       */
 }
 
 /* Anchor targets: keep section headings clear of the fixed nav when
@@ -553,7 +553,7 @@ a:focus-visible, button:focus-visible{
 .section-head{ margin-bottom: clamp(3rem, 6vw, 5rem); }
 
 /* =========================================================================
-   ATMOSPHERIC BACKGROUND â€” CLASSIC LUXURY EDITORIAL + CINEMATIC MOMENTUM
+   ATMOSPHERIC BACKGROUND ═ CLASSIC LUXURY EDITORIAL + CINEMATIC MOMENTUM
    ========================================================================= */
 .atmosphere{
   position: fixed;
@@ -651,7 +651,7 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   GRAIN â€” EDITORIAL TEXTURE
+   GRAIN ═ EDITORIAL TEXTURE
    ========================================================================= */
 .grain{
   position: fixed;
@@ -665,7 +665,7 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   CUSTOM CURSOR (desktop, fine pointer only) â€” LUXURY EDITORIAL ADAPTATION
+   CUSTOM CURSOR (desktop, fine pointer only) ═ LUXURY EDITORIAL ADAPTATION
    ========================================================================= */
 .cursor{
   position: fixed;
@@ -759,8 +759,8 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   EXPERIMENT â€” ADMIN AVAILABILITY SYSTEM
-   TEMPORARY ONLY â€” easily removable. All styles prefixed with .admin- or
+   EXPERIMENT ═ ADMIN AVAILABILITY SYSTEM
+   TEMPORARY ONLY ═ easily removable. All styles prefixed with .admin- or
    .availability- for clean isolation.
    ========================================================================= */
 .admin-availability{
@@ -989,11 +989,11 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   END EXPERIMENT â€” ADMIN AVAILABILITY SYSTEM
+   END EXPERIMENT ═ ADMIN AVAILABILITY SYSTEM
    ========================================================================= */
 
 /* =========================================================================
-   MEMBERSHIP SYSTEM â€” Subtle community layer
+   MEMBERSHIP SYSTEM ═ Subtle community layer
    ========================================================================= */
 .membership-container{
   display: flex;
@@ -1023,7 +1023,7 @@ a:focus-visible, button:focus-visible{
 }
 
 .member-count::before{
-  content: 'â—';
+  content: '●';
   font-size: 0.5rem;
   color: rgba(145, 118, 110, 0.5);
 }
@@ -1339,7 +1339,7 @@ a:focus-visible, button:focus-visible{
    ========================================================================= */
 
 /* =========================================================================
-   AASIF SITE SYSTEM â€” Subtle section-aware system marker (System 02)
+   AASIF SITE SYSTEM ═ Subtle section-aware system marker (System 02)
    ========================================================================= */
 .aasif-system{
   position: fixed;
@@ -1404,7 +1404,7 @@ a:focus-visible, button:focus-visible{
    ========================================================================= */
 
 /* =========================================================================
-   PROJECT DNA SYSTEM (System 05) â€” Personality-driven atmospheres
+   PROJECT DNA SYSTEM (System 05) ═ Personality-driven atmospheres
    ========================================================================= */
 
 /* DNA-based atmosphere shifts when project is active */
@@ -1561,20 +1561,20 @@ a:focus-visible, button:focus-visible{
   margin-block: 1.25rem 1.75rem;
 }
 /* =========================================================================
-   HERO HEADLINE â€” NATURAL EDITORIAL ENTRANCE
+   HERO HEADLINE ═ NATURAL EDITORIAL ENTRANCE
    
-   Each line rises 12px (not 100%) â€” a small, deliberate displacement.
+   Each line rises 12px (not 100%) ═ a small, deliberate displacement.
    overflow:hidden removed: the 100%-travel mask is gone, 12px doesn't
    need clipping and clipping would cut the subtle blur.
    
-   Easing: cubic-bezier(.22,1,.36,1) â€” gentle start, smooth deceleration,
+   Easing: cubic-bezier(.22,1,.36,1) ═ gentle start, smooth deceleration,
    no overshoot. Text settles as if it was always meant to be there.
    
-   Micro-blur: filter:blur(1.5px)â†’0 during the first third of the
+   Micro-blur: filter:blur(1.5px)→0 during the first third of the
    animation, text-only. Adds just enough softness to the arrival
    without any visual distraction at rest.
    
-   Stagger: 80ms between lines â€” tight enough to feel unified,
+   Stagger: 80ms between lines ═ tight enough to feel unified,
    spaced enough to register as a sequence.
    ========================================================================= */
 @keyframes line-settle {
@@ -1595,7 +1595,7 @@ a:focus-visible, button:focus-visible{
 
 .hero-headline .line {
   display: block;
-  /* overflow:hidden removed â€” small 12px travel needs no clip mask */
+  /* overflow:hidden removed ═ small 12px travel needs no clip mask */
 }
 
 .hero-headline .line:nth-child(1) {
@@ -1669,13 +1669,13 @@ a:focus-visible, button:focus-visible{
   letter-spacing: .08em;
   color: var(--muted);
 }
-/* Metadata fades only â€” no rise â€” it's an afterthought, not part of the
+/* Metadata fades only ═ no rise ═ it's an afterthought, not part of the
    main entrance. Extra specificity (.hero ancestor) so this reliably
    wins over the generic [data-reveal] pre-reveal transform. */
 .hero .hero-meta.pre-reveal{ transform: none; }
 
 /* =========================================================================
-   NOW â€” EDITORIAL STATUS STRIP
+   NOW ═ EDITORIAL STATUS STRIP
    ========================================================================= */
 .now{
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
@@ -1727,7 +1727,7 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   SECTIONS â€” shared
+   SECTIONS ═ shared
    ========================================================================= */
 .work, .lab, .about, .learning, .contact{
   padding-block: var(--section-pad);
@@ -1877,7 +1877,7 @@ a:focus-visible, button:focus-visible{
   z-index: 2;
 }
 
-/* lab tone variant â€” Black treatment for dramatic contrast */
+/* lab tone variant ═ Black treatment for dramatic contrast */
 .project-card.tone-lab .project-preview{
   background: var(--black);
   border-color: rgba(183, 167, 169, .28);
@@ -1887,7 +1887,7 @@ a:focus-visible, button:focus-visible{
 .project-card.tone-lab .project-title{ color: var(--ink); }
 
 /* =========================================================================
-   PREMIUM GLASS PROJECT CARDS â€” WARM BEIGE EDITORIAL MATERIAL
+   PREMIUM GLASS PROJECT CARDS ═ WARM BEIGE EDITORIAL MATERIAL
    ========================================================================= */
 .project-card{
   position: relative;
@@ -1934,7 +1934,7 @@ a:focus-visible, button:focus-visible{
               box-shadow var(--dur-m) var(--ease);
 }
 
-/* Top-edge highlight â€” warm brown shimmer */
+/* Top-edge highlight ═ warm brown shimmer */
 .project-card::before{
   content: "";
   position: absolute;
@@ -1979,7 +1979,7 @@ a:focus-visible, button:focus-visible{
     background: rgba(240, 230, 219, 0.48);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    /* Disable translate/scale hover on touch â€” no hover state anyway */
+    /* Disable translate/scale hover on touch ═ no hover state anyway */
   }
   .project-card::after{ display: none; }
 }
@@ -2064,7 +2064,7 @@ a:focus-visible, button:focus-visible{
 }
 
 /* =========================================================================
-   EDITORIAL PAGE TRANSITION â€” EDITORIAL ADAPTATION
+   EDITORIAL PAGE TRANSITION ═ EDITORIAL ADAPTATION
    ========================================================================= */
 body.is-transitioning{
   opacity: 0.85;
@@ -2192,7 +2192,7 @@ body.is-transitioning{
 .about-category-archive:hover{ color: var(--brown); border-color: var(--brown); }
 .about-category-archive:active{ scale: .97; }
 
-/* Self-assessment â€” an editorial data strip, not a rÃ©sumÃ© skill card:
+/* Self-assessment ═ an editorial data strip, not a résumé skill card:
    name and percentage on one line, a thin accent-filled rule beneath. */
 .about-skills{
   margin-top: clamp(2.5rem, 5vw, 4rem);
@@ -2336,7 +2336,7 @@ body.is-transitioning{
 }
 .social-link:hover .arrow{ transform: translate(3px, -3px); }
 
-/* Placeholder items (no real URL yet) render as inert spans, not links â€”
+/* Placeholder items (no real URL yet) render as inert spans, not links ═
    no hover affordance, since there's nowhere for them to go. */
 span.social-link{ cursor: default; }
 span.social-link:hover{ color: inherit; padding-left: 0; text-shadow: none; }
@@ -2383,7 +2383,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   LEGAL PAGES â€” INTERNAL VIEWS
+   LEGAL PAGES ═ INTERNAL VIEWS
    Full-screen overlay sections accessible via #privacy and #terms
    ========================================================================= */
 .legal-page{
@@ -2560,7 +2560,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   PROJECT CARD â€” CINEMATIC SEQUENCE REVEAL
+   PROJECT CARD ═ CINEMATIC SEQUENCE REVEAL
    
    PERFORMANCE FIX: Eliminated flash/lag by:
    - Subtle initial opacity (0.08 vs 0) prevents sudden pop
@@ -2573,9 +2573,9 @@ span.social-link:active{ scale: 1; }
    at slightly different moments, giving physical depth.
    
    Three states:
-   - .pre-reveal     â€” card waiting offscreen (subtle pre-state, not invisible)
-   - .is-visible     â€” card fully present (resting state)
-   - .is-receding    â€” card that was visible and is now being overtaken
+   - .pre-reveal     ═ card waiting offscreen (subtle pre-state, not invisible)
+   - .is-visible     ═ card fully present (resting state)
+   - .is-receding    ═ card that was visible and is now being overtaken
                         (subtly dims/shrinks as the next card takes focus)
    ========================================================================= */
 
@@ -2750,7 +2750,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   REDUCED MOTION â€” simplified experience for all animated systems
+   REDUCED MOTION ═ simplified experience for all animated systems
    ========================================================================= */
 @media (prefers-reduced-motion: reduce){
   /* Generic reveals: appear instantly */
@@ -2812,7 +2812,7 @@ span.social-link:active{ scale: 1; }
   .project-card:nth-child(even){ direction: ltr; }
   .project-preview{ order: -1; }
 
-  /* Tablet: two columns â€” there's still room for it here. */
+  /* Tablet: two columns ═ there's still room for it here. */
   .learning-grid{
     grid-template-columns: repeat(2, 1fr);
     column-gap: clamp(1.5rem, 4vw, 3rem);
@@ -2838,20 +2838,20 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   EXPERIMENT â€” CUSTOM MOTION LANGUAGE
+   EXPERIMENT ═ CUSTOM MOTION LANGUAGE
    All experimental styles are isolated here.
    To revert: delete everything between the two EXPERIMENT markers.
    ========================================================================= */
 
-/* â”€â”€ EXP 1: Motion Signature â€” expose scroll velocity to CSS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── EXP 1: Motion Signature ═ expose scroll velocity to CSS ───────────── */
 /* --sv (scroll velocity) is written by JS onto documentElement.
    0 = idle/slow, 1 = fast. Used by cards and cursor ring. */
 
-/* â”€â”€ EXP 2: Project-specific transition personalities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── EXP 2: Project-specific transition personalities ──────────────────── */
 /* Each project gets a slightly different clip-path reveal axis.
-   All share the same underlying motion language â€” just a subtle variation. */
+   All share the same underlying motion language ═ just a subtle variation. */
 
-/* NEXUS Calculator (01): standard bottom wipe â€” precision, clean entry */
+/* NEXUS Calculator (01): standard bottom wipe ═ precision, clean entry */
 .project-card[data-project="nexus-calculator"] .project-preview {
   clip-path: inset(100% 0 0 0 round 6px);
   transform: translateY(14px);
@@ -2861,7 +2861,7 @@ span.social-link:active{ scale: 1; }
   transform: translateY(0);
 }
 
-/* The Dark File (02): right-to-left wipe â€” narrative, directional, heavy */
+/* The Dark File (02): right-to-left wipe ═ narrative, directional, heavy */
 .project-card[data-project="the-dark-file"] .project-preview {
   clip-path: inset(0 100% 0 0 round 6px);
   transform: translateX(-8px);
@@ -2873,13 +2873,13 @@ span.social-link:active{ scale: 1; }
   clip-path: inset(0 0% 0 0 round 6px);
   transform: translateX(0);
 }
-/* Dark File info: slightly longer settle â€” weight of the subject */
+/* Dark File info: slightly longer settle ═ weight of the subject */
 .project-card[data-project="the-dark-file"] .project-info {
   transition: opacity 740ms cubic-bezier(.19,1,.22,1),
               transform 740ms cubic-bezier(.19,1,.22,1);
 }
 
-/* NEXUS Speed (03): top-down reveal â€” kinetic, data rushing in */
+/* NEXUS Speed (03): top-down reveal ═ kinetic, data rushing in */
 .project-card[data-project="nexus-speed"] .project-preview {
   clip-path: inset(0 0 100% 0 round 6px);
   transform: translateY(-10px);
@@ -2891,13 +2891,13 @@ span.social-link:active{ scale: 1; }
   clip-path: inset(0 0 0% 0 round 6px);
   transform: translateY(0);
 }
-/* NEXUS Speed info: slightly faster â€” responsive, technical */
+/* NEXUS Speed info: slightly faster ═ responsive, technical */
 .project-card[data-project="nexus-speed"] .project-info {
   transition: opacity 560ms cubic-bezier(.19,1,.22,1),
               transform 560ms cubic-bezier(.19,1,.22,1);
 }
 
-/* DEADCORE (04 / lab): diagonal inset reveal â€” liminal, unsettling */
+/* DEADCORE (04 / lab): diagonal inset reveal ═ liminal, unsettling */
 .project-card[data-project="deadcore"] .project-preview {
   clip-path: inset(60% 0 0 60% round 6px);
   transform: translate(-6px, 6px);
@@ -2909,7 +2909,7 @@ span.social-link:active{ scale: 1; }
   clip-path: inset(0% 0 0 0% round 6px);
   transform: translate(0, 0);
 }
-/* DEADCORE info: slowest, heaviest â€” atmosphere over speed */
+/* DEADCORE info: slowest, heaviest ═ atmosphere over speed */
 .project-card[data-project="deadcore"] .project-info {
   transition: opacity 820ms cubic-bezier(.16,.84,.44,1),
               transform 820ms cubic-bezier(.16,.84,.44,1);
@@ -2941,21 +2941,21 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€ EXP 3: Scroll velocity awareness â€” cursor ring â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── EXP 3: Scroll velocity awareness ═ cursor ring ───────────────────── */
 /* The cursor ring subtly thins and gains opacity during fast scrolling.
-   --sv is a 0â€“1 value written by JS. We can't interpolate custom props
+   --sv is a 0—1 value written by JS. We can't interpolate custom props
    directly in standard CSS, so JS writes inline style vars and the ring
    uses them via calc(). */
 .cursor {
-  /* EXP: velocity-responsive ring â€” border thickens slightly at rest */
+  /* EXP: velocity-responsive ring ═ border thickens slightly at rest */
   outline-width: calc(1px + var(--sv, 0) * 0px); /* reserved for future */
 }
 
-/* â”€â”€ EXP 4: Material memory â€” slow highlight decay on card leave â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── EXP 4: Material memory ═ slow highlight decay on card leave ────────── */
 /* When the cursor leaves a card, the refraction highlight fades out slowly
    rather than resetting instantly. This is the "warm glass memory" effect.
    Achieved by adding a longer transition on ::after's opacity for the
-   leave state only â€” the "enter" direction remains instant via hover. */
+   leave state only ═ the "enter" direction remains instant via hover. */
 
 /* The default ::after transition is 360ms. On mouseleave we want ~800ms.
    We toggle a class .exp-settling on the card from JS for this. */
@@ -2969,10 +2969,10 @@ span.social-link:active{ scale: 1; }
      so JS lerps --mouse-x/y back to 50% over 800ms instead */
 }
 
-/* â”€â”€ EXP 5: Hidden layer â€” hero visited state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── EXP 5: Hidden layer ═ hero visited state ──────────────────────────── */
 /* After the user scrolls away from the hero and returns, the headline
    gets a data-visited attribute. This makes the accent line slightly
-   more prominent â€” a quiet acknowledgement of return. */
+   more prominent ═ a quiet acknowledgement of return. */
 .hero-headline[data-visited] .accent {
   text-shadow: 0 0 32px rgba(155, 131, 132, 0.18);
   transition: text-shadow 1200ms cubic-bezier(.16,.84,.44,1);
@@ -2984,20 +2984,20 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€ MATERIAL EXPERIMENT â€” HYPER-REALISTIC GLASS RESPONSE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ── MATERIAL EXPERIMENT ═ HYPER-REALISTIC GLASS RESPONSE ──────────────────
    New CSS variables written by setupMaterial() in JS:
-     --lx, --ly     : raw cursor position 0â€“1 (lerped, smooth)
+     --lx, --ly     : raw cursor position 0—1 (lerped, smooth)
      --ldist        : 0 = cursor at center, 1 = cursor near edge
    All values settle back to neutral on mouseleave via JS lerp.
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ──────────────────────────────────────────────────────────────────────── */
 
 /* --- Directional edge shimmer (::before) --------------------------------
    The existing top-edge highlight becomes directional: when the cursor
    is near the left side the shimmer shifts left; near the right, right.
    This mimics how ambient light catches a glass edge.                    */
 .project-card{
-  --lx: 0.5;      /* cursor X position 0â€“1, centre default */
-  --ly: 0.5;      /* cursor Y position 0â€“1 */
+  --lx: 0.5;      /* cursor X position 0—1, centre default */
+  --ly: 0.5;      /* cursor Y position 0—1 */
   --ldist: 0;     /* 0 = centre, 1 = edge */
 }
 .project-card::before{
@@ -3024,14 +3024,14 @@ span.social-link:active{ scale: 1; }
    The specular spot is brighter near edges (--ldist) as on real glass.  */
 .project-card::after{
   background:
-    /* Tight specular â€” small, bright, follows cursor precisely */
+    /* Tight specular ═ small, bright, follows cursor precisely */
     radial-gradient(
       80px circle at calc(var(--lx) * 100%) calc(var(--ly) * 100%),
       rgba(255, 255, 255, calc(0.028 + var(--ldist) * 0.022)) 0%,
       rgba(145, 118, 110, calc(0.018 + var(--ldist) * 0.012)) 40%,
       transparent 100%
     ),
-    /* Broad ambient wash â€” wide, soft, follows cursor loosely */
+    /* Broad ambient wash ═ wide, soft, follows cursor loosely */
     radial-gradient(
       480px circle at calc(var(--lx) * 100%) calc(var(--ly) * 100%),
       rgba(145, 118, 110, 0.022) 0%,
@@ -3043,11 +3043,11 @@ span.social-link:active{ scale: 1; }
 }
 
 /* --- Inner content depth layer -----------------------------------------
-   The .project-info subtly shifts opposite to cursor position â€” a tiny
+   The .project-info subtly shifts opposite to cursor position ═ a tiny
    parallax that suggests the content is behind the glass surface.
    Uses CSS `translate` (independent property) to avoid conflicting with
    the reveal system's `transform` property.
-   Movement capped at Â±2.5px horizontal, Â±1.5px vertical.               */
+   Movement capped at ±2.5px horizontal, ±1.5px vertical.               */
 .project-card:hover .project-info{
   translate: calc((var(--lx) - 0.5) * -2.5px)
              calc((var(--ly) - 0.5) * -1.5px);
@@ -3105,27 +3105,27 @@ span.social-link:active{ scale: 1; }
    =========================================================================
    Two layers:
 
-   LAYER 1 â€” STATIC STAINS
+   LAYER 1 ═ STATIC STAINS
    Pure CSS. ::before / ::after on named wrapper elements.
    Present at page load. Embedded in composition.
    Driven by --crim color variables.
 
-   LAYER 2 â€” INTERACTIVE DROPS
+   LAYER 2 ═ INTERACTIVE DROPS
    JS spawns a single <span class="cr-drop"> per interaction.
    CSS @keyframes handles all motion. Node is self-removed on animationend.
    No RAF loop. No pool. No canvas. Hard DOM cap: 20 nodes max.
    ========================================================================= */
 
-/* â”€â”€ Color palette â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Color palette ──────────────────────────────────────────────────────── */
 :root {
-  --crim-core:   rgba(110, 10, 18, 0.92);  /* Deep wine â€” drop center     */
-  --crim-mid:    rgba(76,   6, 12, 0.72);  /* Dark crimson â€” body         */
+  --crim-core:   rgba(110, 10, 18, 0.92);  /* Deep wine ═ drop center     */
+  --crim-mid:    rgba(76,   6, 12, 0.72);  /* Dark crimson ═ body         */
   --crim-edge:   rgba(44,   2,  6, 0.30);  /* Near-black at perimeter     */
-  --crim-thin:   rgba(90,  10, 16, 0.18);  /* Wisp â€” static stains        */
+  --crim-thin:   rgba(90,  10, 16, 0.18);  /* Wisp ═ static stains        */
   --crim-static: rgba(72,   6, 10, 0.12);  /* Permanent ambient stains    */
 }
 
-/* â”€â”€ Interactive drop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Interactive drop ───────────────────────────────────────────────────── */
 .cr-drop {
   position: absolute;
   width:  var(--cr-size, 32px);
@@ -3155,10 +3155,10 @@ span.social-link:active{ scale: 1; }
 .cr-drop.cr-large  { --cr-size: 58px; }
 .cr-drop.cr-lab    { --cr-size: 44px; }
 
-/* â”€â”€ Organic shape pool â€” JS picks one via inline style â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Organic shape pool ═ JS picks one via inline style ─────────────────── */
 /* shapes are written inline; fallback is default */
 
-/* â”€â”€ Drop animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Drop animation ─────────────────────────────────────────────────────── */
 @keyframes cr-bloom {
   0% {
     transform: rotate(var(--cr-rot, 0deg)) scale(0.04);
@@ -3178,7 +3178,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€ Static stains â€” CSS-only, no JS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Static stains ═ CSS-only, no JS ─────────────────────────────────────── */
 
 /* Hero: ambient crimson stain sitting behind the headline composition */
 .cr-hero-stain {
@@ -3254,7 +3254,7 @@ span.social-link:active{ scale: 1; }
   border-radius: 52% 48% 44% 56% / 56% 44% 52% 48%;
 }
 
-/* Project-card corner accent â€” micro stain via CSS, inside card bounds */
+/* Project-card corner accent ═ micro stain via CSS, inside card bounds */
 .project-card .cr-card-stain {
   position: absolute;
   pointer-events: none;
@@ -3317,12 +3317,12 @@ span.social-link:active{ scale: 1; }
   100% { opacity: 0; transform: scale(1.1); }
 }
 
-/* â”€â”€ Host containers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Host containers ────────────────────────────────────────────────────── */
 /* .project-card is already position:relative */
 .btn-ghost  { position: relative; }
 .btn-member { position: relative; }
 
-/* â”€â”€ Reduced motion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .cr-drop {
     animation: cr-reduced-fade var(--cr-dur, 280ms) linear both;
@@ -3337,7 +3337,7 @@ span.social-link:active{ scale: 1; }
   .project-card .cr-card-stain { display: none; }
 }
 
-/* â”€â”€ Mobile â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Mobile ─────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   /* Reduce static stain intensity */
   .cr-hero-stain.cr-a { opacity: 0.45; }
@@ -3349,13 +3349,13 @@ span.social-link:active{ scale: 1; }
   .cr-drop.cr-lab    { --cr-size: 34px; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   END â€” CRIMSON BLOOD-DROP SYSTEM (CSS)
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────────────────────────────────────────────────────────────
+   END ═ CRIMSON BLOOD-DROP SYSTEM (CSS)
+   ───────────────────────────────────────────────────────────────────────── */
 
 /* =========================================================================
-   EXPERIMENT â€” ADAPTIVE WEBSITE MEMORY (CSS)
-   TEMPORARY ONLY â€” easily removable.
+   EXPERIMENT ═ ADAPTIVE WEBSITE MEMORY (CSS)
+   TEMPORARY ONLY ═ easily removable.
    
    Subtle visual adaptations based on visitor's familiarity:
    - Previously visited projects get slightly different transitions
@@ -3363,7 +3363,7 @@ span.social-link:active{ scale: 1; }
    - Scroll profile influences hover responsiveness
    ========================================================================= */
 
-/* â”€â”€â”€ VISITED PROJECT ADAPTATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── VISITED PROJECT ADAPTATION ────────────────────────────────────────
    Previously opened projects get subtly faster, more familiar transitions */
 
 .project-card[data-visited="true"] .project-preview {
@@ -3386,7 +3386,7 @@ span.social-link:active{ scale: 1; }
   transform: translateY(6px); /* vs 8px for unvisited - reduced for smoothness */
 }
 
-/* â”€â”€â”€ EXPLORATION STATE ADAPTATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── EXPLORATION STATE ADAPTATION ──────────────────────────────────────
    Generic reveals adapt to visitor's familiarity level */
 
 /* Deep exploration: more confident, less introductory motion */
@@ -3400,7 +3400,7 @@ span.social-link:active{ scale: 1; }
 
 /* New/exploring: keep full introductory motion (no override) */
 
-/* â”€â”€â”€ SCROLL PROFILE ADAPTATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── SCROLL PROFILE ADAPTATION ─────────────────────────────────────────
    Hover interactions adapt to visitor's scroll behavior */
 
 /* Fast scrollers: snappier hovers */
@@ -3417,7 +3417,7 @@ span.social-link:active{ scale: 1; }
   transition-duration: 220ms; /* vs 180-200ms default */
 }
 
-/* â”€â”€â”€ ADAPTIVE DURATION VARIABLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── ADAPTIVE DURATION VARIABLES ───────────────────────────────────────
    JavaScript writes these based on exploration state */
 
 :root {
@@ -3437,14 +3437,14 @@ span.social-link:active{ scale: 1; }
               transform var(--dur-l-adaptive) cubic-bezier(.19,1,.22,1);
 }
 
-/* â”€â”€â”€ SUBTLE VISITED INDICATOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── SUBTLE VISITED INDICATOR ──────────────────────────────────────────
    Extremely subtle visual cue (optional, can be removed if too obvious) */
 
 .project-card[data-visited="true"]::before {
   opacity: 0.65; /* Slightly dimmer top shimmer on visited cards */
 }
 
-/* â”€â”€â”€ REDUCED MOTION OVERRIDE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── REDUCED MOTION OVERRIDE ───────────────────────────────────────────
    All adaptive motion respects reduced motion preference */
 
 @media (prefers-reduced-motion: reduce) {
@@ -3463,7 +3463,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€â”€ MOBILE SIMPLIFICATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── MOBILE SIMPLIFICATION ────────────────────────────────────────────
    Reduce adaptive motion on mobile (preserve performance) */
 
 @media (max-width: 1024px) {
@@ -3482,12 +3482,12 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   END EXPERIMENT â€” ADAPTIVE WEBSITE MEMORY (CSS)
+   END EXPERIMENT ═ ADAPTIVE WEBSITE MEMORY (CSS)
    ========================================================================= */
 
 /* =========================================================================
-   EXPERIMENT â€” PROJECT ARTIFACTS
-   TEMPORARY ONLY â€” easily removable.
+   EXPERIMENT ═ PROJECT ARTIFACTS
+   TEMPORARY ONLY ═ easily removable.
    
    Each project becomes a distinct digital artifact with its own personality:
    - NEXUS: Precision / Interface Artifact
@@ -3497,7 +3497,7 @@ span.social-link:active{ scale: 1; }
    All share one design system but have unique compositional details.
    ========================================================================= */
 
-/* â”€â”€â”€ SHARED ARTIFACT METADATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── SHARED ARTIFACT METADATA ──────────────────────────────────────────
    Subtle metadata system for all artifacts */
 
 .artifact-metadata {
@@ -3535,7 +3535,7 @@ span.social-link:active{ scale: 1; }
   color: var(--accent);
 }
 
-/* â”€â”€â”€ ARTIFACT 01: NEXUS â€” PRECISION / INTERFACE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── ARTIFACT 01: NEXUS ═ PRECISION / INTERFACE ────────────────────────
    Engineered, precise, controlled */
 
 .project-card[data-artifact="nexus"] {
@@ -3587,7 +3587,7 @@ span.social-link:active{ scale: 1; }
   transform: translateY(-1px);
 }
 
-/* â”€â”€â”€ ARTIFACT 02: THE DARK FILE â€” ARCHIVE / DOCUMENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── ARTIFACT 02: THE DARK FILE ═ ARCHIVE / DOCUMENT ───────────────────
    Typographic, archival, discovered */
 
 .project-card[data-artifact="dark-file"] {
@@ -3639,7 +3639,7 @@ span.social-link:active{ scale: 1; }
   letter-spacing: 0.01em;
 }
 
-/* â”€â”€â”€ ARTIFACT 03: DEADCORE â€” EXPERIMENTAL OBJECT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── ARTIFACT 03: DEADCORE ═ EXPERIMENTAL OBJECT ───────────────────────
    Mysterious, spatial, atmospheric */
 
 .project-card[data-artifact="deadcore"] {
@@ -3687,7 +3687,7 @@ span.social-link:active{ scale: 1; }
   transform: translateX(2px);
 }
 
-/* â”€â”€â”€ ARTIFACT HANDOFFS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── ARTIFACT HANDOFFS ─────────────────────────────────────────────────
    Cinematic transitions between artifact personalities */
 
 /* Previous artifact recedes with personality-specific behavior */
@@ -3709,7 +3709,7 @@ span.social-link:active{ scale: 1; }
   filter: saturate(0.6);
 }
 
-/* â”€â”€â”€ MOBILE SIMPLIFICATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── MOBILE SIMPLIFICATION ────────────────────────────────────────────
    Preserve personalities but reduce complexity */
 
 @media (max-width: 1024px) {
@@ -3741,7 +3741,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€â”€ REDUCED MOTION OVERRIDE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─── REDUCED MOTION OVERRIDE ───────────────────────────────────────────
    All artifact personalities respect reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
@@ -3765,7 +3765,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   END EXPERIMENT â€” PROJECT ARTIFACTS
+   END EXPERIMENT ═ PROJECT ARTIFACTS
    ========================================================================= */
 
 /* =========================================================================
@@ -3773,7 +3773,7 @@ span.social-link:active{ scale: 1; }
    Subtle visual system responding to interaction intent
    ========================================================================= */
 
-/* Signal System â€” minimal editorial state indicator */
+/* Signal System ═ minimal editorial state indicator */
 .living-signal {
   position: fixed;
   top: 24px;
@@ -3812,7 +3812,7 @@ span.social-link:active{ scale: 1; }
   opacity: 0.48;
 }
 
-/* Reflection Memory â€” subtle material response */
+/* Reflection Memory ═ subtle material response */
 .project-card[style*="--memory-strength"]::after {
   opacity: calc(0.5 + var(--memory-strength, 0) * 0.15);
 }
@@ -3826,7 +3826,7 @@ span.social-link:active{ scale: 1; }
   transition-duration: calc(var(--dur-hover, 380ms) * var(--living-pace, 1));
 }
 
-/* Interaction Fingerprint â€” pace-based subtle timing */
+/* Interaction Fingerprint ═ pace-based subtle timing */
 [data-pace="fast"] [data-reveal] {
   transition-duration: calc(var(--dur-l, 860ms) * 0.92);
 }
@@ -3859,7 +3859,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   END â€” LIVING INTERFACE
+   END ═ LIVING INTERFACE
    ========================================================================= */
 
 /* =========================================================================
@@ -3971,7 +3971,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   END â€” ATMOSPHERIC TIME
+   END ═ ATMOSPHERIC TIME
    ========================================================================= */
 
 /* =========================================================================
@@ -4070,11 +4070,11 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   END â€” ATTENTION LENS
+   END ═ ATTENTION LENS
    ========================================================================= */
 
 /* =========================================================================
-   MOTION REFINEMENT â€” SMOOTH CINEMATIC ENHANCEMENTS
+   MOTION REFINEMENT ═ SMOOTH CINEMATIC ENHANCEMENTS
    Targeted improvements for fluid, weighted, reversible motion
    ========================================================================= */
 
@@ -4157,7 +4157,7 @@ span.social-link:active{ scale: 1; }
 /* Scroll-Stop Settling: atmosphere eases to rest after scroll ends.
    Project cards manage their own transitions via .is-visible state. */
 :root[data-scrolling="false"] .atmosphere {
-  transition-duration: 1200ms; /* Slowest settle â€” background weight */
+  transition-duration: 1200ms; /* Slowest settle ═ background weight */
 }
 
 /* Fast Scroll Optimization: Shorter transitions during rapid movement */
@@ -4166,7 +4166,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   REDUCED MOTION â€” SIX-SYSTEM REFINEMENT
+   REDUCED MOTION ═ SIX-SYSTEM REFINEMENT
    Disable cursor context, AASIF transitions, DNA atmosphere, scroll effects, handoff
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
@@ -4224,7 +4224,7 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   MOBILE OPTIMIZATIONS â€” SIX-SYSTEM REFINEMENT
+   MOBILE OPTIMIZATIONS ═ SIX-SYSTEM REFINEMENT
    Disable desktop cursor, reduce AASIF opacity, simplify atmosphere, lighter scroll
    ========================================================================= */
 @media (max-width: 768px) {
@@ -4297,22 +4297,22 @@ span.social-link:active{ scale: 1; }
 }
 
 /* =========================================================================
-   OPENING REVEAL â€” EDITORIAL ENTRANCE
+   OPENING REVEAL ═ EDITORIAL ENTRANCE
    =========================================================================
    #intro-overlay is position:fixed, placed in <body> BEFORE <main>.
-   It must NOT be inside <main> â€” a filter on <main> would break fixed
+   It must NOT be inside <main> ═ a filter on <main> would break fixed
    positioning of any children, making the overlay disappear.
 
    Architecture:
    - Overlay is fully opaque warm charcoal veil above the portfolio
    - Portfolio renders normally underneath (never hidden, never blurred)
    - CSS keyframe animations handle the text entrance (AASIF, PORTFOLIO)
-   - JS rAF loop reads window.scrollY â†’ drives exit via CSS variables
+   - JS rAF loop reads window.scrollY → drives exit via CSS variables
    - NO setTimeout to auto-dismiss. Scroll is the only trigger.
    - 60-second safety timeout as last-resort escape only
    ========================================================================= */
 
-/* â”€â”€ Overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Overlay ─────────────────────────────────────────────────────────── */
 #intro-overlay {
   position: fixed;
   inset: 0;
@@ -4322,7 +4322,7 @@ span.social-link:active{ scale: 1; }
   align-items: center;
   justify-content: center;
 
-  /* Warm editorial veil â€” opaque enough to read text, transparent enough
+  /* Warm editorial veil ═ opaque enough to read text, transparent enough
      to hint the world underneath on slow devices that render late      */
   background: rgba(13, 12, 11, 0.82);
 
@@ -4337,12 +4337,12 @@ span.social-link:active{ scale: 1; }
   cursor: pointer;
   transition: none;
 
-  /* Exit driven by JS via --intro-exit (0â†’1): overlay fades out */
+  /* Exit driven by JS via --intro-exit (0→1): overlay fades out */
   opacity: calc(1 - var(--intro-exit, 0));
   transform: translateY(calc(var(--intro-exit, 0) * -8px));
 }
 
-/* Subtle hover: overlay brightens slightly â€” communicates interactivity
+/* Subtle hover: overlay brightens slightly ═ communicates interactivity
    without adding any UI element. Desktop only (hover: hover). */
 @media (hover: hover) {
   #intro-overlay:hover {
@@ -4354,7 +4354,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* After tap: cursor resets â€” overlay is exiting, no more interaction */
+/* After tap: cursor resets ═ overlay is exiting, no more interaction */
 #intro-overlay.intro-tapping {
   cursor: default;
   pointer-events: none;
@@ -4365,7 +4365,7 @@ span.social-link:active{ scale: 1; }
   pointer-events: none;
 }
 
-/* â”€â”€ AASIF â€” main title â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── AASIF ═ main title ──────────────────────────────────────────────── */
 .intro-name {
   font-family: var(--f-display);
   font-weight: 650;
@@ -4380,7 +4380,7 @@ span.social-link:active{ scale: 1; }
   /* CSS entrance animation: settles in from below + spacing contracts */
   animation: intro-name-enter 900ms cubic-bezier(.19, 1, .22, 1) 80ms both;
 
-  /* Exit: moves up as user scrolls â€” driven by --intro-text-y */
+  /* Exit: moves up as user scrolls ═ driven by --intro-text-y */
   transform: translateY(calc(var(--intro-text-y, 0) * 1px));
   opacity: calc(1 - var(--intro-text-fade, 0));
   will-change: transform, opacity;
@@ -4399,7 +4399,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€ PORTFOLIO â€” label â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── PORTFOLIO ═ label ───────────────────────────────────────────────── */
 .intro-label {
   font-family: var(--f-mono);
   font-size: clamp(0.62rem, 1.3vw, 0.82rem);
@@ -4429,7 +4429,7 @@ span.social-link:active{ scale: 1; }
   }
 }
 
-/* â”€â”€ Scroll hint â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Scroll hint ─────────────────────────────────────────────────────── */
 .intro-hint {
   position: absolute;
   bottom: clamp(2.5rem, 6vh, 4rem);
@@ -4473,7 +4473,7 @@ span.social-link:active{ scale: 1; }
   50%       { transform: translateY(5px); opacity: 0.7; }
 }
 
-/* â”€â”€ Nav hidden during intro â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Nav hidden during intro ─────────────────────────────────────────── */
 body.intro-active .nav {
   opacity: 0;
   pointer-events: none;
@@ -4496,7 +4496,7 @@ body.intro-active .hero-headline .line {
   animation: none !important;
 }
 
-/* â”€â”€ Reduced motion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Reduced motion ──────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .intro-name        { animation: none; letter-spacing: 0.08em; }
   .intro-label       { animation: none; }
@@ -4522,23 +4522,23 @@ body.intro-active .hero-headline .line {
   to   { opacity: 0; visibility: hidden; }
 }
 
-/* â”€â”€ Overlay exit: subtle upward lift â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ── Overlay exit: subtle upward lift ────────────────────────────────────
    Now merged into the primary #intro-overlay rule above.                 */
 
-/* â”€â”€ Hero handoff: nav arrives quietly after headline settles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ── Hero handoff: nav arrives quietly after headline settles ──────────
    160ms delay means nav fades in after the first headline line is
-   already visible â€” feels like the interface composing itself, not
+   already visible ═ feels like the interface composing itself, not
    everything slamming on at once.                                       */
 body.intro-done .nav {
   animation: intro-nav-enter 520ms cubic-bezier(.16,.84,.44,1) 160ms both;
 }
 
-/* â”€â”€ Scroll hint: tiny upward float, not a bounce â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Scroll hint: tiny upward float, not a bounce ─────────────────────── */
 .intro-hint-arrow {
   animation: intro-arrow-breathe 2.8s ease-in-out infinite 1200ms;
 }
 
-/* â”€â”€ Mobile â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .intro-name  { font-size: clamp(2.8rem, 14vw, 4.5rem); }
   .intro-label { font-size: 0.58rem; letter-spacing: 0.18em; }
@@ -4592,8 +4592,8 @@ body.intro-done .nav {
       <div class="availability-schedule" id="availabilitySchedule" role="tooltip">
         <p class="schedule-title">AVAILABILITY</p>
         <div class="schedule-times">
-          <span>10:00 â€” 17:00</span>
-          <span>19:30 â€” 03:00</span>
+          <span>10:00 ═ 17:00</span>
+          <span>19:30 ═ 03:00</span>
         </div>
         <p class="schedule-timezone">IST / UTC+5:30</p>
       </div>
@@ -4625,26 +4625,26 @@ body.intro-done .nav {
     <a href="#contact"><em>04</em> CONTACT</a>
   </nav>
   <div class="mobile-menu-footer">
-    <span>CLASS 11 â€” HUMANITIES</span>
+    <span>CLASS 11 ═ HUMANITIES</span>
     <span>2026</span>
   </div>
 </div>
 
 <!-- ===================== OPENING OVERLAY =====================
-     position:fixed â€” must be outside <main>.
+     position:fixed ═ must be outside <main>.
      A filter on <main> would break fixed positioning of children.
-     pointer-events:none â€” scroll always works through it.
+     pointer-events:none ═ scroll always works through it.
      If JS fails: body.intro-active never set, site is fully normal.
      =========================================================== -->
 <div id="intro-overlay" aria-hidden="true">
-  <!-- Crimson ambient stains â€” static, CSS-only -->
+  <!-- Crimson ambient stains ═ static, CSS-only -->
   <span class="cr-intro-stain cr-a" aria-hidden="true"></span>
   <span class="cr-intro-stain cr-b" aria-hidden="true"></span>
   <p class="intro-name">AASIF</p>
   <p class="intro-label">PORTFOLIO</p>
   <span class="intro-hint" aria-hidden="true">
     SCROLL TO ENTER
-    <span class="intro-hint-arrow">â†“</span>
+    <span class="intro-hint-arrow">↓</span>
   </span>
 </div>
 
@@ -4660,29 +4660,29 @@ body.intro-done .nav {
         <span class="line">I CREATE.</span>
         <span class="line accent">I EXPLORE.</span>
       </h1>
-      <!-- Crimson ambient stains behind headline â€” CSS-only, aria-hidden -->
+      <!-- Crimson ambient stains behind headline ═ CSS-only, aria-hidden -->
       <span class="cr-hero-stain cr-a" aria-hidden="true"></span>
       <span class="cr-hero-stain cr-b" aria-hidden="true"></span>
       <span class="cr-hero-stain cr-c" aria-hidden="true"></span>
 
-      <p class="hero-sub" data-reveal>Student Â· Creator Â· Experimental Web Developer</p>
+      <p class="hero-sub" data-reveal>Student &middot; Creator &middot; Experimental Web Developer</p>
 
       <!-- Membership UI -->
       <div class="membership-container" data-reveal>
         <span class="member-count" id="memberCount">187 MEMBERS</span>
         <button class="btn-member" id="btnMember" data-cursor-active>
           BECOME A MEMBER
-          <span class="btn-member-arrow">â†’</span>
+          <span class="btn-member-arrow">→</span>
         </button>
       </div>
 
       <a href="#work" class="btn-ghost" data-reveal data-cursor-view>
-        EXPLORE MY WORK <span class="arrow-down">â†“</span>
+        EXPLORE MY WORK <span class="arrow-down">↓</span>
       </a>
     </div>
 
     <div class="hero-meta" data-reveal aria-hidden="true">
-      <span>CLASS 11 â€” HUMANITIES</span>
+      <span>CLASS 11 ═ HUMANITIES</span>
       <span>2026</span>
     </div>
   </section>
@@ -4694,7 +4694,7 @@ body.intro-done .nav {
       <h2 class="now-heading" data-reveal>NOW</h2>
       <p class="now-text" data-reveal>
         Learning web development. Experimenting with visual storytelling.
-        Building things that don't always have a clear purpose yet â€” and
+        Building things that don't always have a clear purpose yet ═ and
         figuring out which ones do.
       </p>
     </div>
@@ -4734,7 +4734,7 @@ body.intro-done .nav {
       <p class="eyebrow" data-reveal>ABOUT</p>
       <h2 class="section-heading" data-reveal>MORE THAN ONE THING.</h2>
 
-      <p class="about-lede" data-reveal>I'm Aasif â€” a student, creator, and experimental web developer.</p>
+      <p class="about-lede" data-reveal>I'm Aasif ═ a student, creator, and experimental web developer.</p>
 
       <p class="about-copy" data-reveal>
         I'm currently studying <strong>Class 11 Humanities</strong>, while exploring different creative and
@@ -4743,7 +4743,7 @@ body.intro-done .nav {
         the darker side.
       </p>
 
-      <p class="about-thesis" data-reveal>I'm still learning â€” and that's intentional.</p>
+      <p class="about-thesis" data-reveal>I'm still learning ═ and that's intentional.</p>
 
       <p class="about-copy" data-reveal>
         I work with <strong>CapCut</strong> regularly while learning tools like <strong>After Effects, Photoshop,
@@ -4768,12 +4768,12 @@ body.intro-done .nav {
       <div class="about-skills" data-reveal>
         <p class="about-skills-label">EXPLORATION / SELF-ASSESSMENT</p>
         <div class="skill-list" id="skillList"><!-- injected by script --></div>
-        <p class="about-skills-note">Self-assessed Â· 2026 â€” not a certification or tested measurement.</p>
+        <p class="about-skills-note">Self-assessed &middot; 2026 ═ not a certification or tested measurement.</p>
       </div>
 
       <div class="about-currently" data-reveal>
         <span class="about-currently-label">CURRENTLY</span>
-        <span class="about-currently-value">CLASS 11 Â· HUMANITIES Â· 2026</span>
+        <span class="about-currently-value">CLASS 11 &middot; HUMANITIES &middot; 2026</span>
       </div>
     </div>
   </section>
@@ -4805,7 +4805,7 @@ body.intro-done .nav {
 <!-- ============================ FOOTER ============================ -->
 <footer class="footer">
   <div class="container footer-inner">
-    <span>Â© 2026 Aasif</span>
+    <span>© 2026 Aasif</span>
     <span>Designed &amp; built by @the.aasif9</span>
     <span class="footer-legal-links">
       <a href="#privacy">Privacy</a>
@@ -4818,7 +4818,7 @@ body.intro-done .nav {
 /* =========================================================================
    DATA
    Everything content-related lives here. Add a project, a social link, or a
-   learning item by editing these arrays â€” nothing else in the site needs to
+   learning item by editing these arrays ═ nothing else in the site needs to
    change.
    ========================================================================= */
 
@@ -4829,7 +4829,7 @@ const SELECTED_WORK = [
     creator: "by Aasif",
     category: "WEB / INTERACTIVE UI",
     description:
-      "A calculator built to explore interactive UI â€” a full set of operations and a running history log, wrapped in a dark, focused interface. Built with HTML, CSS, and JavaScript.",
+      "A calculator built to explore interactive UI ═ a full set of operations and a running history log, wrapped in a dark, focused interface. Built with HTML, CSS, and JavaScript.",
     url: "https://nexuscalculater.netlify.app/",
     cta: "VIEW PROJECT",
     tone: "default",
@@ -4844,8 +4844,8 @@ const SELECTED_WORK = [
     title: "The Dark File",
     category: "WEB / TRUE-CRIME DOCUMENTARY",
     description:
-      "An immersive, scroll-driven documentary archive â€” a real historical case told in chapters, built while exploring how a website can carry a story instead of just display information.",
-    note: "Viewer discretion advised â€” mature true-crime subject matter.",
+      "An immersive, scroll-driven documentary archive ═ a real historical case told in chapters, built while exploring how a website can carry a story instead of just display information.",
+    note: "Viewer discretion advised ═ mature true-crime subject matter.",
     url: "https://thedarkfile.netlify.app/",
     cta: "VIEW PROJECT",
     tone: "default",
@@ -4879,7 +4879,7 @@ const LAB_WORK = [
     title: "DEADCORE",
     category: "EXPERIMENTAL WEB EXPERIENCE",
     description:
-      "A liminal, ARG-style scroll experience â€” signals, static, and fragments with no clear explanation. Built with no goal beyond atmosphere, and seeing how far unease alone can carry an interaction.",
+      "A liminal, ARG-style scroll experience ═ signals, static, and fragments with no clear explanation. Built with no goal beyond atmosphere, and seeing how far unease alone can carry an interaction.",
     url: "https://deadcore.netlify.app/",
     cta: "VIEW EXPERIMENT",
     tone: "lab",
@@ -4914,19 +4914,19 @@ const SOCIALS = [
 ];
 
 const ABOUT_CATEGORIES = [
-  { label: "WEB", line: "Websites Â· Interactive UI Â· Experiments" },
+  { label: "WEB", line: "Websites &middot; Interactive UI &middot; Experiments" },
   {
     label: "CREATIVE",
-    line: "Video Editing Â· Gaming Â· Photography Â· Cinematic Shooting",
+    line: "Video Editing &middot; Gaming &middot; Photography &middot; Cinematic Shooting",
     archiveLink: {
       label: "CREATIVE ARCHIVE",
       url: "https://drive.google.com/drive/folders/1y2an9H3m9zOmzY_3EnYc4MgRO-wEkarM?usp=sharing",
     },
   },
-  { label: "EXPLORATION", line: "AI Â· Writing Â· Photography Â· New Ideas Â· Technology Â· Dark Web & Internet Culture" },
+  { label: "EXPLORATION", line: "AI &middot; Writing &middot; Photography &middot; New Ideas &middot; Technology &middot; Dark Web & Internet Culture" },
 ];
 
-/* Self-assessed, not measured or certified â€” see the note rendered
+/* Self-assessed, not measured or certified ═ see the note rendered
    alongside these in the About section. */
 const SELF_ASSESSMENT = [
   { label: "AI", percent: 75 },
@@ -4941,7 +4941,7 @@ const SELF_ASSESSMENT = [
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /* Guard against data.js not having loaded â€” fall back to empty data
+  /* Guard against data.js not having loaded ═ fall back to empty data
      instead of throwing, so the rest of the page still works. */
   const D_WORK = typeof SELECTED_WORK !== "undefined" ? SELECTED_WORK : [];
   const D_LAB = typeof LAB_WORK !== "undefined" ? LAB_WORK : [];
@@ -4951,7 +4951,7 @@ const SELF_ASSESSMENT = [
   const D_SKILLS = typeof SELF_ASSESSMENT !== "undefined" ? SELF_ASSESSMENT : [];
 
   /* =======================================================================
-     RENDER â€” build project cards, lab cards, learning grid, socials, and
+     RENDER ═ build project cards, lab cards, learning grid, socials, and
      credits from data.js. Isolated in its own try/catch: if this fails,
      nav/cursor/reveal below still run.
      ======================================================================= */
@@ -4993,7 +4993,7 @@ const SELF_ASSESSMENT = [
           ${noteHTML}
           ${artifactMetadataHTML}
           <a class="project-link" href="${item.url}" target="_blank" rel="noopener noreferrer" data-cursor-active>
-            ${item.cta} <span class="arrow">â†—</span>
+            ${item.cta} <span class="arrow">↗</span>
           </a>
         </div>
         <a class="project-preview" data-tag="${item.title}" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.title}" data-cursor-view>
@@ -5027,13 +5027,13 @@ const SELF_ASSESSMENT = [
       const isPlaceholder = (url) => !url || url === "#";
       socialList.innerHTML = `<ul>${D_SOCIALS.map((s) => {
         if (isPlaceholder(s.url)) {
-          // No real URL yet â€” render as an inert, non-navigating element.
+          // No real URL yet ═ render as an inert, non-navigating element.
           // Do not use "#" as an href: it would jump the page to the top.
           return `
             <li data-reveal>
               <span class="social-link" aria-disabled="true">
-                <span>${s.label}<span class="social-soon">â€” add link</span></span>
-                <span class="arrow">â†—</span>
+                <span>${s.label}<span class="social-soon">═ add link</span></span>
+                <span class="arrow">↗</span>
               </span>
             </li>
           `;
@@ -5043,7 +5043,7 @@ const SELF_ASSESSMENT = [
           <li data-reveal>
             <a class="social-link${isEmail ? " is-email" : ""}" href="${s.url}" ${isEmail ? "" : 'target="_blank" rel="noopener noreferrer"'} data-cursor-active>
               <span>${s.label}</span>
-              <span class="arrow">â†—</span>
+              <span class="arrow">↗</span>
             </a>
           </li>
         `;
@@ -5054,7 +5054,7 @@ const SELF_ASSESSMENT = [
     if (aboutCategories) {
       aboutCategories.innerHTML = D_CATEGORIES.map((c) => {
         const archiveHTML = c.archiveLink
-          ? `<a class="about-category-archive" href="${c.archiveLink.url}" target="_blank" rel="noopener noreferrer" data-cursor-active>${c.archiveLink.label} â†’</a>`
+          ? `<a class="about-category-archive" href="${c.archiveLink.url}" target="_blank" rel="noopener noreferrer" data-cursor-active>${c.archiveLink.label} →</a>`
           : "";
         return `
           <div class="about-category" data-reveal>
@@ -5091,7 +5091,7 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     SCROLL DISPATCH â€” one listener, batched to at most once per frame.
+     SCROLL DISPATCH ═ one listener, batched to at most once per frame.
      Nav state and the timecode both register into this instead of each
      adding their own "scroll" listener.
      ======================================================================= */
@@ -5118,7 +5118,7 @@ const SELF_ASSESSMENT = [
   );
 
   /* =======================================================================
-     NAV â€” scroll state + mobile menu
+     NAV ═ scroll state + mobile menu
      ======================================================================= */
   function setupNav() {
     const nav = document.getElementById("siteNav");
@@ -5160,17 +5160,17 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     EXPERIMENT â€” ADMIN AVAILABILITY SYSTEM
-     TEMPORARY ONLY â€” easily removable. All logic isolated in this block.
+     EXPERIMENT ═ ADMIN AVAILABILITY SYSTEM
+     TEMPORARY ONLY ═ easily removable. All logic isolated in this block.
      
      Schedule-based availability indicator with automatic state updates.
      Timezone: Asia/Kolkata (IST / UTC+5:30)
      
-     ONLINE:  10:00 AM â†’ 5:00 PM
-              7:30 PM â†’ 3:00 AM (crosses midnight)
+     ONLINE:  10:00 AM → 5:00 PM
+              7:30 PM → 3:00 AM (crosses midnight)
      
-     OFFLINE: 3:00 AM â†’ 10:00 AM
-              5:00 PM â†’ 7:30 PM
+     OFFLINE: 3:00 AM → 10:00 AM
+              5:00 PM → 7:30 PM
      ======================================================================= */
   function setupAdminAvailability() {
     const availability = document.getElementById("adminAvailability");
@@ -5364,14 +5364,14 @@ const SELF_ASSESSMENT = [
     setupAdminAvailability();
   } catch (err) {
     console.error("[aasif] admin availability setup failed:", err);
-    // Fail silently â€” experiment failure must never break the site
+    // Fail silently ═ experiment failure must never break the site
   }
   /* =======================================================================
-     END EXPERIMENT â€” ADMIN AVAILABILITY SYSTEM
+     END EXPERIMENT ═ ADMIN AVAILABILITY SYSTEM
      ======================================================================= */
 
   /* =======================================================================
-     TIMECODE â€” small running counter tied to scroll depth. Purely
+     TIMECODE ═ small running counter tied to scroll depth. Purely
      decorative (aria-hidden); skipped entirely under reduced motion.
      ======================================================================= */
   function setupTimecode() {
@@ -5473,7 +5473,7 @@ const SELF_ASSESSMENT = [
   window.ScrollIntelligence = ScrollIntelligence;
 
   /* =======================================================================
-     SCROLL REVEAL â€” everything marked [data-reveal] is visible by default
+     SCROLL REVEAL ═ everything marked [data-reveal] is visible by default
      (see CSS). This only ADDS a temporary hidden state immediately before
      observing, so a failure here never leaves content invisible. Skill
      bars piggyback on the same observer: their fill and percentage only
@@ -5532,7 +5532,7 @@ const SELF_ASSESSMENT = [
 
     const MOMENTUM_DAMPING = 0.95; // Softer for smoother settle
     const MIN_VELOCITY = 0.03; // Lower threshold for graceful tail
-    const MAX_SHIFT = 4; // px â€” reduced for subtlety
+    const MAX_SHIFT = 4; // px ═ reduced for subtlety
     const atmosphere = document.querySelector('.atmosphere');
     
     // Scroll-stop detection for settling behavior
@@ -5545,7 +5545,7 @@ const SELF_ASSESSMENT = [
       const easedIntensity = 1 - Math.pow(1 - intensity, 2);
       // Set without transition so each rAF frame applies immediately.
       // The CSS transition on .atmosphere (900ms) would lag every frame
-      // update â€” this overrides it for the duration of the momentum loop.
+      // update ═ this overrides it for the duration of the momentum loop.
       atmosphere.style.transition = 'none';
       atmosphere.style.transform = `translateY(${easedIntensity * scrollDirection * MAX_SHIFT}px)`;
     }
@@ -5565,7 +5565,7 @@ const SELF_ASSESSMENT = [
       momentumRafId = requestAnimationFrame(momentumLoop);
     }
 
-    // Scroll continuation loop with smoother easing â€” REMOVED
+    // Scroll continuation loop with smoother easing ═ REMOVED
     // (was self-defeating: window.scrollBy() triggered scroll listener
     // which immediately cancelled scrollContinuationActive)
 
@@ -5641,18 +5641,18 @@ const SELF_ASSESSMENT = [
       
       velocityCheckTimeout = setTimeout(() => {
         measureVelocity();
-        // dur-l was already updated inside measureVelocity() â€” don't reset it here
+        // dur-l was already updated inside measureVelocity() ═ don't reset it here
         if (!reduceMotion) startMomentum();
       }, 60);
     }, { passive: true });
 
     /* =======================================================================
-       CINEMATIC SEQUENCE REVEAL â€” PROJECT CARDS
+       CINEMATIC SEQUENCE REVEAL ═ PROJECT CARDS
        
        Each card reveal is choreographed in layers:
-         1. Card becomes visible (opacity 0 â†’ 1, card-level)
+         1. Card becomes visible (opacity 0 → 1, card-level)
          2. Preview panel unmasked via clip-path wipe (0ms delay)
-         3. Info panel rises in (120ms delay â€” slightly after preview)
+         3. Info panel rises in (120ms delay ═ slightly after preview)
        
        The previously-visible card is tagged .is-receding so it subtly
        dims as the next card takes over, creating a genuine handoff feel.
@@ -5665,7 +5665,7 @@ const SELF_ASSESSMENT = [
 
     function revealElement(el) {
       if (el.classList.contains('project-card')) {
-        // PROJECT DNA SYSTEM (System 05) â€” Update active DNA
+        // PROJECT DNA SYSTEM (System 05) ═ Update active DNA
         const dnaAttr = el.getAttribute('data-artifact') || el.getAttribute('data-project');
         if (dnaAttr) {
           const dnaMap = {
@@ -5683,7 +5683,7 @@ const SELF_ASSESSMENT = [
         }
         
         // --- HANDOFF: previous card recedes as this one enters -----------
-        // PROJECT HANDOFF (System 06) â€” Smooth continuous transition
+        // PROJECT HANDOFF (System 06) ═ Smooth continuous transition
         if (lastVisibleCard && lastVisibleCard !== el) {
           // Apply DNA-specific receding behavior
           const prevDna = lastVisibleCard.getAttribute('data-artifact');
@@ -5718,7 +5718,7 @@ const SELF_ASSESSMENT = [
 
         // 2. Preview: clip-path wipe starts immediately
         //    (transition is already set in CSS)
-        // No transitionDelay needed â€” CSS handles the preview timing
+        // No transitionDelay needed ═ CSS handles the preview timing
 
         // 3. Info panel enters 120ms after preview starts
         const info = el.querySelector('.project-info');
@@ -5816,10 +5816,10 @@ const SELF_ASSESSMENT = [
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Element entering viewport â€” play animation
+            // Element entering viewport ═ play animation
             revealElement(entry.target);
           } else {
-            // Element leaving viewport â€” arm for replay
+            // Element leaving viewport ═ arm for replay
             // Only hide if it was previously visible (avoid hiding before first reveal)
             if (entry.target.classList.contains("is-visible")) {
               hideElement(entry.target);
@@ -5834,7 +5834,7 @@ const SELF_ASSESSMENT = [
     /* Mobile safety net: on some phones, the browser's address bar
        collapsing/expanding right after load shifts the viewport height,
        so the observer's very first check can run before layout has
-       settled â€” the hero, genuinely on screen, can be measured as "not
+       settled ═ the hero, genuinely on screen, can be measured as "not
        yet intersecting" and never get a second chance until the user
        scrolls. This doesn't reimplement the observer or duplicate its
        logic; it reuses the same revealElement function and just
@@ -5845,8 +5845,8 @@ const SELF_ASSESSMENT = [
        viewport-resize timing issue actually happens (a full-height
        section evaluated before the browser chrome settles). A page-wide
        sweep would also catch whatever else that same resize happens to
-       expose below the fold â€” on mobile specifically, since desktop
-       doesn't resize like this â€” revealing it instantly instead of on
+       expose below the fold ═ on mobile specifically, since desktop
+       doesn't resize like this ═ revealing it instantly instead of on
        scroll like everywhere else. That's not a rescue, it's a second,
        inconsistent reveal path, so it stays scoped to where the real
        bug is. */
@@ -5864,7 +5864,7 @@ const SELF_ASSESSMENT = [
     setupReveal();
   } catch (err) {
     console.error("[aasif] reveal setup failed:", err);
-    // safety net: never leave content â€” or a skill bar/number â€” stuck hidden
+    // safety net: never leave content ═ or a skill bar/number ═ stuck hidden
     document.querySelectorAll(".pre-reveal").forEach((el) => el.classList.remove("pre-reveal"));
     document.querySelectorAll(".skill-bar-fill.pre-fill").forEach((el) => el.classList.remove("pre-fill"));
     document.querySelectorAll(".skill-row").forEach((row) => {
@@ -5890,10 +5890,10 @@ const SELF_ASSESSMENT = [
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Card entering viewport â€” activate existing glow
+            // Card entering viewport ═ activate existing glow
             entry.target.classList.add("is-in-view");
           } else {
-            // Card leaving viewport â€” remove glow
+            // Card leaving viewport ═ remove glow
             entry.target.classList.remove("is-in-view");
           }
         });
@@ -5918,11 +5918,11 @@ const SELF_ASSESSMENT = [
 
      Safety: the native cursor is NOT hidden up front. It only gets hidden
      once the first real mousemove confirms the custom cursor is actually
-     alive â€” so if JS fails at any point before that, the native cursor
+     alive ═ so if JS fails at any point before that, the native cursor
      was never taken away in the first place.
 
      Efficiency: the follow loop only ticks while it still has meaningful
-     distance to close, and stops once it settles â€” no idle rAF churn.
+     distance to close, and stops once it settles ═ no idle rAF churn.
      
      Touch: On touch devices, shows brief response at tap point without
      following finger (preserves native scrolling). Uses existing cursor
@@ -5956,9 +5956,9 @@ const SELF_ASSESSMENT = [
     let confirmed = false;
     let rafId = null;
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // CONTEXTUAL CURSOR â€” System 01
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // CONTEXTUAL CURSOR ═ System 01
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     function updateCursorContext(target) {
       if (!label || !target) {
         cursor.classList.remove("is-active", "is-view");
@@ -6015,14 +6015,14 @@ const SELF_ASSESSMENT = [
       label.textContent = "";
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // DEBUG INSTRUMENTATION â€” TEMPORARY
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // DEBUG INSTRUMENTATION ═ TEMPORARY
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     let debugInterval = null;
     
     // Debug cursor state every 500ms when enabled
     window.__enableCursorDebug = () => {
-      console.log('ðŸ” CURSOR DEBUG ENABLED â€” Check console during scroll');
+      console.log('ðŸ” CURSOR DEBUG ENABLED ═ Check console during scroll');
       debugInterval = setInterval(() => {
         const computedStyle = window.getComputedStyle(cursor);
         const htmlClasses = document.documentElement.className;
@@ -6051,7 +6051,7 @@ const SELF_ASSESSMENT = [
         console.log('ðŸ” CURSOR DEBUG DISABLED');
       }
     };
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     function raf(timestamp) {
       try {
@@ -6080,7 +6080,7 @@ const SELF_ASSESSMENT = [
 
       if (!confirmed) {
         confirmed = true;
-        // Snap straight to the real position â€” no lerp-in from a guessed start point.
+        // Snap straight to the real position ═ no lerp-in from a guessed start point.
         curX = mouseX;
         curY = mouseY;
         document.documentElement.classList.add("has-fine-pointer");
@@ -6188,7 +6188,7 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     HERO POINTER PARALLAX â€” subtle, desktop + motion-allowed only
+     HERO POINTER PARALLAX ═ subtle, desktop + motion-allowed only
      ======================================================================= */
   function setupParallax() {
     if (!finePointer || reduceMotion) return;
@@ -6196,7 +6196,7 @@ const SELF_ASSESSMENT = [
     const hero = document.querySelector(".hero");
     if (!headline || !hero) return;
 
-    // Only activate parallax once the intro is done â€” prevents conflicting
+    // Only activate parallax once the intro is done ═ prevents conflicting
     // with the line-settle CSS animation that also uses transform.
     // If the intro overlay exists, wait for its removal before hooking in.
     function attachParallax() {
@@ -6236,7 +6236,7 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     MAGNETIC INTERACTIONS â€” frame-efficient, subtle movement
+     MAGNETIC INTERACTIONS ═ frame-efficient, subtle movement
      ======================================================================= */
   function setupMagnetic() {
     if (!finePointer || reduceMotion) return;
@@ -6244,7 +6244,7 @@ const SELF_ASSESSMENT = [
     const targets = document.querySelectorAll(
       ".nav-links a, .btn-ghost, .project-link, a.social-link, .about-category-archive"
     );
-    const maxMove = 2.5; // subtle â€” keeps editorial restraint
+    const maxMove = 2.5; // subtle ═ keeps editorial restraint
 
     targets.forEach((el) => {
       let rect = null;
@@ -6270,7 +6270,7 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     LIQUID-GLASS REFRACTION â€” pointer-following highlight on glass surfaces.
+     LIQUID-GLASS REFRACTION ═ pointer-following highlight on glass surfaces.
      Desktop fine-pointer only. Caches rect per card; re-reads on resize.
      ======================================================================= */
   function setupGlassRefraction() {
@@ -6358,7 +6358,7 @@ const SELF_ASSESSMENT = [
   }
 
   /* =======================================================================
-     CINEMATIC PROJECT WORLD TRANSITION â€” NEXUS Speed prototype
+     CINEMATIC PROJECT WORLD TRANSITION ═ NEXUS Speed prototype
      Expands the project preview as a visual doorway into the project
      ======================================================================= */
   function performNexusSpeedTransition(linkElement, href) {
@@ -6463,7 +6463,7 @@ const SELF_ASSESSMENT = [
   function setupExperiment() {
     if (reduceMotion) return; // full opt-out for reduced-motion users
 
-    // â”€â”€ Material Memory â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Material Memory ───────────────────────────────────────────────────
     // When the cursor leaves a glass card, the refraction highlight
     // decays slowly (~800ms) rather than cutting to 50% instantly.
     // We lerp --mouse-x/y back to 50% over 800ms via rAF.
@@ -6483,7 +6483,7 @@ const SELF_ASSESSMENT = [
         const dy = targetY - lerpY;
 
         if (Math.abs(dx) < 0.15 && Math.abs(dy) < 0.15) {
-          // Settled â€” snap and stop
+          // Settled ═ snap and stop
           lerpX = targetX;
           lerpY = targetY;
           card.style.setProperty('--mouse-x', `${lerpX}%`);
@@ -6491,13 +6491,13 @@ const SELF_ASSESSMENT = [
           lerpRaf = null;
 
           if (!isHovered) {
-            // Cursor is gone and settled â€” clean up settling state
+            // Cursor is gone and settled ═ clean up settling state
             card.classList.remove('exp-settling');
           }
           return;
         }
 
-        // Smooth toward target â€” 0.07 factor â†’ ~800ms decay at 60Hz
+        // Smooth toward target ═ 0.07 factor → ~800ms decay at 60Hz
         lerpX += dx * 0.07;
         lerpY += dy * 0.07;
         card.style.setProperty('--mouse-x', `${lerpX}%`);
@@ -6509,13 +6509,13 @@ const SELF_ASSESSMENT = [
         isHovered = true;
         card.classList.remove('exp-settling');
         if (lerpRaf) cancelAnimationFrame(lerpRaf);
-        // Tracking is handled by the existing setupGlassRefraction â€”
+        // Tracking is handled by the existing setupGlassRefraction ═
         // we don't duplicate mousemove; we only manage the leave decay.
       });
 
       card.addEventListener('mouseleave', () => {
         isHovered = false;
-        // Target the center â€” lerp will slowly drift there
+        // Target the center ═ lerp will slowly drift there
         targetX = 50;
         targetY = 50;
         // Read current position from CSS var to start from where we are
@@ -6536,9 +6536,9 @@ const SELF_ASSESSMENT = [
       });
     });
 
-    // â”€â”€ EXP 5: Hidden Interaction Layer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── EXP 5: Hidden Interaction Layer ───────────────────────────────────
     // When the user scrolls away from the hero section and then returns
-    // to the top, the hero headline gets data-visited="true" â€” which CSS
+    // to the top, the hero headline gets data-visited="true" ═ which CSS
     // uses to apply a very subtle warm glow to "I EXPLORE." (the accent line).
     // The user discovers this naturally if they scroll back up.
     
@@ -6560,19 +6560,19 @@ const SELF_ASSESSMENT = [
         } else {
           heroWasVisible = false;
           heroHasLeft    = true; // hero has now left at least once
-          // Don't remove data-visited once set â€” it's a persistent state
+          // Don't remove data-visited once set ═ it's a persistent state
         }
       });
     }, { threshold: 0.4 });
 
     heroObserver.observe(heroSection);
 
-    // â”€â”€ MATERIAL EXPERIMENT: Environmental lighting variables â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── MATERIAL EXPERIMENT: Environmental lighting variables ────────────
     // Extends the existing setupGlassRefraction infrastructure.
-    // Writes --lx, --ly (0â€“1 cursor position) and --ldist (edge proximity)
-    // to each card. Values are lerped for natural settling â€” NOT spring physics.
+    // Writes --lx, --ly (0—1 cursor position) and --ldist (edge proximity)
+    // to each card. Values are lerped for natural settling ═ NOT spring physics.
     // setupGlassRefraction still owns --mouse-x/y (percent strings).
-    // This system owns --lx, --ly, --ldist (unit-less 0â€“1 numbers).
+    // This system owns --lx, --ly, --ldist (unit-less 0—1 numbers).
 
     document.querySelectorAll('.project-card').forEach((card) => {
       // Current lerped position
@@ -6582,8 +6582,8 @@ const SELF_ASSESSMENT = [
       let isHovMat = false;
       let matRaf = null;
 
-      // Lerp factor: 0.12 â†’ settles in ~220ms at 60Hz (fast follow while hovering)
-      // On leave: 0.05 â†’ settles in ~700ms (physical return to neutral)
+      // Lerp factor: 0.12 → settles in ~220ms at 60Hz (fast follow while hovering)
+      // On leave: 0.05 → settles in ~700ms (physical return to neutral)
       const FOLLOW_FACTOR = 0.12;
       const SETTLE_FACTOR = 0.05;
 
@@ -6600,7 +6600,7 @@ const SELF_ASSESSMENT = [
         const dyv = ty - my;
 
         if (!isHovMat && Math.abs(dxv) < 0.002 && Math.abs(dyv) < 0.002) {
-          // Settled â€” snap and stop
+          // Settled ═ snap and stop
           mx = tx; my = ty;
           card.style.setProperty('--lx', mx.toFixed(4));
           card.style.setProperty('--ly', my.toFixed(4));
@@ -6622,7 +6622,7 @@ const SELF_ASSESSMENT = [
 
       card.addEventListener('mouseenter', () => {
         isHovMat = true;
-        // Don't snap â€” lerp from wherever we settled
+        // Don't snap ═ lerp from wherever we settled
         if (!matRaf) matRaf = requestAnimationFrame(matStep);
       });
 
@@ -6647,14 +6647,14 @@ const SELF_ASSESSMENT = [
     setupExperiment();
   } catch (err) {
     console.error('[aasif] experiment setup failed:', err);
-    // Fail silently â€” experiment failure must never affect the rest of the site
+    // Fail silently ═ experiment failure must never affect the rest of the site
   }
   /* =======================================================================
      END EXPERIMENT
      ======================================================================= */
 
   /* =======================================================================
-     CRIMSON BLOOD-DROP SYSTEM â€” JS
+     CRIMSON BLOOD-DROP SYSTEM ═ JS
      =========================================================================
      setupCrimsonLayer():
      - Injects .cr-card-stain elements into each project card (static hover stains).
@@ -6710,7 +6710,7 @@ const SELF_ASSESSMENT = [
       setTimeout(cleanup, dur + 250);
     }
 
-    /* â”€â”€ Inject static corner stains into every project card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Inject static corner stains into every project card ──────────────── */
     document.querySelectorAll('.project-card').forEach((card) => {
       const tl = document.createElement('span');
       tl.className = 'cr-card-stain cr-tl';
@@ -6726,7 +6726,7 @@ const SELF_ASSESSMENT = [
       card.appendChild(br);
     });
 
-    /* â”€â”€ Project cards â€” interactive drop on hover / touch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Project cards ═ interactive drop on hover / touch ────────────────── */
     document.querySelectorAll('.project-card').forEach((card) => {
       const isLab = card.classList.contains('tone-lab');
 
@@ -6741,7 +6741,7 @@ const SELF_ASSESSMENT = [
       }, { passive: true });
     });
 
-    /* â”€â”€ Project link click â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Project link click ───────────────────────────────────────────────── */
     document.querySelectorAll('.project-link').forEach((link) => {
       link.addEventListener('click', (e) => {
         const card = link.closest('.project-card');
@@ -6749,7 +6749,7 @@ const SELF_ASSESSMENT = [
       });
     });
 
-    /* â”€â”€ .btn-ghost â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── .btn-ghost ───────────────────────────────────────────────────────── */
     document.querySelectorAll('.btn-ghost').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         spawnDrop(btn, e.clientX, e.clientY, 'cr-small', 520);
@@ -6760,7 +6760,7 @@ const SELF_ASSESSMENT = [
       }, { passive: true });
     });
 
-    /* â”€â”€ #btnMember â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── #btnMember ───────────────────────────────────────────────────────── */
     const btnMember = document.getElementById('btnMember');
     if (btnMember) {
       btnMember.addEventListener('click', (e) => {
@@ -6772,7 +6772,7 @@ const SELF_ASSESSMENT = [
       }, { passive: true });
     }
 
-    /* â”€â”€ Member submit button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Member submit button ─────────────────────────────────────────────── */
     const memberSubmit = document.querySelector('.member-submit');
     if (memberSubmit) {
       memberSubmit.addEventListener('click', (e) => {
@@ -6780,7 +6780,7 @@ const SELF_ASSESSMENT = [
       });
     }
 
-    /* â”€â”€ Page transition: crimson flash on external link open â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Page transition: crimson flash on external link open ─────────────── */
     // Exposed globally so setupPageTransition can call it
     window._crTransition = function(clientX, clientY) {
       if (reduceMotion) return;
@@ -6804,12 +6804,12 @@ const SELF_ASSESSMENT = [
     // Experimental layer must never break the site
   }
   /* =======================================================================
-     END â€” CRIMSON BLOOD-DROP SYSTEM
+     END ═ CRIMSON BLOOD-DROP SYSTEM
      ======================================================================= */
 
   /* =======================================================================
-     EXPERIMENT â€” ADAPTIVE WEBSITE MEMORY
-     TEMPORARY ONLY â€” easily removable.
+     EXPERIMENT ═ ADAPTIVE WEBSITE MEMORY
+     TEMPORARY ONLY ═ easily removable.
      
      Two-part system:
      1. SESSION MEMORY: Remembers visitor interactions during current session
@@ -6826,9 +6826,9 @@ const SELF_ASSESSMENT = [
     const STORAGE_KEY = 'aasif_session_memory';
     const SCROLL_SAMPLE_INTERVAL = 150; // ms between scroll velocity samples
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // SESSION MEMORY â€” lightweight state tracking
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // SESSION MEMORY ═ lightweight state tracking
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     function getMemory() {
       try {
@@ -6880,9 +6880,9 @@ const SELF_ASSESSMENT = [
     const memory = getMemory();
     if (!memory) return; // Failed to initialize
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // SCROLL BEHAVIOR TRACKING â€” lightweight velocity & pattern detection
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // SCROLL BEHAVIOR TRACKING ═ lightweight velocity & pattern detection
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     let lastScrollY = window.scrollY;
     let lastScrollTime = Date.now();
@@ -6930,7 +6930,7 @@ const SELF_ASSESSMENT = [
       }, 1500);
     }
 
-    // PROJECT MEMORY â€” track which projects were explored
+    // PROJECT MEMORY ═ track which projects were explored
     document.querySelectorAll('.project-link, .project-preview').forEach(link => {
       link.addEventListener('click', () => {
         const card = link.closest('.project-card');
@@ -6953,15 +6953,15 @@ const SELF_ASSESSMENT = [
       });
     });
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // SECTION MEMORY â€” track major section visits
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // SECTION MEMORY ═ track major section visits
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const sections = document.querySelectorAll('#work, #about, #lab, #contact');
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // AASIF SITE SYSTEM UPDATE (System 02)
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     const aasifSystem = document.getElementById('aasifSystem');
     const aasifCode = document.getElementById('aasifCode');
     const aasifSection = document.getElementById('aasifSection');
@@ -7031,9 +7031,9 @@ const SELF_ASSESSMENT = [
       heroObserver.observe(heroSection);
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // FOOTER DETECTION â€” reached bottom of page
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // FOOTER DETECTION ═ reached bottom of page
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const footer = document.querySelector('.footer');
     if (footer) {
@@ -7047,9 +7047,9 @@ const SELF_ASSESSMENT = [
       footerObserver.observe(footer);
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // NAV INTERACTION â€” track navigation usage
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // NAV INTERACTION ═ track navigation usage
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
     navLinks.forEach(link => {
@@ -7061,14 +7061,14 @@ const SELF_ASSESSMENT = [
       });
     });
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    // ADAPTIVE MOTION â€” subtle adjustments based on familiarity
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // ADAPTIVE MOTION ═ subtle adjustments based on familiarity
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     function applyAdaptiveMotion() {
       const root = document.documentElement;
       
-      // â”€â”€â”€ EXPLORATION STATE ADAPTATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─── EXPLORATION STATE ADAPTATION ───────────────────────────────────
       // Gradually reduce introductory motion as visitor becomes familiar
       
       const stateMultipliers = {
@@ -7085,7 +7085,7 @@ const SELF_ASSESSMENT = [
       const adaptedDuration = Math.round(baseDuration * multiplier);
       root.style.setProperty('--dur-l-adaptive', `${adaptedDuration}ms`);
       
-      // â”€â”€â”€ SCROLL BEHAVIOR ADAPTATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─── SCROLL BEHAVIOR ADAPTATION ─────────────────────────────────────
       // Adjust based on visitor's scroll style
       
       const avgSpeed = memory.scrollBehavior.avgSpeed || 0;
@@ -7108,7 +7108,7 @@ const SELF_ASSESSMENT = [
       const hoverDuration = Math.round(180 * scrollMult); // --dur-hover
       root.style.setProperty('--dur-hover-adaptive', `${hoverDuration}ms`);
       
-      // â”€â”€â”€ PROJECT FAMILIARITY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─── PROJECT FAMILIARITY ────────────────────────────────────────────
       // Mark previously visited projects for CSS targeting
       
       document.querySelectorAll('.project-card').forEach(card => {
@@ -7146,9 +7146,9 @@ const SELF_ASSESSMENT = [
       }
     }, 5000);
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // DEBUG (remove in production)
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     // Expose memory state to console for testing (comment out to hide)
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -7161,10 +7161,10 @@ const SELF_ASSESSMENT = [
     setupAdaptiveMemory();
   } catch (err) {
     console.error('[aasif] adaptive memory setup failed:', err);
-    // Fail silently â€” experiment must never break the site
+    // Fail silently ═ experiment must never break the site
   }
   /* =======================================================================
-     END EXPERIMENT â€” ADAPTIVE WEBSITE MEMORY
+     END EXPERIMENT ═ ADAPTIVE WEBSITE MEMORY
      ======================================================================= */
 
   /* =======================================================================
@@ -7184,10 +7184,10 @@ const SELF_ASSESSMENT = [
     const STORAGE_KEY = 'aasif_session_memory';
     const root = document.documentElement;
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // SYSTEM 1: INTENT-AWARE INTERFACE
     // Detects current interaction intent from immediate context
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const IntentEngine = {
       currentIntent: 'ready',  // ready | exploring | focused | idle
@@ -7256,10 +7256,10 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // SYSTEM 2: REFLECTION MEMORY (Extended Glass Material)
     // Material retains short visual memory of interaction
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const ReflectionMemory = {
       activeCards: new Map(),
@@ -7337,10 +7337,10 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // SYSTEM 3: INTERACTION FINGERPRINT
     // Local session profile influencing motion behavior
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const InteractionFingerprint = {
       profile: {
@@ -7428,10 +7428,10 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // SYSTEM 4: SIGNAL SYSTEM
     // Subtle editorial state indication
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     window.SignalSystem = {
       element: null,
@@ -7499,9 +7499,9 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // INITIALIZATION & CONNECTION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     if (reduceMotion) {
       // Minimal version for reduced motion
@@ -7603,9 +7603,9 @@ const SELF_ASSESSMENT = [
     const atmosphere = document.querySelector('.atmosphere');
     if (!atmosphere) return;
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // TIME PERIODS & ATMOSPHERIC PROFILES
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const PERIODS = {
       morning: {
@@ -7654,9 +7654,9 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // TIME DETECTION & INTERPOLATION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     function getCurrentHour() {
       return new Date().getHours() + (new Date().getMinutes() / 60);
@@ -7733,9 +7733,9 @@ const SELF_ASSESSMENT = [
       return interpolateProfiles(currentProfile, adjacentProfile, blendFactor);
     }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // ATMOSPHERIC APPLICATION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     function applyAtmosphere(profile) {
       // Atmosphere layer opacity
@@ -7764,9 +7764,9 @@ const SELF_ASSESSMENT = [
       root.setAttribute('data-atm-period', period);
     }
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // INITIALIZATION & UPDATE LOOP
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     function updateAtmosphere() {
       const profile = getCurrentAtmosphere();
@@ -7827,10 +7827,10 @@ const SELF_ASSESSMENT = [
     
     const root = document.documentElement;
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // ATTENTION DETECTION
     // Infers attention from viewport position + interaction context
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const AttentionTracker = {
       focusedElement: null,
@@ -7950,10 +7950,10 @@ const SELF_ASSESSMENT = [
       }
     };
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // VIEWPORT TRACKING
     // Track which project cards are currently visible
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     const projectCards = document.querySelectorAll('.project-card');
     if (!projectCards.length) return;
@@ -7977,19 +7977,19 @@ const SELF_ASSESSMENT = [
     
     projectCards.forEach(card => visibilityObserver.observe(card));
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // CONTINUOUS DETECTION LOOP
     // Re-evaluate focus periodically (when intent/pace might change)
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     setInterval(() => {
       AttentionTracker.detectFocus();
     }, 500); // Check twice per second
     
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     // SCROLL CANCELLATION
     // Clear focus immediately when user scrolls
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     
     let scrollClearTimeout;
     window.addEventListener('scroll', () => {
@@ -8030,9 +8030,9 @@ const SELF_ASSESSMENT = [
 
 <!-- =====================================================================
      OPENING REVEAL ENGINE
-     Two exit paths â€” both call the same dismiss():
-       1. SCROLL: rAF loop tracks scrollY / REVEAL_PX â†’ rawP 0â†’1
-       2. TAP/CLICK: pointerup on overlay â†’ dismiss() directly
+     Two exit paths ═ both call the same dismiss():
+       1. SCROLL: rAF loop tracks scrollY / REVEAL_PX → rawP 0→1
+       2. TAP/CLICK: pointerup on overlay → dismiss() directly
 
      Tap path is guarded against accidental activation during scroll:
      - only fires if the pointer moved < 8px (not a scroll gesture)
@@ -8051,11 +8051,11 @@ const SELF_ASSESSMENT = [
   const root = document.documentElement;
   const body = document.body;
 
-  /* â”€â”€ Reduced motion path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Reduced motion path ───────────────────────────────────────────── */
   if (reduceMotion) {
     try { body.classList.add('intro-active'); } catch (_) {}
 
-    // Tap still works under reduced motion â€” simple opacity dismiss
+    // Tap still works under reduced motion ═ simple opacity dismiss
     overlay.addEventListener('pointerup', () => {
       if (overlay.classList.contains('intro-done')) return;
       overlay.classList.add('intro-done');
@@ -8074,25 +8074,25 @@ const SELF_ASSESSMENT = [
     return;
   }
 
-  /* â”€â”€ Safety: 60 second absolute trap limit â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Safety: 60 second absolute trap limit ──────────────────────────── */
   const SAFETY_MS = 60000;
   const safetyTimer = setTimeout(() => dismiss('safety'), SAFETY_MS);
 
-  /* â”€â”€ Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Constants ─────────────────────────────────────────────────────── */
   const REVEAL_PX = 420; // scroll distance to complete the reveal
 
-  /* â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── State ─────────────────────────────────────────────────────────── */
   let rafId     = null;
   let dismissed = false;
   let lastRawP  = -1;
 
-  /* â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Helpers ────────────────────────────────────────────────────────── */
   function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
   function remap(v, a, b, c, d) {
     return c + (d - c) * clamp((v - a) / (b - a), 0, 1);
   }
 
-  /* â”€â”€ Activate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Activate ───────────────────────────────────────────────────────── */
   try {
     body.classList.add('intro-active');
   } catch (e) {
@@ -8100,7 +8100,7 @@ const SELF_ASSESSMENT = [
     return;
   }
 
-  /* â”€â”€ Dismiss â€” shared by both tap and scroll paths â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Dismiss ═ shared by both tap and scroll paths ──────────────────── */
   function dismiss(reason) {
     if (dismissed) return;
     dismissed = true;
@@ -8116,7 +8116,7 @@ const SELF_ASSESSMENT = [
 
     // Hero skip fix: reset scroll position to 0.
     // For tap path: scrollY is already 0, this is a no-op.
-    // For scroll path: scrollY â‰ˆ REVEAL_PX, this resets to hero top.
+    // For scroll path: scrollY ≈ REVEAL_PX, this resets to hero top.
     // Cancel any active scroll continuation first to avoid a race.
     if (window.ScrollIntelligence) window.ScrollIntelligence.update(0, 0);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -8155,7 +8155,7 @@ const SELF_ASSESSMENT = [
     }, 700);
   }
 
-  /* â”€â”€ TAP / CLICK path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── TAP / CLICK path ───────────────────────────────────────────────── */
   // Uses pointerup (works for mouse and touch in one handler).
   // Guards against accidental activation from scroll gestures:
   //   - records pointerdown position
@@ -8177,7 +8177,7 @@ const SELF_ASSESSMENT = [
     dismiss('tap');
   }, { passive: true });
 
-  /* â”€â”€ SCROLL path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── SCROLL path ────────────────────────────────────────────────────── */
   function render(rawP) {
     const exitP    = remap(rawP, 0.45, 1.0, 0, 1);
     const textFade = remap(rawP, 0.25, 0.72, 0, 1);
@@ -8204,7 +8204,7 @@ const SELF_ASSESSMENT = [
   render(0);
   rafId = requestAnimationFrame(tick);
 
-  /* â”€â”€ Keyboard: Enter / Space / â†“ â†’ scroll to completion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Keyboard: Enter / Space / ↓ → scroll to completion ────────────── */
   function onKey(e) {
     if (dismissed) { document.removeEventListener('keydown', onKey); return; }
     if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowDown') {
@@ -8220,7 +8220,7 @@ const SELF_ASSESSMENT = [
 <!-- Membership Modal -->
 <div class="member-modal" id="memberModal" aria-hidden="true" role="dialog" aria-labelledby="memberTitle">
   <div class="member-panel">
-    <button class="member-close" id="memberClose" aria-label="Close" data-cursor-active>Ã—</button>
+    <button class="member-close" id="memberClose" aria-label="Close" data-cursor-active>×</button>
     
     <div id="memberFormContainer">
       <h2 class="member-title" id="memberTitle">JOIN THE CIRCLE</h2>
@@ -8244,7 +8244,7 @@ const SELF_ASSESSMENT = [
           autocomplete="email"
         />
         <button type="submit" class="member-submit" data-cursor-active>
-          JOIN THE CIRCLE <span class="arrow">â†’</span>
+          JOIN THE CIRCLE <span class="arrow">→</span>
         </button>
       </form>
       
@@ -8384,7 +8384,7 @@ const SELF_ASSESSMENT = [
 </script>
 
 <!-- =========================================================================
-     AASIF // CONTROL ROOM â€” Analytics
+     AASIF // CONTROL ROOM ═ Analytics
      Lightweight, non-blocking visitor analytics.
      Sends anonymous page-view events to the private Control Room API.
 
@@ -8392,15 +8392,15 @@ const SELF_ASSESSMENT = [
        - No cookies
        - No fingerprinting
        - Session ID is a random UUID stored in sessionStorage only
-         (clears when the browser tab closes â€” not persistent)
+         (clears when the browser tab closes ═ not persistent)
        - No IP address is collected or stored
        - Country is derived server-side from the edge network header
        - No personal data of any kind is transmitted
 
      Performance:
-       - Uses navigator.sendBeacon() â€” fire-and-forget, never blocks rendering
+       - Uses navigator.sendBeacon() ═ fire-and-forget, never blocks rendering
        - Heartbeat fires every 60 seconds to maintain live-visitor count
-       - All failures are silent â€” portfolio continues working if API is down
+       - All failures are silent ═ portfolio continues working if API is down
 
      To disable: remove this script block.
      ========================================================================= -->
@@ -8408,7 +8408,7 @@ const SELF_ASSESSMENT = [
 (function () {
   'use strict';
 
-  // â”€â”€ Configuration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Configuration ─────────────────────────────────────────────────────
   // Replace these with your deployed Control Room values.
   var API_BASE    = 'https://your-control-room.vercel.app';
   var INGEST_PATH = '/api/analytics/event';
@@ -8417,9 +8417,9 @@ const SELF_ASSESSMENT = [
   // Live-visitor heartbeat interval (must be less than the server's 5-min window)
   var HEARTBEAT_INTERVAL_MS = 60 * 1000; // 60 seconds
 
-  // â”€â”€ Session ID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Session ID ────────────────────────────────────────────────────────
   // Random UUID per browser tab session. Cleared on tab close.
-  // Not a fingerprint â€” it cannot identify a person across sessions.
+  // Not a fingerprint ═ it cannot identify a person across sessions.
   var SESSION_KEY = '__cr_sid';
   var sessionId;
 
@@ -8435,13 +8435,13 @@ const SELF_ASSESSMENT = [
       sessionStorage.setItem(SESSION_KEY, sessionId);
     }
   } catch (e) {
-    // sessionStorage unavailable (private browsing restrictions) â€” use ephemeral ID
+    // sessionStorage unavailable (private browsing restrictions) ═ use ephemeral ID
     sessionId = 'ephemeral-' + Math.random().toString(36).slice(2);
   }
 
-  // â”€â”€ Send event â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Send event ────────────────────────────────────────────────────────
   function send(eventType, extraPath) {
-    if (!navigator.sendBeacon) return; // very old browser â€” skip silently
+    if (!navigator.sendBeacon) return; // very old browser ═ skip silently
 
     var path = extraPath || (window.location.pathname || '/');
 
@@ -8459,16 +8459,16 @@ const SELF_ASSESSMENT = [
     var url  = API_BASE + INGEST_PATH;
 
     try {
-      // sendBeacon does not support custom headers â€” we attach the token
+      // sendBeacon does not support custom headers ═ we attach the token
       // as a query parameter instead (still protected; token is not in plain HTML
-      // in the final deployed version â€” replace TOKEN above with the real value).
+      // in the final deployed version ═ replace TOKEN above with the real value).
       navigator.sendBeacon(url + '?t=' + encodeURIComponent(TOKEN), blob);
     } catch (e) {
-      // Fail silently â€” analytics must never break the portfolio
+      // Fail silently ═ analytics must never break the portfolio
     }
   }
 
-  // â”€â”€ Page view â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Page view ─────────────────────────────────────────────────────────
   // Fire once on initial page load, after all other scripts have run.
   // Uses requestIdleCallback where available to avoid competing with animations.
   function firePageView() {
@@ -8485,7 +8485,7 @@ const SELF_ASSESSMENT = [
     document.addEventListener('DOMContentLoaded', firePageView, { once: true });
   }
 
-  // â”€â”€ Heartbeat â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Heartbeat ─────────────────────────────────────────────────────────
   // Keeps the session "live" in the Control Room.
   // Pauses when the tab is hidden to save bandwidth.
   var heartbeatTimer = null;
@@ -8518,11 +8518,11 @@ const SELF_ASSESSMENT = [
     }
   });
 
-  // â”€â”€ Project view tracking â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Project view tracking ─────────────────────────────────────────────
   // The portfolio uses data-project attributes on cards.
   // We listen for the custom transition events the existing JS fires,
   // or fall back to observing data-project link clicks.
-  // This is entirely passive â€” never interferes with existing animations.
+  // This is entirely passive ═ never interferes with existing animations.
   document.addEventListener('click', function (e) {
     var target = e.target;
     // Walk up the DOM to find a project link or card
@@ -8542,7 +8542,7 @@ const SELF_ASSESSMENT = [
 </script>
 
 <!-- ============================================================
-     LEGAL PAGES â€” INTERNAL VIEWS
+     LEGAL PAGES ═ INTERNAL VIEWS
      Full-screen overlays accessible via #privacy and #terms
      ============================================================ -->
 
@@ -8551,7 +8551,7 @@ const SELF_ASSESSMENT = [
   <header class="legal-header">
     <div class="legal-header-inner">
       <a href="#" class="legal-logo">AASIF</a>
-      <a href="#" class="legal-back">â† Back to Portfolio</a>
+      <a href="#" class="legal-back">← Back to Portfolio</a>
     </div>
   </header>
 
@@ -8705,7 +8705,7 @@ const SELF_ASSESSMENT = [
 
     <footer class="legal-footer">
       <div class="legal-footer-inner">
-        <span>Â© 2026 Aasif</span>
+        <span>© 2026 Aasif</span>
         <div class="legal-footer-links">
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms & Conditions</a>
@@ -8721,7 +8721,7 @@ const SELF_ASSESSMENT = [
   <header class="legal-header">
     <div class="legal-header-inner">
       <a href="#" class="legal-logo">AASIF</a>
-      <a href="#" class="legal-back">â† Back to Portfolio</a>
+      <a href="#" class="legal-back">← Back to Portfolio</a>
     </div>
   </header>
 
@@ -8761,7 +8761,7 @@ const SELF_ASSESSMENT = [
 
     <section class="legal-section">
       <h2>4. Intellectual Property</h2>
-      <p>Unless otherwise stated, all content on this website â€” including but not limited to text, images, graphics, code, design, layout, animations, and interactive elements â€” is my original work and is protected by copyright and intellectual property laws.</p>
+      <p>Unless otherwise stated, all content on this website ═ including but not limited to text, images, graphics, code, design, layout, animations, and interactive elements ═ is my original work and is protected by copyright and intellectual property laws.</p>
       <p>The following restrictions apply:</p>
       <ul>
         <li><strong>Projects and Work:</strong> All showcased projects, demos, and creative work are my intellectual property. You may view them for reference or inspiration, but you may not copy, reproduce, or claim them as your own.</li>
@@ -8855,7 +8855,7 @@ const SELF_ASSESSMENT = [
 
     <footer class="legal-footer">
       <div class="legal-footer-inner">
-        <span>Â© 2026 Aasif</span>
+        <span>© 2026 Aasif</span>
         <div class="legal-footer-links">
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms & Conditions</a>
@@ -8868,7 +8868,7 @@ const SELF_ASSESSMENT = [
 
 <script>
 // =========================================================================
-// LEGAL PAGES NAVIGATION â€” Hash-based routing
+// LEGAL PAGES NAVIGATION ═ Hash-based routing
 // Robust JavaScript handler for #privacy and #terms pages
 // =========================================================================
 (function() {
