@@ -299,6 +299,47 @@ DEPLOYMENT PROTECTION
    - Deployment workflow is protected infrastructure
 
 ───────────────────────────────────────────────────────────────────────────────
+MOTION LAYER v2 (2026-10-03)  ═  ADDITIVE, REMOVABLE
+───────────────────────────────────────────────────────────────────────────────
+
+Marker: MOTION-V2. One CSS block (end of <style>) + <script id="motion-v2">
+(end of <body>). Delete both to revert. No existing rule or function was edited.
+
+  HERO        Headline split into masked characters (aria-label on h1, visual
+              spans aria-hidden). Lines 1-2 read left to right; the accent line
+              scatters with small rotations. hero-sub / membership / ghost
+              button / meta are held (opacity 0, animation none) while
+              body.intro-active is set, so they land AFTER the headline.
+              If the intro never runs, the original hero-fade-in plays.
+              Letters lift toward the cursor (fine pointer only) using the
+              individual translate / rotate properties, because the char
+              keyframes own transform.
+  HEADINGS    .section-heading split into masked words, driven by its own
+              IntersectionObserver (.mx-in). Old fade/blur on these headings
+              is neutralised so the mask works alone.
+  MONO TYPE   .eyebrow + .hero-sub decode from glyphs once. Real text lives in
+              a visually-hidden span; the animated copy is aria-hidden.
+  CARDS       Hover depth reuses --mouse-x / --mouse-y from setupGlassRefraction
+              (no new pointer listener). Uses `translate` only; cards already
+              own transform/translate/scale on hover.
+  BUTTONS     Text roll on .nav-links a, .btn-ghost, .btn-member, .project-link.
+  NAV         Sliding indicator driven by html[data-current-section] (already
+              maintained by Website Memory). Mobile menu links stagger in.
+  VIEWS       #privacy / #terms get a clip-path curtain; #main fades back in.
+              Fill mode is `backwards` on purpose: no lingering stacking context.
+  SCROLL      CSS scroll-driven animations only (@supports animation-timeline):
+              heading drift, hero lift/soften, about-stanza wipes, contact
+              heading grow, hairline seams between sections.
+
+  Constraints honoured: 0 new scroll listeners, 0 idle rAF loops, filter stays
+  off <body> and <main>, pre-reveal opacity rules untouched, cursor stacking
+  untouched. Everything is inside prefers-reduced-motion: no-preference, and
+  the script returns immediately under reduce.
+
+  Known trade-off: splitting into per-character spans drops kerning between
+  letters in the hero headline (uppercase display type, effect is minor).
+
+───────────────────────────────────────────────────────────────────────────────
 MAINTENANCE NOTES
 ───────────────────────────────────────────────────────────────────────────────
 
@@ -1071,13 +1112,13 @@ a:focus-visible, button:focus-visible{
 .btn-member:hover{
   background: rgba(240, 230, 219, 0.72);
   border-color: rgba(145, 118, 110, 0.48);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(145, 118, 110, 0.16);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px -2px rgba(145, 118, 110, 0.24);
 }
 
 .btn-member:hover .btn-member-arrow{
-  transform: translateX(3px);
-  opacity: 0.9;
+  transform: translateX(5px);
+  opacity: 1;
 }
 
 .btn-member:active{
@@ -1696,12 +1737,12 @@ a:focus-visible, button:focus-visible{
   background: var(--black);
   border-color: var(--black);
   color: var(--ink-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px -8px rgba(0, 0, 0, .28);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 32px -8px rgba(0, 0, 0, .36);
 }
 .btn-ghost:active{ scale: .97; transform: translateY(0); }
 .arrow-down{ transition: transform var(--dur-m) cubic-bezier(0.34, 1.56, 0.64, 1); }
-.btn-ghost:hover .arrow-down{ transform: translateY(3px); }
+.btn-ghost:hover .arrow-down{ transform: translateY(5px); }
 
 .hero-meta{
   position: absolute;
@@ -1811,8 +1852,8 @@ a:focus-visible, button:focus-visible{
               opacity var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover .project-index {
-  transform: translateY(-2px);
-  opacity: 0.8;
+  transform: translateY(-4px);
+  opacity: 0.7;
 }
 
 .project-creator{
@@ -1827,8 +1868,8 @@ a:focus-visible, button:focus-visible{
               color var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover .project-creator {
-  transform: translateX(2px);
-  color: var(--muted);
+  transform: translateX(4px);
+  color: var(--ink-soft);
 }
 .project-title{
   font-family: var(--f-display);
@@ -1837,9 +1878,9 @@ a:focus-visible, button:focus-visible{
   text-transform: uppercase;
   line-height: 1.02;
   margin-bottom: .75rem;
-  transition: translate var(--dur-hover) var(--ease-out-expo);
+  transition: translate var(--dur-hover) cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.project-card:hover .project-title{ translate: 4px 0; }
+.project-card:hover .project-title{ translate: 6px 0; }
 .project-category{
   font-family: var(--f-mono);
   font-size: .72rem;
@@ -1851,7 +1892,7 @@ a:focus-visible, button:focus-visible{
               color var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover .project-category {
-  transform: translateX(3px);
+  transform: translateX(5px);
   color: var(--accent);
 }
 
@@ -1864,7 +1905,7 @@ a:focus-visible, button:focus-visible{
               color var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover .project-desc {
-  transform: translateX(1px);
+  transform: translateX(2px);
   color: var(--ink-soft);
 }
 .project-note{
@@ -1910,8 +1951,8 @@ a:focus-visible, button:focus-visible{
               box-shadow var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover .project-preview{
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .28), 0 20px 40px -20px rgba(0, 0, 0, .24);
-  transform: scale(1.012);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .32), 0 24px 48px -24px rgba(0, 0, 0, .28);
+  transform: scale(1.018);
 }
 .project-preview::before{
   content: attr(data-tag);
@@ -1989,14 +2030,14 @@ a:focus-visible, button:focus-visible{
               box-shadow   var(--dur-m)   cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:hover{
-  translate: 0 -3px;
-  scale: 1.006;
-  border-color: rgba(145, 118, 110, 0.30);
-  background: rgba(240, 230, 219, 0.80);
+  translate: 0 -5px;
+  scale: 1.008;
+  border-color: rgba(145, 118, 110, 0.32);
+  background: rgba(240, 230, 219, 0.82);
   box-shadow:
-    0 0 0 1px rgba(145, 118, 110, 0.22),
-    0 10px 28px -10px rgba(0, 0, 0, 0.14),
-    0 0 50px -16px rgba(145, 118, 110, 0.10);
+    0 0 0 1px rgba(145, 118, 110, 0.24),
+    0 12px 32px -12px rgba(0, 0, 0, 0.16),
+    0 0 60px -18px rgba(145, 118, 110, 0.12);
 }
 .project-card.is-in-view{
   border-color: rgba(145, 118, 110, 0.24);
@@ -2212,6 +2253,38 @@ body.is-transitioning{
   line-height: 1.3;
   color: var(--ink);
 }
+
+/* Staggered stanza line reveal animation (from Claude) */
+.about-stanza.animate-stanza p {
+  opacity: 0;
+  transform: translateX(-4px);
+  animation: stanza-line-reveal 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.about-stanza.animate-stanza p:nth-child(1) { animation-delay: 200ms; }
+.about-stanza.animate-stanza p:nth-child(2) { animation-delay: 320ms; }
+.about-stanza.animate-stanza p:nth-child(3) { animation-delay: 440ms; }
+
+@keyframes stanza-line-reveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-4px);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-stanza.animate-stanza p {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .about-stanza .accent-word{ color: var(--accent); }
 .about-stanza strong{ font-weight: 750; }
 .about-coda{
@@ -2442,14 +2515,14 @@ body.is-transitioning{
               translate var(--dur-hover) cubic-bezier(0.34, 1.56, 0.64, 1),
               scale var(--dur-s) cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.social-link:hover{ color: var(--brown); padding-left: .6rem; }
+.social-link:hover{ color: var(--brown); padding-left: .9rem; }
 .social-link:active{ scale: .985; }
 .social-link .arrow{
   font-family: var(--f-mono);
   font-size: 1.2rem;
   transition: transform var(--dur-m) cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.social-link:hover .arrow{ transform: translate(3px, -3px); }
+.social-link:hover .arrow{ transform: translate(6px, -6px); }
 
 /* Placeholder items (no real URL yet) render as inert spans, not links ═
    no hover affordance, since there's nowhere for them to go. */
@@ -4710,6 +4783,321 @@ body.intro-done .nav {
   .intro-name  { font-size: clamp(2.8rem, 14vw, 4.5rem); }
   .intro-label { font-size: 0.58rem; letter-spacing: 0.18em; }
   .intro-hint  { font-size: 0.52rem; }
+}
+
+/* =========================================================================
+   MOTION LAYER v2  ═  ADDITIVE  (marker: MOTION-V2)
+   -------------------------------------------------------------------------
+   Sits on top of the existing motion systems. Nothing above is edited.
+   Remove this block + the <script id="motion-v2"> to revert completely.
+
+   Rules this layer follows (see header docs):
+   - transform / opacity / translate / scale / rotate / clip-path only
+   - uses the INDIVIDUAL transform properties (translate, scale, rotate)
+     wherever existing code already owns `transform` on the same element
+   - scroll-linked motion is CSS scroll-driven animation (zero JS scroll
+     listeners, runs off the main thread, progressive enhancement)
+   - everything lives inside prefers-reduced-motion: no-preference
+   ========================================================================= */
+:root{
+  --mx-ease: cubic-bezier(.16,.84,.44,1);
+  --mx-expo: cubic-bezier(.19,1,.22,1);
+  --mx-drift: 36px;
+}
+@media (max-width: 768px){
+  :root{ --mx-drift: 18px; }
+}
+
+/* Visually hidden text for decoded (scrambled) type: screen readers get the
+   real string, sighted users get the animated one. */
+.mx-sr{
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ─────────────────────────────────────────────────────────────────────
+     1. HERO ENTRANCE
+     The headline now arrives character by character from behind a mask.
+     Supporting elements are held back until the intro overlay lifts, so
+     they land AFTER the headline instead of already sitting there.
+     If the intro never runs (no overlay / JS off) none of these hold rules
+     apply and the original animations play as before.
+     ───────────────────────────────────────────────────────────────────── */
+  body.intro-active .hero-sub,
+  body.intro-active .membership-container,
+  body.intro-active .hero .btn-ghost,
+  body.intro-active .hero-meta{
+    animation: none;
+    opacity: 0;
+  }
+
+  /* The old per-line settle is replaced by the per-character version. */
+  .hero-headline.mx-split .line:nth-child(n){
+    animation: none;
+  }
+  .hero-headline.mx-split .mx-w{
+    display: inline-block;
+    white-space: nowrap;
+    /* mask: hide only what has dropped BELOW the line box */
+    clip-path: inset(-.25em -.12em 0 -.12em);
+  }
+  .hero-headline.mx-split .mx-c{
+    display: inline-block;
+    transform: translateY(115%) rotate(var(--r, 0deg));
+    transform-origin: 0 100%;
+    /* translate / rotate are free for the cursor-proximity lift */
+    transition: translate 420ms var(--mx-ease), rotate 420ms var(--mx-ease);
+  }
+  body:not(.intro-active) .hero-headline.mx-split .mx-c{
+    animation: mx-char-in 1100ms var(--mx-expo) calc(var(--d, 0) * 1ms) both;
+  }
+  @keyframes mx-char-in{
+    from{ transform: translateY(115%) rotate(var(--r, 0deg)); }
+    to  { transform: translateY(0)    rotate(0deg); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     2. SECTION HEADINGS  ═  word mask reveal
+     Triggered by the script's own IntersectionObserver (.mx-in), so it
+     does not depend on the older reveal classes. The old fade/blur on
+     these headings is switched off so the mask does the work alone.
+     ───────────────────────────────────────────────────────────────────── */
+  html .section-heading.mx-split[data-reveal].pre-reveal{
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .section-heading.mx-split .mx-hw{
+    display: inline-block;
+    white-space: nowrap;
+    clip-path: inset(-.2em -.1em 0 -.1em);
+  }
+  .section-heading.mx-split .mx-hi{
+    display: inline-block;
+    transform: translateY(112%);
+    transition: transform 380ms var(--mx-ease);          /* quick exit */
+  }
+  .section-heading.mx-split.mx-in .mx-hi{
+    transform: translateY(0);
+    transition: transform 1050ms var(--mx-expo) calc(var(--i, 0) * 75ms + 60ms);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     3. PROJECT CARDS  ═  depth on hover
+     Reuses --mouse-x / --mouse-y that the glass system already writes, so
+     there is no extra pointer listener. Percentages inside `translate`
+     resolve against each layer's own box, so no JS maths is needed.
+     ───────────────────────────────────────────────────────────────────── */
+  @media (hover: hover) and (pointer: fine){
+    .project-preview::before{
+      transition: transform var(--dur-m) var(--ease),
+                  color var(--dur-m) var(--ease),
+                  translate 520ms var(--mx-expo);
+    }
+    .project-preview .preview-label{
+      transition: translate 520ms var(--mx-expo);
+    }
+    .project-card:hover .project-preview::before{
+      translate: calc((var(--mouse-x, 50%) - 50%) * -.03)
+                 calc((var(--mouse-y, 50%) - 50%) * -.06);
+    }
+    .project-card:hover .project-preview .preview-label{
+      translate: calc((var(--mouse-x, 50%) - 50%) * .14) 0;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     4. MICRO-INTERACTION  ═  text roll on buttons and nav links
+     The script wraps the text node; the clone is generated from data-t.
+     ───────────────────────────────────────────────────────────────────── */
+  .mx-roll{
+    display: inline-block;
+    position: relative;
+    clip-path: inset(0 -1px);
+  }
+  .mx-roll-t{
+    display: block;
+    transition: translate 600ms var(--mx-expo);
+  }
+  .mx-roll::after{
+    content: attr(data-t);
+    content: attr(data-t) / "";
+    position: absolute;
+    left: 0; top: 100%;
+    white-space: nowrap;
+    transition: translate 600ms var(--mx-expo);
+  }
+  :is(a, button):is(:hover, :focus-visible) > .mx-roll > .mx-roll-t,
+  :is(a, button):is(:hover, :focus-visible) > .mx-roll::after{
+    translate: 0 -100%;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     5. NAVIGATION  ═  sliding active-section indicator
+     Position is written by the script from [data-current-section], which
+     the existing Website Memory system already maintains.
+     ───────────────────────────────────────────────────────────────────── */
+  .nav-links{ position: relative; }
+  .mx-ind{
+    position: absolute;
+    left: 0; bottom: -8px;
+    width: 1px; height: 1px;
+    background: var(--accent);
+    transform-origin: 0 50%;
+    translate: var(--x, 0px) 0;
+    scale: var(--w, 0) 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mx-ind.mx-ind-ready{
+    transition: translate 760ms var(--mx-expo),
+                scale 760ms var(--mx-expo),
+                opacity 320ms var(--mx-ease);
+  }
+  .mx-ind.mx-ind-on{ opacity: 1; }
+
+  /* mobile menu: links arrive in sequence instead of all at once */
+  .mobile-menu nav a{
+    opacity: 0;
+    translate: 0 26px;
+    transition: opacity 260ms var(--mx-ease), translate 260ms var(--mx-ease);
+  }
+  .mobile-menu.is-open nav a{
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 700ms var(--mx-expo) calc(200ms + var(--i, 0) * 80ms),
+                translate 950ms var(--mx-expo) calc(200ms + var(--i, 0) * 80ms);
+  }
+  .mobile-menu nav a:nth-child(1){ --i: 0; }
+  .mobile-menu nav a:nth-child(2){ --i: 1; }
+  .mobile-menu nav a:nth-child(3){ --i: 2; }
+  .mobile-menu nav a:nth-child(4){ --i: 3; }
+  .mobile-menu-footer{
+    opacity: 0;
+    transition: opacity 240ms var(--mx-ease);
+  }
+  .mobile-menu.is-open .mobile-menu-footer{
+    opacity: 1;
+    transition: opacity 800ms var(--mx-ease) 640ms;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     6. VIEW TRANSITIONS  ═  privacy / terms
+     display:none → block restarts these automatically. `backwards` fill
+     means nothing lingers afterwards (no stacking-context side effects).
+     Opacity is left to the existing transition on purpose.
+     ───────────────────────────────────────────────────────────────────── */
+  .legal-page{
+    animation: mx-view-in 760ms var(--mx-expo) backwards;
+  }
+  @keyframes mx-view-in{
+    from{ clip-path: inset(0 0 100% 0); translate: 0 14px; }
+    to  { clip-path: inset(0 0 0 0);    translate: 0 0; }
+  }
+  #main{
+    animation: mx-main-in 560ms var(--mx-ease) backwards;
+  }
+  @keyframes mx-main-in{ from{ opacity: 0; } }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     7. SCROLL-LINKED MOTION  ═  CSS scroll-driven animations
+     No scroll listeners. Browsers without support simply skip all of this
+     and keep the existing behaviour.
+     ───────────────────────────────────────────────────────────────────── */
+  @supports (animation-timeline: view()){
+
+    /* headings drift against the page: lag in, settle, slip ahead */
+    .section-heading{
+      animation: mx-drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .section-head .eyebrow,
+    .about > .container > .eyebrow{
+      animation: mx-drift-soft linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes mx-drift{
+      from{ translate: 0 var(--mx-drift); }
+      50% { translate: 0 0; }
+      to  { translate: 0 calc(var(--mx-drift) * -.45); }
+    }
+    @keyframes mx-drift-soft{
+      from{ translate: 0 calc(var(--mx-drift) * .35); }
+      50% { translate: 0 0; }
+      to  { translate: 0 calc(var(--mx-drift) * -.15); }
+    }
+
+    /* the closing heading also grows into place */
+    .contact .section-heading{
+      transform-origin: 0 100%;
+      animation: mx-drift linear both, mx-grow linear both;
+      animation-timeline: view(), view();
+      animation-range: cover 0% cover 100%, entry 0% entry 100%;
+    }
+    @keyframes mx-grow{
+      from{ scale: .94; }
+      to  { scale: 1; }
+    }
+
+    /* hero lifts away and softens as the page moves on (not during intro) */
+    .hero-inner{
+      animation: mx-hero-lift linear both;
+      animation-timeline: view();
+      animation-range: exit 5% exit 95%;
+    }
+    .hero-headline{
+      animation: mx-hero-soften linear both;
+      animation-timeline: view();
+      animation-range: exit 15% exit 85%;
+    }
+    body.intro-active .hero-inner,
+    body.intro-active .hero-headline{ animation: none; }
+    @keyframes mx-hero-lift{
+      to{ translate: 0 -5svh; scale: .985; }
+    }
+    @keyframes mx-hero-soften{
+      to{ opacity: .1; }
+    }
+
+    /* about stanza: three lines wipe in left→right as you scroll */
+    .about-stanza p{
+      animation: mx-wipe linear both;
+      animation-timeline: view();
+      animation-range: cover 2% cover 24%;
+    }
+    .about-stanza p:nth-child(2){ animation-range: cover 6% cover 28%; }
+    .about-stanza p:nth-child(3){ animation-range: cover 10% cover 32%; }
+    @keyframes mx-wipe{
+      from{ clip-path: inset(-.2em 100% -.2em -.05em); translate: -14px 0; }
+      to  { clip-path: inset(-.2em -.05em -.2em -.05em); translate: 0 0; }
+    }
+
+    /* hairline between sections draws itself as it rises into view */
+    .mx-seam{
+      display: block;
+      position: relative;
+      top: calc(var(--section-pad) * -1);   /* visual offset only: zero layout impact */
+      height: 1px;
+      margin-bottom: -1px;
+      background: var(--line-strong);
+      transform-origin: 0 50%;
+      pointer-events: none;
+      animation: mx-seam-draw linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 38%;
+    }
+    @keyframes mx-seam-draw{
+      from{ scale: 0 1; }
+      to  { scale: 1 1; }
+    }
+  }
 }
 
 </style>
@@ -9169,6 +9557,79 @@ const SELF_ASSESSMENT = [
   window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
 
   // ═══════════════════════════════════════════════════════════════════════
+  // HERO MOUSE-REACTIVE PARALLAX (from Claude - FIXED)
+  // Subtle element movement responding to pointer position
+  // FIXED: Combines with scroll parallax instead of overwriting
+  // ═══════════════════════════════════════════════════════════════════════
+  
+  if (hero && window.innerWidth >= 1025) {
+    const elements = {
+      headline: hero.querySelector('.hero-headline'),
+      sub: hero.querySelector('.hero-sub'),
+      membership: hero.querySelector('.membership-container'),
+      button: hero.querySelector('.btn-ghost')
+    };
+    
+    let px = 0, py = 0;
+    let raf = null;
+    let centers = null;
+    
+    function measure() {
+      const rect = hero.getBoundingClientRect();
+      centers = {
+        cx: rect.left + rect.width / 2,
+        cy: rect.top + rect.height / 2
+      };
+    }
+    
+    function frame() {
+      if (!centers) return;
+      
+      const dx = (px - centers.cx) / window.innerWidth;
+      const dy = (py - centers.cy) / window.innerHeight;
+      const scrollY = window.scrollY;
+      const scrollProgress = Math.min(scrollY / hero.offsetHeight, 1);
+      
+      // COMBINE scroll + mouse parallax (not overwrite)
+      if (elements.headline) {
+        const scrollOffset = scrollProgress * -20;
+        elements.headline.style.transform = `translateY(${scrollOffset}px) translateX(${dx * 8}px) translateY(${dy * 6}px)`;
+      }
+      if (elements.sub) {
+        const scrollOffset = scrollProgress * -10;
+        elements.sub.style.transform = `translateY(${scrollOffset}px) translateX(${dx * 6}px) translateY(${dy * 4}px)`;
+      }
+      if (elements.membership) {
+        const scrollOffset = scrollProgress * -15;
+        elements.membership.style.transform = `translateY(${scrollOffset}px) translateX(${dx * 7}px) translateY(${dy * 5}px)`;
+      }
+      if (elements.button) {
+        const scrollOffset = scrollProgress * -12;
+        elements.button.style.transform = `translateY(${scrollOffset}px) translateX(${dx * 5}px) translateY(${dy * 3}px)`;
+      }
+      
+      raf = null;
+    }
+    
+    function reset() {
+      px = centers?.cx || 0;
+      py = centers?.cy || 0;
+    }
+    
+    hero.addEventListener('pointerenter', measure);
+    hero.addEventListener('pointermove', (e) => {
+      if (!centers) measure();
+      px = e.pageX;
+      py = e.pageY;
+      if (!raf) raf = requestAnimationFrame(frame);
+    }, { passive: true });
+    hero.addEventListener('pointerleave', reset);
+    
+    window.addEventListener('resize', measure, { passive: true });
+    measure();
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
   // ENHANCED CURSOR INTERACTION
   // Refined pointer-responsive elements
   // ═══════════════════════════════════════════════════════════════════════
@@ -9202,6 +9663,337 @@ const SELF_ASSESSMENT = [
     });
   });
 
+  // ═══════════════════════════════════════════════════════════════════════
+  // ABOUT STANZA LINE-BY-LINE REVEAL (from Claude)
+  // Triggers staggered animation when stanza enters viewport
+  // ═══════════════════════════════════════════════════════════════════════
+  
+  const aboutStanza = document.querySelector('.about-stanza');
+  if (aboutStanza) {
+    const stanzaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-stanza');
+          stanzaObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -10% 0px'
+    });
+    
+    stanzaObserver.observe(aboutStanza);
+  }
+
+})();
+</script>
+
+<script id="motion-v2">
+/* =========================================================================
+   MOTION LAYER v2  ═  ADDITIVE  (marker: MOTION-V2)
+   Pairs with the MOTION-V2 block in <style>. Delete both to revert.
+
+   Budget (matches the architecture notes in the header):
+   - 0 new scroll listeners
+   - 0 idle rAF loops (decode loops self-terminate; proximity is event-driven)
+   - 4 small IntersectionObservers (headings, eyebrows) + 2 MutationObservers
+     (intro-done, active section), all disconnected or idle when not needed
+   - exits immediately under prefers-reduced-motion
+   ========================================================================= */
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  var root = document.documentElement;
+  var body = document.body;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  function guard(name, fn) {
+    try { fn(); } catch (err) { console.error('[aasif] motion-v2 ' + name + ' failed:', err); }
+  }
+
+  /* Runs cb once the opening overlay has lifted (or immediately if there
+     never was one). The intro script runs before this one, so
+     body.intro-active is already set by the time we look. */
+  function whenIntroDone(cb) {
+    if (!body.classList.contains('intro-active')) { cb(); return; }
+    var mo = new MutationObserver(function () {
+      if (!body.classList.contains('intro-active')) { mo.disconnect(); cb(); }
+    });
+    mo.observe(body, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  /* ─── 1. HERO: split headline into masked characters ───────────────── */
+  guard('hero split', function () {
+    var h = document.querySelector('.hero-headline');
+    if (!h) return;
+    var lines = Array.prototype.slice.call(h.querySelectorAll('.line'));
+    if (!lines.length) return;
+
+    h.setAttribute('aria-label', lines.map(function (l) { return l.textContent.trim(); }).join(' '));
+
+    // deterministic pseudo-random so the "scatter" is the same every visit
+    var seed = 11;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+
+    lines.forEach(function (line, li) {
+      var text = line.textContent.trim();
+      var accent = line.classList.contains('accent');
+      var words = text.split(/\s+/);
+      var n = 0;
+      line.textContent = '';
+      line.setAttribute('aria-hidden', 'true');
+
+      words.forEach(function (word, wi) {
+        var w = document.createElement('span');
+        w.className = 'mx-w';
+        Array.prototype.forEach.call(word, function (ch) {
+          var c = document.createElement('span');
+          c.className = 'mx-c';
+          c.textContent = ch;
+          // lines 1-2 read left→right; the accent line scatters (personality)
+          var delay = accent ? li * 130 + Math.round(rnd() * 300) : li * 130 + n * 26;
+          c.style.setProperty('--d', String(delay));
+          c.style.setProperty('--r', accent ? ((rnd() * 2 - 1) * 9).toFixed(1) + 'deg' : '3deg');
+          w.appendChild(c);
+          n++;
+        });
+        line.appendChild(w);
+        if (wi < words.length - 1) line.appendChild(document.createTextNode(' '));
+      });
+    });
+    h.classList.add('mx-split');
+  });
+
+  /* ─── 2. HERO: letters lift toward the cursor (desktop, fine pointer) ─ */
+  guard('hero proximity', function () {
+    if (!fine) return;
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    var chars = Array.prototype.slice.call(hero.querySelectorAll('.hero-headline .mx-c'));
+    if (!chars.length) return;
+
+    var RADIUS = 150, LIFT = 9, TILT = 4;
+    var ready = false, centers = null, raf = 0, px = 0, py = 0;
+
+    whenIntroDone(function () { setTimeout(function () { ready = true; }, 1900); });
+
+    function measure() {
+      var sx = window.scrollX, sy = window.scrollY;
+      centers = chars.map(function (c) {
+        var r = c.getBoundingClientRect();
+        return { c: c, x: r.left + r.width / 2 + sx, y: r.top + r.height / 2 + sy };
+      });
+    }
+    function frame() {
+      raf = 0;
+      if (!centers) return;
+      for (var i = 0; i < centers.length; i++) {
+        var k = centers[i];
+        var dx = px - k.x, dy = py - k.y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < RADIUS) {
+          var t = 1 - d / RADIUS;
+          t = t * t * (3 - 2 * t);
+          k.c.style.translate = '0 ' + (-t * LIFT).toFixed(1) + 'px';
+          k.c.style.rotate = (-(dx / RADIUS) * t * TILT).toFixed(2) + 'deg';
+        } else {
+          k.c.style.translate = '';
+          k.c.style.rotate = '';
+        }
+      }
+    }
+    function reset() {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      chars.forEach(function (c) { c.style.translate = ''; c.style.rotate = ''; });
+      centers = null;
+    }
+
+    hero.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse' || !ready) return;
+      measure();
+    });
+    hero.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || !ready) return;
+      if (!centers) measure();
+      px = e.pageX; py = e.pageY;
+      if (!raf) raf = requestAnimationFrame(frame);
+    }, { passive: true });
+    hero.addEventListener('pointerleave', reset);
+    window.addEventListener('resize', function () { centers = null; }, { passive: true });
+  });
+
+  /* ─── 3. SECTION HEADINGS: word mask reveal ────────────────────────── */
+  guard('heading split', function () {
+    if (!hasIO) return;
+    var headings = Array.prototype.slice.call(document.querySelectorAll('.section-heading'));
+    if (!headings.length) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('mx-in', e.isIntersecting); });
+    }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
+
+    headings.forEach(function (h) {
+      if (h.children.length) return;               // text-only headings only
+      var text = h.textContent.trim();
+      if (!text) return;
+      h.setAttribute('aria-label', text);
+      h.textContent = '';
+      text.split(/\s+/).forEach(function (word, i, all) {
+        var hw = document.createElement('span');
+        hw.className = 'mx-hw';
+        hw.setAttribute('aria-hidden', 'true');
+        var hi = document.createElement('span');
+        hi.className = 'mx-hi';
+        hi.style.setProperty('--i', String(i));
+        hi.textContent = word;
+        hw.appendChild(hi);
+        h.appendChild(hw);
+        if (i < all.length - 1) h.appendChild(document.createTextNode(' '));
+      });
+      h.classList.add('mx-split');
+      io.observe(h);
+    });
+  });
+
+  /* ─── 4. MONO TYPE: decode on arrival (eyebrows + hero subline) ────── */
+  guard('decode', function () {
+    var GLYPHS = '01/\\<>_+#:;=*';
+    function glyph() { return GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)); }
+    function keep(ch) { return !/[A-Za-z0-9]/.test(ch); }       // spaces / punctuation stay put
+
+    function prep(el) {
+      if (el.__mx) return el.__mx;
+      var final = el.textContent;
+      el.textContent = '';
+      var sr = document.createElement('span');  sr.className = 'mx-sr';  sr.textContent = final;
+      var vis = document.createElement('span'); vis.setAttribute('aria-hidden', 'true');
+      vis.textContent = Array.prototype.map.call(final, function (c) { return keep(c) ? c : glyph(); }).join('');
+      el.appendChild(sr); el.appendChild(vis);
+      el.__mx = { final: final, vis: vis, played: false };
+      return el.__mx;
+    }
+    function play(el, delay, dur) {
+      var s = prep(el);
+      if (s.played) return;
+      s.played = true;
+      var len = s.final.length;
+      var settle = [];
+      for (var i = 0; i < len; i++) settle.push((i / len) * 0.62 + Math.random() * 0.3);
+      var start = 0, last = 0;
+      function tick(now) {
+        if (!start) start = now;
+        var t = (now - start) / dur;
+        if (t >= 1) { s.vis.textContent = s.final; return; }
+        if (now - last > 48) {                                   // ~20 glyph swaps / sec
+          last = now;
+          var out = '';
+          for (var j = 0; j < len; j++) {
+            var ch = s.final.charAt(j);
+            out += (keep(ch) || t >= settle[j]) ? ch : glyph();
+          }
+          s.vis.textContent = out;
+        }
+        requestAnimationFrame(tick);
+      }
+      setTimeout(function () { requestAnimationFrame(tick); }, delay);
+    }
+
+    var heroEyebrow = document.querySelector('.hero .eyebrow');
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroEyebrow) prep(heroEyebrow);
+    if (heroSub) prep(heroSub);
+    whenIntroDone(function () {
+      if (heroEyebrow) play(heroEyebrow, 120, 520);
+      if (heroSub) play(heroSub, 480, 950);
+    });
+
+    if (!hasIO) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        play(e.target, 100, 640);
+      });
+    }, { threshold: 0.9, rootMargin: '0px 0px -12% 0px' });
+    Array.prototype.forEach.call(document.querySelectorAll('.eyebrow'), function (el) {
+      if (el.closest('.hero')) return;
+      prep(el);
+      io.observe(el);
+    });
+  });
+
+  /* ─── 5. NAV: sliding active-section indicator ─────────────────────── */
+  guard('nav indicator', function () {
+    var wrap = document.querySelector('.nav-links');
+    if (!wrap) return;
+    var links = Array.prototype.slice.call(wrap.querySelectorAll('a'));
+    var ind = document.createElement('span');
+    ind.className = 'mx-ind';
+    ind.setAttribute('aria-hidden', 'true');
+    wrap.appendChild(ind);
+
+    var first = true;
+    function place() {
+      var id = root.getAttribute('data-current-section');
+      var a = links.filter(function (l) { return l.getAttribute('href') === '#' + id; })[0];
+      if (!a || !a.offsetWidth) { ind.classList.remove('mx-ind-on'); return; }
+      ind.style.setProperty('--x', a.offsetLeft + 'px');
+      ind.style.setProperty('--w', String(a.offsetWidth));
+      ind.classList.add('mx-ind-on');
+      if (first) {                               // no slide-in from x=0 on first placement
+        first = false;
+        requestAnimationFrame(function () { ind.classList.add('mx-ind-ready'); });
+      }
+    }
+    new MutationObserver(place).observe(root, { attributes: true, attributeFilter: ['data-current-section'] });
+    window.addEventListener('resize', place, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    place();
+  });
+
+  /* ─── 6. MICRO: text-roll on buttons and nav links (fine pointer) ──── */
+  guard('text roll', function () {
+    if (!fine) return;
+    var targets = document.querySelectorAll('.nav-links a, .btn-ghost, .btn-member, .project-link');
+    Array.prototype.forEach.call(targets, function (el) {
+      Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+        if (node.nodeType !== 3 || !node.nodeValue.trim()) return;
+        var raw = node.nodeValue;
+        var lead = raw.match(/^\s*/)[0], trail = raw.match(/\s*$/)[0];
+        var text = raw.trim();
+        var roll = document.createElement('span');
+        roll.className = 'mx-roll';
+        roll.setAttribute('data-t', text);
+        var t = document.createElement('span');
+        t.className = 'mx-roll-t';
+        t.textContent = text;
+        roll.appendChild(t);
+        var frag = document.createDocumentFragment();
+        if (lead) frag.appendChild(document.createTextNode(lead));
+        frag.appendChild(roll);
+        if (trail) frag.appendChild(document.createTextNode(trail));
+        el.replaceChild(frag, node);
+      });
+    });
+  });
+
+  /* ─── 7. SECTIONS: hairline seams that draw on scroll ──────────────── */
+  guard('seams', function () {
+    if (!window.CSS || !CSS.supports || !CSS.supports('animation-timeline: view()')) return;
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.about, .work, .lab, .learning, .contact'),
+      function (sec) {
+        var s = document.createElement('span');
+        s.className = 'mx-seam';
+        s.setAttribute('aria-hidden', 'true');
+        sec.insertBefore(s, sec.firstChild);
+      }
+    );
+  });
 })();
 </script>
 
