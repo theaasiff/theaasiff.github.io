@@ -512,7 +512,15 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
    RESET
    ========================================================================= */
 *, *::before, *::after{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+
+/* MOBILE FIX: Disable scroll-behavior smooth on touch devices to prevent interference with native scrolling */
+html{ scroll-behavior: auto; }
+
+/* Only enable smooth scrolling on desktop with fine pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {
+  html{ scroll-behavior: smooth; }
+}
+
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
   *, *::before, *::after{
@@ -8293,31 +8301,27 @@ const SELF_ASSESSMENT = [
     IntentEngine.updateIntent();
     
     // Consolidated scroll handler for Living Interface (intent engine + interaction fingerprint)
-    // MOBILE PERFORMANCE: Aggressively throttle scroll work on touch devices
+    // MOBILE PERFORMANCE: Use RAF throttling instead of time-based delays to avoid blocking
     const isTouchDevice = 'ontouchstart' in window;
-    const MOBILE_THROTTLE = isTouchDevice ? 200 : 0; // 200ms throttle on mobile (was 150ms), immediate on desktop
     
     let intentScrollTimeout;
     let fingerprintScrollTimeout;
-    let scrollThrottleTimeout;
-    let lastScrollTime = 0;
+    let scrollRafPending = false;
     
     window.addEventListener('scroll', () => {
-      const now = Date.now();
+      // Use RAF throttling on mobile - runs once per frame, never blocks
+      if (isTouchDevice && scrollRafPending) return;
       
-      // Throttle on mobile for performance
-      if (isTouchDevice && now - lastScrollTime < MOBILE_THROTTLE) {
-        clearTimeout(scrollThrottleTimeout);
-        scrollThrottleTimeout = setTimeout(() => {
+      if (isTouchDevice) {
+        scrollRafPending = true;
+        requestAnimationFrame(() => {
+          scrollRafPending = false;
           IntentEngine.onScroll();
-        }, MOBILE_THROTTLE);
-        return;
+        });
+      } else {
+        // Desktop: immediate processing
+        IntentEngine.onScroll();
       }
-      
-      lastScrollTime = now;
-      
-      // Intent engine update (immediate on desktop, throttled on mobile)
-      IntentEngine.onScroll();
       
       // Interaction fingerprint sampling (debounced 150ms) - consolidated from line ~4681
       clearTimeout(fingerprintScrollTimeout);
