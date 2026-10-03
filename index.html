@@ -494,6 +494,12 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
   --dur-m:         480ms;  /* Component transitions                        */
   --dur-l:         860ms;  /* Reveal animations                            */
   --dur-hover:     180ms;  /* Hover/tactile ═ snappy                       */
+
+  /* ── CLAUDE 2 REFINEMENTS ────────────────────────────── */
+  --gr-soft:       cubic-bezier(.2,.85,.32,1);   /* Silky smooth transitions */
+  --gr-inertia:    cubic-bezier(.16,.48,.48,1);  /* Natural momentum         */
+  --gr-shade:      70,48,42;                     /* Tonal gradient base      */
+  --gr-k:          0;                            /* Atmospheric depth 0→1    */
 }
 
 /* Anchor targets: keep section headings clear of the fixed nav when
@@ -786,6 +792,14 @@ a:focus-visible, button:focus-visible{
   backdrop-filter: blur(12px) saturate(1.2);
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
   border-color: rgba(145, 118, 110, 0.20);
+}
+
+/* MOBILE PERFORMANCE: Reduce backdrop-filter blur for smoother scrolling */
+@media (max-width: 1024px) {
+  .nav.is-scrolled{
+    backdrop-filter: blur(6px) saturate(1.1);
+    -webkit-backdrop-filter: blur(6px) saturate(1.1);
+  }
 }
 .nav-inner{
   display: flex;
@@ -2108,8 +2122,9 @@ a:focus-visible, button:focus-visible{
 @media (max-width: 1024px){
   .project-card{
     background: rgba(240, 230, 219, 0.48);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* MOBILE PERFORMANCE: Reduce backdrop-filter blur for smoother scrolling */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     /* Disable translate/scale hover on touch ═ no hover state anyway */
   }
   .project-card::after{ display: none; }
@@ -2510,17 +2525,25 @@ body.is-transitioning{
   font-weight: 600;
   font-size: clamp(1.4rem, 3.5vw, 2.1rem);
   text-transform: uppercase;
-  transition: color var(--dur-hover) cubic-bezier(0.22, 1, 0.36, 1),
-              padding-left var(--dur-hover) cubic-bezier(0.34, 1.56, 0.64, 1),
-              translate var(--dur-hover) cubic-bezier(0.34, 1.56, 0.64, 1),
-              scale var(--dur-s) cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color 700ms var(--gr-soft),
+              padding-left 800ms var(--gr-inertia),
+              translate 800ms var(--gr-inertia),
+              scale 320ms var(--gr-inertia),
+              background-size 900ms var(--gr-soft);
+  background-image: linear-gradient(90deg, rgba(155,131,132,.085), transparent 72%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
 }
-.social-link:hover{ color: var(--brown); padding-left: .9rem; }
+.social-link:hover{ 
+  color: var(--brown); 
+  padding-left: .9rem; 
+  background-size: 100% 100%;
+}
 .social-link:active{ scale: .985; }
 .social-link .arrow{
   font-family: var(--f-mono);
   font-size: 1.2rem;
-  transition: transform var(--dur-m) cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform var(--dur-m) var(--gr-inertia);
 }
 .social-link:hover .arrow{ transform: translate(6px, -6px); }
 
@@ -4525,14 +4548,31 @@ span.social-link:active{ scale: 1; }
 
 /* Mobile performance: reduce expensive effects */
 @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
-  /* Even with motion enabled, be conservative on mobile */
-  .atmosphere::before {
-    will-change: auto; /* Don't force layer promotion */
+  /* MOBILE PERFORMANCE OPTIMIZATIONS - preserves all visual animations */
+  
+  /* Reduce layer promotion - only promote when actually animating */
+  .atmosphere::before,
+  .atmosphere::after {
+    will-change: auto;
   }
   
-  /* Disable hover effects on touch (they stick) */
+  [data-reveal] {
+    will-change: auto;
+  }
+  
+  .project-card {
+    will-change: auto;
+  }
+  
+  /* Disable hover effects on touch (they stick anyway) */
   .project-card:hover {
     transform: none;
+  }
+  
+  /* Reduce animation complexity on continuous effects */
+  .cr-drop {
+    will-change: transform, opacity;
+    animation-duration: 0.5s; /* Slightly faster cleanup */
   }
 }
 
@@ -5098,6 +5138,151 @@ body.intro-done .nav {
       to  { scale: 1 1; }
     }
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CLAUDE 2 MICRO-INTERACTION REFINEMENTS
+   Smoother easing, ambient halo, and depth-of-field transitions
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Tactile controls: refined easing (no bounce, natural inertia) */
+.btn-ghost, .btn-member, .project-link, .nav-links a{
+  transition-timing-function: var(--gr-inertia);
+}
+
+.btn-ghost:active, .btn-member:active{ 
+  scale: .985; 
+  transition-duration: 140ms; 
+}
+
+.btn-ghost, .btn-member{
+  transition: color 620ms var(--gr-soft), 
+              background-color 620ms var(--gr-soft),
+              border-color 620ms var(--gr-soft), 
+              translate 620ms var(--gr-inertia),
+              scale 420ms var(--gr-inertia), 
+              box-shadow 760ms var(--gr-soft);
+}
+
+@media (hover:hover) and (pointer:fine){
+  .btn-ghost:hover, .btn-member:hover{
+    translate: 0 -2px;
+    box-shadow: 0 10px 26px -14px rgba(var(--gr-shade),.38);
+  }
+}
+
+/* Ambient halo behind project cards (fine-pointer devices only) */
+@media (hover:hover) and (pointer:fine){
+  /* Override the refraction ::after with ambient halo on desktop */
+  .project-card::after{
+    content: "";
+    position: absolute;
+    inset: -2.5rem;  /* Extends beyond card bounds */
+    z-index: -1;     /* Behind the card */
+    pointer-events: none;
+    border-radius: 14px;
+    opacity: 0;
+    mix-blend-mode: normal;  /* Override multiply from base */
+    background: radial-gradient(
+      420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255,247,237,.55),
+      rgba(155,131,132,.07) 55%,
+      transparent 75%
+    );
+    transition: opacity 1100ms var(--gr-soft);
+  }
+  .project-card:hover::after,
+  .project-card[data-attention-focus="true"]::after{ 
+    opacity: 1; 
+  }
+  .project-card:hover .project-preview{
+    box-shadow: 
+      0 34px 60px -34px rgba(var(--gr-shade),.34),
+      0 8px 18px -12px rgba(var(--gr-shade),.22);
+  }
+}
+
+/* Section copy settles with soft depth-of-field lift */
+.section-sub, .about-copy, .now-text{
+  transition-timing-function: var(--gr-soft);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TONAL GRADIENT SYSTEM — Claude 2 Refinements
+   Adds atmospheric depth and pointer-following ambient light
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.gr-tone{
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s var(--gr-soft);
+  will-change: opacity;
+  z-index: 1;
+}
+.gr-tone.gr-on{ opacity: 1; }
+
+/* Section-specific tonal gradients */
+#hero .gr-tone{
+  background:
+    radial-gradient(70% 55% at 18% 8%, rgba(255,250,243,.55), transparent 70%),
+    linear-gradient(to bottom, transparent 60%, rgba(var(--gr-shade),.03));
+}
+
+#about .gr-tone{
+  background: linear-gradient(
+    to bottom,
+    rgba(255,249,242,.30) 0%,
+    rgba(183,167,169,.10) 100%
+  );
+}
+
+#work .gr-tone{
+  background:
+    radial-gradient(60% 40% at 85% 12%, rgba(255,245,235,.25), transparent 65%),
+    radial-gradient(55% 45% at 10% 88%, rgba(var(--gr-shade),.08), transparent 60%);
+}
+
+#lab .gr-tone{
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--gr-shade),.06) 0%,
+    rgba(183,167,169,.09) 100%
+  );
+}
+
+#learning .gr-tone{
+  background: linear-gradient(
+    165deg,
+    rgba(var(--gr-shade),.05) 0%,
+    rgba(255,249,242,.18) 100%
+  );
+}
+
+#contact .gr-tone{
+  background:
+    radial-gradient(65% 50% at 50% 0%, rgba(255,250,243,.30), transparent 70%),
+    linear-gradient(to bottom, transparent 70%, rgba(var(--gr-shade),.12));
+}
+
+/* Pointer-following ambient light */
+.gr-light{
+  pointer-events: none;
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,250,243,.16) 0%,
+    rgba(255,245,235,.08) 30%,
+    transparent 60%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity .8s var(--gr-soft);
+  will-change: transform, opacity;
+  z-index: 9999;
 }
 
 </style>
@@ -6142,8 +6327,11 @@ const SELF_ASSESSMENT = [
     // scroll listener which immediately set scrollContinuationActive = false.
     // Removed. Native browser momentum (touch) and the atmosphere drift
     // (momentumLoop) already handle the post-scroll feel on all platforms.
+    // MOBILE PERFORMANCE: Disable momentum on touch devices (native momentum is better)
+    const isTouchDevice = 'ontouchstart' in window;
+    
     function startMomentum() {
-      if (momentumActive || scrollVelocity < 0.3) return;
+      if (isTouchDevice || momentumActive || scrollVelocity < 0.3) return;
       momentumActive = true;
       momentumRafId = requestAnimationFrame(momentumLoop);
     }
@@ -6841,10 +7029,17 @@ const SELF_ASSESSMENT = [
     };
 
     // Invalidate on scroll or resize (position can shift)
-    const invalidate = () => rectCache.forEach ? null : cards.forEach(c => rectCache.delete(c));
+    // MOBILE PERFORMANCE: Only invalidate on resize (scroll invalidation unnecessary since mouse events don't fire on mobile)
     const invalidateAll = () => cards.forEach(c => rectCache.delete(c));
     window.addEventListener('resize', invalidateAll, { passive: true });
-    window.addEventListener('scroll', invalidateAll, { passive: true });
+    // Throttled scroll invalidation for desktop only (mobile doesn't need this)
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      let scrollInvalidateTimeout;
+      window.addEventListener('scroll', () => {
+        clearTimeout(scrollInvalidateTimeout);
+        scrollInvalidateTimeout = setTimeout(invalidateAll, 100);
+      }, { passive: true });
+    }
 
     cards.forEach((card) => {
       card.addEventListener('mouseenter', () => {
@@ -8072,10 +8267,30 @@ const SELF_ASSESSMENT = [
     IntentEngine.updateIntent();
     
     // Consolidated scroll handler for Living Interface (intent engine + interaction fingerprint)
+    // MOBILE PERFORMANCE: Throttle scroll work on touch devices
+    const isTouchDevice = 'ontouchstart' in window;
+    const MOBILE_THROTTLE = isTouchDevice ? 150 : 0; // 150ms throttle on mobile, immediate on desktop
+    
     let intentScrollTimeout;
     let fingerprintScrollTimeout;
+    let scrollThrottleTimeout;
+    let lastScrollTime = 0;
+    
     window.addEventListener('scroll', () => {
-      // Intent engine update (immediate)
+      const now = Date.now();
+      
+      // Throttle on mobile for performance
+      if (isTouchDevice && now - lastScrollTime < MOBILE_THROTTLE) {
+        clearTimeout(scrollThrottleTimeout);
+        scrollThrottleTimeout = setTimeout(() => {
+          IntentEngine.onScroll();
+        }, MOBILE_THROTTLE);
+        return;
+      }
+      
+      lastScrollTime = now;
+      
+      // Intent engine update (immediate on desktop, throttled on mobile)
       IntentEngine.onScroll();
       
       // Interaction fingerprint sampling (debounced 150ms) - consolidated from line ~4681
@@ -9523,6 +9738,12 @@ const SELF_ASSESSMENT = [
   function updateHeroParallax() {
     if (!hero) return;
     
+    // MOBILE PERFORMANCE: Skip on mobile/touch devices since effect is subtle
+    if ('ontouchstart' in window || window.innerWidth < 1025) {
+      ticking = false;
+      return;
+    }
+    
     const scrollY = window.scrollY;
     const heroHeight = hero.offsetHeight;
     const scrollProgress = Math.min(scrollY / heroHeight, 1);
@@ -9994,6 +10215,86 @@ const SELF_ASSESSMENT = [
       }
     );
   });
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   TONAL GRADIENT SYSTEM — Claude 2 Refinements
+   Creates atmospheric overlays and pointer-following ambient light
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  // Create tonal gradient overlays for each major section
+  var sections = ['hero','about','work','lab','learning','contact'];
+  sections.forEach(function(id){
+    var sec = document.getElementById(id);
+    if(!sec) return;
+    
+    var tone = document.createElement('span');
+    tone.className = 'gr-tone';
+    tone.setAttribute('aria-hidden','true');
+    sec.insertBefore(tone, sec.firstChild);
+  });
+
+  // IntersectionObserver to fade in tonal gradients when sections enter viewport
+  if('IntersectionObserver' in window){
+    var toneObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var t = e.target.querySelector('.gr-tone');
+        if(t) t.classList.toggle('gr-on', e.isIntersecting);
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach(function(id){
+      var sec = document.getElementById(id);
+      if(sec) toneObs.observe(sec);
+    });
+  }
+
+  // Update --gr-k (atmospheric depth) based on scroll position (0 at hero → 1 at contact)
+  function updateAtmosphericDepth(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h <= 0) return;
+    var k = Math.max(0, Math.min(1, window.pageYOffset / h));
+    document.documentElement.style.setProperty('--gr-k', k);
+  }
+  
+  window.addEventListener('scroll', updateAtmosphericDepth, {passive:true});
+  updateAtmosphericDepth();
+
+  // Create pointer-following ambient light (fine-pointer devices only)
+  if(window.matchMedia('(pointer: fine)').matches){
+    var light = document.createElement('div');
+    light.className = 'gr-light';
+    light.setAttribute('aria-hidden','true');
+    document.body.appendChild(light);
+
+    var lx = window.innerWidth / 2;
+    var ly = window.innerHeight / 2;
+    var showing = false;
+
+    function updateLight(){
+      light.style.transform = 'translate(' + (lx - 400) + 'px, ' + (ly - 400) + 'px)';
+      requestAnimationFrame(updateLight);
+    }
+    requestAnimationFrame(updateLight);
+
+    document.addEventListener('mousemove', function(e){
+      lx = e.clientX;
+      ly = e.clientY;
+      if(!showing){
+        showing = true;
+        light.style.opacity = '1';
+      }
+    });
+
+    document.addEventListener('mouseleave', function(){
+      showing = false;
+      light.style.opacity = '0';
+    });
+  }
 })();
 </script>
 
