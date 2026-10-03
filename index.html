@@ -797,8 +797,34 @@ a:focus-visible, button:focus-visible{
 /* MOBILE PERFORMANCE: Reduce backdrop-filter blur for smoother scrolling */
 @media (max-width: 1024px) {
   .nav.is-scrolled{
-    backdrop-filter: blur(6px) saturate(1.1);
-    -webkit-backdrop-filter: blur(6px) saturate(1.1);
+    backdrop-filter: blur(2px) saturate(1.05);
+    -webkit-backdrop-filter: blur(2px) saturate(1.05);
+  }
+  
+  /* Reduce/remove expensive backdrop-filters on all UI elements */
+  .admin-availability{
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  
+  .availability-schedule{
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  
+  .btn-member{
+    backdrop-filter: blur(4px) saturate(1.04);
+    -webkit-backdrop-filter: blur(4px) saturate(1.04);
+  }
+  
+  .member-modal{
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  
+  .member-panel{
+    backdrop-filter: blur(6px) saturate(1.05);
+    -webkit-backdrop-filter: blur(6px) saturate(1.05);
   }
 }
 .nav-inner{
@@ -2121,10 +2147,10 @@ a:focus-visible, button:focus-visible{
 /* Mobile: simplify */
 @media (max-width: 1024px){
   .project-card{
-    background: rgba(240, 230, 219, 0.48);
-    /* MOBILE PERFORMANCE: Reduce backdrop-filter blur for smoother scrolling */
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(240, 230, 219, 0.92);
+    /* MOBILE PERFORMANCE: Remove backdrop-filter completely for smooth scrolling */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     /* Disable translate/scale hover on touch ═ no hover state anyway */
   }
   .project-card::after{ display: none; }
@@ -8267,9 +8293,9 @@ const SELF_ASSESSMENT = [
     IntentEngine.updateIntent();
     
     // Consolidated scroll handler for Living Interface (intent engine + interaction fingerprint)
-    // MOBILE PERFORMANCE: Throttle scroll work on touch devices
+    // MOBILE PERFORMANCE: Aggressively throttle scroll work on touch devices
     const isTouchDevice = 'ontouchstart' in window;
-    const MOBILE_THROTTLE = isTouchDevice ? 150 : 0; // 150ms throttle on mobile, immediate on desktop
+    const MOBILE_THROTTLE = isTouchDevice ? 200 : 0; // 200ms throttle on mobile (was 150ms), immediate on desktop
     
     let intentScrollTimeout;
     let fingerprintScrollTimeout;
@@ -10254,15 +10280,18 @@ const SELF_ASSESSMENT = [
   }
 
   // Update --gr-k (atmospheric depth) based on scroll position (0 at hero → 1 at contact)
-  function updateAtmosphericDepth(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    if(h <= 0) return;
-    var k = Math.max(0, Math.min(1, window.pageYOffset / h));
-    document.documentElement.style.setProperty('--gr-k', k);
+  // MOBILE PERFORMANCE: Skip on touch devices for better scroll performance
+  if(window.matchMedia('(pointer: fine)').matches){
+    function updateAtmosphericDepth(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if(h <= 0) return;
+      var k = Math.max(0, Math.min(1, window.pageYOffset / h));
+      document.documentElement.style.setProperty('--gr-k', k);
+    }
+    
+    window.addEventListener('scroll', updateAtmosphericDepth, {passive:true});
+    updateAtmosphericDepth();
   }
-  
-  window.addEventListener('scroll', updateAtmosphericDepth, {passive:true});
-  updateAtmosphericDepth();
 
   // Create pointer-following ambient light (fine-pointer devices only)
   if(window.matchMedia('(pointer: fine)').matches){
@@ -10274,12 +10303,16 @@ const SELF_ASSESSMENT = [
     var lx = window.innerWidth / 2;
     var ly = window.innerHeight / 2;
     var showing = false;
+    var rafRunning = false;
 
     function updateLight(){
       light.style.transform = 'translate(' + (lx - 400) + 'px, ' + (ly - 400) + 'px)';
-      requestAnimationFrame(updateLight);
+      if(showing && rafRunning){
+        requestAnimationFrame(updateLight);
+      } else {
+        rafRunning = false;
+      }
     }
-    requestAnimationFrame(updateLight);
 
     document.addEventListener('mousemove', function(e){
       lx = e.clientX;
@@ -10288,10 +10321,15 @@ const SELF_ASSESSMENT = [
         showing = true;
         light.style.opacity = '1';
       }
+      if(!rafRunning){
+        rafRunning = true;
+        requestAnimationFrame(updateLight);
+      }
     });
 
     document.addEventListener('mouseleave', function(){
       showing = false;
+      rafRunning = false;
       light.style.opacity = '0';
     });
   }
