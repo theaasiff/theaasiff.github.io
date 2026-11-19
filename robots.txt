@@ -1,0 +1,5 @@
+# robots.txt for https://theaasiff.github.io/
+User-agent: *
+Allow: /
+
+Sitemap: https://theaasiff.github.io/sitemap.xml
