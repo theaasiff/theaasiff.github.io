@@ -2215,7 +2215,8 @@ a:focus-visible, button:focus-visible{
 body.intro-done .hero-brand-lockup {
   animation: heroBrandEntrance 0.85s var(--ease-smooth) both;
 }
-body.intro-done .hero-cinematic-stage {
+body.intro-done .hero-cinematic-stage,
+body.intro-done .dual-flagship-grid {
   animation: heroStageEntrance 0.95s var(--ease-smooth) 0.12s both;
 }
 
@@ -6092,16 +6093,17 @@ span.social-link:active{ scale: 1; }
               transform var(--dur-l) cubic-bezier(0.22, 1, 0.36, 1),
               filter calc(var(--dur-l) * 0.6) cubic-bezier(0.22, 1, 0.36, 1);
 }
-[data-reveal].pre-reveal{
+[data-reveal].pre-reveal:not(.is-visible):not(.is-revealed){
   opacity: 0;
   transform: translateY(16px);
   filter: blur(2px);
   will-change: opacity, transform, filter; /* Promote layer only while transitioning */
 }
-[data-reveal].is-visible{
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+[data-reveal].is-visible,
+[data-reveal].is-revealed{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
   will-change: auto; /* Release layer after settled */
 }
 
@@ -8023,23 +8025,27 @@ body.intro-done .nav {
   }
 
   /* The old per-line settle is replaced by the per-character version. */
-  .hero-headline.mx-split .line:nth-child(n){
+  .hero-headline.mx-split .line:nth-child(n),
+  .dual-hero-title.mx-split .line:nth-child(n){
     animation: none;
   }
-  .hero-headline.mx-split .mx-w{
+  .hero-headline.mx-split .mx-w,
+  .dual-hero-title.mx-split .mx-w{
     display: inline-block;
     white-space: nowrap;
     /* mask: hide only what has dropped BELOW the line box */
     clip-path: inset(-.25em -.12em 0 -.12em);
   }
-  .hero-headline.mx-split .mx-c{
+  .hero-headline.mx-split .mx-c,
+  .dual-hero-title.mx-split .mx-c{
     display: inline-block;
     transform: translateY(115%) rotate(var(--r, 0deg));
     transform-origin: 0 100%;
     /* translate / rotate are free for the cursor-proximity lift */
     transition: translate 420ms var(--mx-ease), rotate 420ms var(--mx-ease);
   }
-  body:not(.intro-active) .hero-headline.mx-split .mx-c{
+  body:not(.intro-active) .hero-headline.mx-split .mx-c,
+  body:not(.intro-active) .dual-hero-title.mx-split .mx-c{
     animation: mx-char-in 1100ms var(--mx-expo) calc(var(--d, 0) * 1ms) both;
   }
   @keyframes mx-char-in{
@@ -8998,6 +9004,11 @@ body.intro-done .nav {
 
   <!-- ============================ HERO ============================ -->
   <section class="hero cinematic-hero dual-hero" id="top">
+    <!-- Ambient Floating Crimson Watercolor Stains -->
+    <span class="cr-hero-stain cr-a" aria-hidden="true"></span>
+    <span class="cr-hero-stain cr-b" aria-hidden="true"></span>
+    <span class="cr-hero-stain cr-c" aria-hidden="true"></span>
+
     <div class="hero-stage container">
       <!-- Upper Shared Flagship Header Lockup -->
       <div class="hero-brand-lockup dual-brand-lockup" data-reveal>
@@ -9007,9 +9018,9 @@ body.intro-done .nav {
           <span class="hero-year-pill">2026</span>
         </div>
 
-        <h1 class="hero-product-title dual-hero-title">
-          <span class="title-primary">TWO FLAGSHIP WORKS</span>
-          <span class="title-tagline">Intentional communication &amp; living procedural simulation.</span>
+        <h1 class="hero-product-title dual-hero-title hero-headline">
+          <span class="title-primary line">TWO FLAGSHIP WORKS</span>
+          <span class="title-tagline line">Intentional communication &amp; living procedural simulation.</span>
         </h1>
 
         <p class="hero-product-description dual-hero-desc">
@@ -9028,7 +9039,7 @@ body.intro-done .nav {
       </div>
 
       <!-- Balanced Dual Flagship Grid -->
-      <div class="dual-flagship-grid" id="dualFlagshipGrid" data-reveal>
+      <div class="dual-flagship-grid hero-cinematic-stage" id="dualFlagshipGrid" data-reveal>
 
         <!-- FLAGSHIP 01: NEXUS.TALKS -->
         <article class="flagship-hero-card nexus-card" id="heroCardNexus">
@@ -10906,7 +10917,7 @@ const SELF_ASSESSMENT = [
       } else {
         // Non-card elements: standard reveal
         el.classList.remove('pre-reveal');
-        el.classList.add('is-visible');
+        el.classList.add('is-visible', 'is-revealed');
       }
 
       if (el.classList.contains("skill-row")) {
@@ -14320,6 +14331,8 @@ const SELF_ASSESSMENT = [
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-stanza');
+          entry.target.classList.remove('pre-reveal');
+          entry.target.classList.add('is-visible', 'is-revealed');
           stanzaObserver.unobserve(entry.target);
         }
       });
@@ -14374,7 +14387,7 @@ const SELF_ASSESSMENT = [
 
   /* ─── 1. HERO: split headline into masked characters ───────────────── */
   guard('hero split', function () {
-    var h = document.querySelector('.hero-headline');
+    var h = document.querySelector('.hero-headline') || document.querySelector('.dual-hero-title');
     if (!h) return;
     var lines = Array.prototype.slice.call(h.querySelectorAll('.line'));
     if (!lines.length) return;
@@ -14419,7 +14432,7 @@ const SELF_ASSESSMENT = [
     if (!fine) return;
     var hero = document.querySelector('.hero');
     if (!hero) return;
-    var chars = Array.prototype.slice.call(hero.querySelectorAll('.hero-headline .mx-c'));
+    var chars = Array.prototype.slice.call(hero.querySelectorAll('.hero-headline .mx-c, .dual-hero-title .mx-c'));
     if (!chars.length) return;
 
     var RADIUS = 150, LIFT = 9, TILT = 4;
@@ -14548,7 +14561,7 @@ const SELF_ASSESSMENT = [
       setTimeout(function () { requestAnimationFrame(tick); }, delay);
     }
 
-    var heroEyebrow = document.querySelector('.hero .eyebrow');
+    var heroEyebrow = document.querySelector('.hero .eyebrow') || document.querySelector('.hero-category-pill');
     var heroSub = document.querySelector('.hero-sub');
     if (heroEyebrow) prep(heroEyebrow);
     if (heroSub) prep(heroSub);
@@ -14831,6 +14844,29 @@ const SELF_ASSESSMENT = [
         if (aura) aura.style.transform = '';
       });
     }
+
+    // Flagship preview cards 3D tilt
+    const flagshipCards = document.querySelectorAll('.flagship-hero-card');
+    flagshipCards.forEach(card => {
+      const preview = card.querySelector('.flagship-preview-window');
+      let cardTicking = false;
+      card.addEventListener('mousemove', (e) => {
+        if (cardTicking) return;
+        cardTicking = true;
+        requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const relX = (e.clientX - rect.left) / rect.width - 0.5;
+          const relY = (e.clientY - rect.top) / rect.height - 0.5;
+          if (preview) {
+            preview.style.transform = 'perspective(1000px) rotateY(' + (relX * 3.5) + 'deg) rotateX(' + (-relY * 3.5) + 'deg) translateY(-2px)';
+          }
+          cardTicking = false;
+        });
+      }, { passive: true });
+      card.addEventListener('mouseleave', () => {
+        if (preview) preview.style.transform = '';
+      });
+    });
   }
 
   // ── 4. Coordinated Reveal Observer for [data-reveal] Elements ───────────
@@ -14838,7 +14874,8 @@ const SELF_ASSESSMENT = [
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
+          entry.target.classList.remove('pre-reveal');
+          entry.target.classList.add('is-revealed', 'is-visible');
           observer.unobserve(entry.target);
         }
       });
@@ -14852,7 +14889,8 @@ const SELF_ASSESSMENT = [
     });
   } else {
     document.querySelectorAll('[data-reveal]').forEach(el => {
-      el.classList.add('is-revealed');
+      el.classList.remove('pre-reveal');
+      el.classList.add('is-revealed', 'is-visible');
     });
   }
 
