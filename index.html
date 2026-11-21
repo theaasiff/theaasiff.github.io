@@ -432,6 +432,7 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
 <meta name="description" content="Personal portfolio of Aasif featuring flagship messaging platform Nexus.talks, creative engineering projects, and experimental web systems." />
 <meta name="theme-color" content="#F6ECE3" />
 <!-- Canonical & Portfolio Identity -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Ibju0+rY3mpkmhx+NEy9T+xJlpEF6+oxG7ZSUvnULgQ=' 'sha256-k5IrBBS/imKyyAb1tKIQees1aNzzw24wqVAdnTXRc74=' 'sha256-qRuzv6pk6aYO1HHGYN3Z5vH1sE2nXOhMTBXKUZ9gP7g=' 'sha256-4c/5UB/mZVLT0xU3j9iPA4DNR1qlfjxpydYnXdKZ0r4=' 'sha256-op8UUKD8qNb5fgQrDWjh9ISRIkm8+ei7p7uZ6uj54e4=' 'sha256-31nUQgkDg3Dq4tLpyiiOm7iWjlOdnkr5RPyfIWup9BU=' 'sha256-UdppmHujIEfqeYx9rn8OwTZm3GcmFDfTSxxgXc+tWRY=' 'sha256-ArHZslXTtOA54ax2jPheoQSOtKJWR3iSizQsATV7g8I=' 'sha256-yQHKtlj8cW3FQNJ2j783lvyM6cw2ZymHHa9irOYx2ds=' 'sha256-EkG0Icvsqa83UT9Nm/81gvwsO8hQ/KVg6IJ0Q7cpLIc='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
 <link rel="canonical" href="https://theaasiff.github.io/" />
 
 <!-- Open Graph / Facebook -->
@@ -9973,7 +9974,7 @@ const LEARNING = [
 ];
 
 const SOCIALS = [
-  { label: "EMAIL", url: "mailto:aasifsiddique09@gmail.com" },
+  { label: "EMAIL", token: "YWFzaWZzaWRkaXF1ZTA5QGdtYWlsLmNvbQ==", isEmail: true },
   { label: "Instagram", url: "https://www.instagram.com/the.aasif9" },
   { label: "GitHub", url: "https://github.com/theaasiff" },
   { label: "Discord", url: "https://discord.com/users/1522979423329190110" },
@@ -10021,10 +10022,18 @@ const SELF_ASSESSMENT = [
      credits from data.js. Isolated in its own try/catch: if this fails,
      nav/cursor/reveal below still run.
      ======================================================================= */
+  // Safe HTML entity escaper for template interpolation (XSS defense)
+  function esc(str) {
+    if (str == null) return '';
+    return String(str).replace(/[&<>'"]/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c] || c;
+    });
+  }
+
   function projectCardHTML(item) {
-    const noteHTML = item.note ? `<p class="project-note">${item.note}</p>` : "";
+    const noteHTML = item.note ? `<p class="project-note">${esc(item.note)}</p>` : "";
     // Subtle creator credit for NEXUS projects only
-    const creatorHTML = item.creator ? `<span class="project-creator">${item.creator}</span>` : "";
+    const creatorHTML = item.creator ? `<span class="project-creator">${esc(item.creator)}</span>` : "";
     // EXP: data-project slug used by CSS personality rules
     const projectSlug = item.title.toLowerCase()
       .replace(/\s+/g, '-')
@@ -10035,35 +10044,35 @@ const SELF_ASSESSMENT = [
       <div class="artifact-metadata">
         <div class="metadata-row">
           <span class="metadata-label">TYPE</span>
-          <span class="metadata-value">${item.artifactType || 'EXPERIMENT'}</span>
+          <span class="metadata-value">${esc(item.artifactType || 'EXPERIMENT')}</span>
         </div>
         <div class="metadata-row">
           <span class="metadata-label">STATUS</span>
-          <span class="metadata-value metadata-status-active">${item.artifactStatus || 'ACTIVE'}</span>
+          <span class="metadata-value metadata-status-active">${esc(item.artifactStatus || 'ACTIVE')}</span>
         </div>
         <div class="metadata-row">
           <span class="metadata-label">YEAR</span>
-          <span class="metadata-value">${item.artifactYear || '2026'}</span>
+          <span class="metadata-value">${esc(item.artifactYear || '2026')}</span>
         </div>
       </div>
     ` : "";
 
     return `
-      <article class="project-card tone-${item.tone === "lab" ? "lab" : "default"}" data-reveal data-project="${projectSlug}" data-artifact="${item.artifact || ''}">
+      <article class="project-card tone-${item.tone === "lab" ? "lab" : "default"}" data-reveal data-project="${projectSlug}" data-artifact="${esc(item.artifact || '')}">
         <div class="project-info">
-          <span class="project-index">${item.index}</span>
+          <span class="project-index">${esc(item.index)}</span>
           ${creatorHTML}
-          <h3 class="project-title">${item.title}</h3>
-          <span class="project-category">${item.category}</span>
-          <p class="project-desc">${item.description}</p>
+          <h3 class="project-title">${esc(item.title)}</h3>
+          <span class="project-category">${esc(item.category)}</span>
+          <p class="project-desc">${esc(item.description)}</p>
           ${noteHTML}
           ${artifactMetadataHTML}
-          <a class="project-link" href="${item.url}" target="_blank" rel="noopener noreferrer" data-cursor-active>
-            ${item.cta} <span class="arrow">↗</span>
+          <a class="project-link" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" data-cursor-active>
+            ${esc(item.cta)} <span class="arrow">↗</span>
           </a>
         </div>
-        <a class="project-preview" data-tag="${item.title}" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.title}" data-cursor-view>
-          <span class="preview-label">${item.category}</span>
+        <a class="project-preview" data-tag="${esc(item.title)}" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(item.title)}" data-cursor-view>
+          <span class="preview-label">${esc(item.category)}</span>
         </a>
       </article>
     `;
@@ -10081,8 +10090,8 @@ const SELF_ASSESSMENT = [
       learningGrid.innerHTML = D_LEARNING.map(
         (col) => `
           <div class="learning-col" data-reveal>
-            <span class="learning-label">${col.label}</span>
-            <ul>${col.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+            <span class="learning-label">${esc(col.label)}</span>
+            <ul>${col.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
           </div>
         `
       ).join("");
@@ -10090,30 +10099,48 @@ const SELF_ASSESSMENT = [
 
     const socialList = document.getElementById("socialList");
     if (socialList) {
-      const isPlaceholder = (url) => !url || url === "#";
       socialList.innerHTML = `<ul>${D_SOCIALS.map((s) => {
-        if (isPlaceholder(s.url)) {
-          // No real URL yet ═ render as an inert, non-navigating element.
-          // Do not use "#" as an href: it would jump the page to the top.
+        if (s.isEmail) {
+          return `
+            <li data-reveal>
+              <a class="social-link is-email" href="#" data-contact="${s.token}" data-cursor-active>
+                <span>${esc(s.label)}</span>
+                <span class="arrow">↗</span>
+              </a>
+            </li>
+          `;
+        }
+        if (!s.url || s.url === "#") {
           return `
             <li data-reveal>
               <span class="social-link" aria-disabled="true">
-                <span>${s.label}<span class="social-soon">— add link</span></span>
+                <span>${esc(s.label)}<span class="social-soon">— add link</span></span>
                 <span class="arrow">↗</span>
               </span>
             </li>
           `;
         }
-        const isEmail = s.url.startsWith("mailto:");
         return `
           <li data-reveal>
-            <a class="social-link${isEmail ? " is-email" : ""}" href="${s.url}" ${isEmail ? "" : 'target="_blank" rel="noopener noreferrer"'} data-cursor-active>
-              <span>${s.label}</span>
+            <a class="social-link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" data-cursor-active>
+              <span>${esc(s.label)}</span>
               <span class="arrow">↗</span>
             </a>
           </li>
         `;
       }).join("")}</ul>`;
+
+      // Delegated contact click handler for obfuscated email link
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[data-contact]');
+        if (link) {
+          e.preventDefault();
+          try {
+            const email = atob(link.getAttribute('data-contact'));
+            window.location.href = 'mailto:' + email;
+          } catch (_) {}
+        }
+      });
     }
 
     const aboutCategories = document.getElementById("aboutCategories");
@@ -13534,7 +13561,7 @@ const SELF_ASSESSMENT = [
     // DEMO: In production, this would connect to a backend
     // Simulate network delay
     setTimeout(() => {
-      console.log('[Membership] Demo submission:', { name, email });
+      // Demo submission simulated; logging omitted for privacy
 
       // Remove submitting state
       if (submitBtn) {
@@ -13584,167 +13611,7 @@ const SELF_ASSESSMENT = [
 })();
 </script>
 
-<!-- =========================================================================
-     AASIF // CONTROL ROOM ═ Analytics
-     Lightweight, non-blocking visitor analytics.
-     Sends anonymous page-view events to the private Control Room API.
-
-     Privacy:
-       - No cookies
-       - No fingerprinting
-       - Session ID is a random UUID stored in sessionStorage only
-         (clears when the browser tab closes ═ not persistent)
-       - No IP address is collected or stored
-       - Country is derived server-side from the edge network header
-       - No personal data of any kind is transmitted
-
-     Performance:
-       - Uses navigator.sendBeacon() ═ fire-and-forget, never blocks rendering
-       - Heartbeat fires every 60 seconds to maintain live-visitor count
-       - All failures are silent ═ portfolio continues working if API is down
-
-     To disable: remove this script block.
-     ========================================================================= -->
-<script>
-(function () {
-  'use strict';
-
-  // ── Configuration ─────────────────────────────────────────────────────
-  // Replace these with your deployed Control Room values.
-  // Disabled: placeholder Control Room analytics beacon is inactive.
-  // Re-enable when valid API_BASE and TOKEN credentials are configured.
-  return;
-
-  var API_BASE    = 'https://your-control-room.vercel.app';
-  var INGEST_PATH = '/api/analytics/event';
-  var TOKEN       = 'your-analytics-ingest-token';
-
-  // Live-visitor heartbeat interval (must be less than the server's 5-min window)
-  var HEARTBEAT_INTERVAL_MS = 60 * 1000; // 60 seconds
-
-  // ── Session ID ────────────────────────────────────────────────────────
-  // Random UUID per browser tab session. Cleared on tab close.
-  // Not a fingerprint ═ it cannot identify a person across sessions.
-  var SESSION_KEY = '__cr_sid';
-  var sessionId;
-
-  try {
-    sessionId = sessionStorage.getItem(SESSION_KEY);
-    if (!sessionId) {
-      sessionId = (crypto && crypto.randomUUID)
-        ? crypto.randomUUID()
-        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0;
-            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-          });
-      sessionStorage.setItem(SESSION_KEY, sessionId);
-    }
-  } catch (e) {
-    // sessionStorage unavailable (private browsing restrictions) ═ use ephemeral ID
-    sessionId = 'ephemeral-' + Math.random().toString(36).slice(2);
-  }
-
-  // ── Send event ────────────────────────────────────────────────────────
-  function send(eventType, extraPath) {
-    if (!navigator.sendBeacon) return; // very old browser ═ skip silently
-
-    var path = extraPath || (window.location.pathname || '/');
-
-    // Referrer: only on pageview, only the raw document.referrer
-    var referrer = (eventType === 'pageview') ? (document.referrer || '') : '';
-
-    var payload = JSON.stringify({
-      session_id : sessionId,
-      event_type : eventType,
-      path       : path,
-      referrer   : referrer
-    });
-
-    var blob = new Blob([payload], { type: 'application/json' });
-    var url  = API_BASE + INGEST_PATH;
-
-    try {
-      // sendBeacon does not support custom headers ═ we attach the token
-      // as a query parameter instead (still protected; token is not in plain HTML
-      // in the final deployed version ═ replace TOKEN above with the real value).
-      navigator.sendBeacon(url + '?t=' + encodeURIComponent(TOKEN), blob);
-    } catch (e) {
-      // Fail silently ═ analytics must never break the portfolio
-    }
-  }
-
-  // ── Page view ─────────────────────────────────────────────────────────
-  // Fire once on initial page load, after all other scripts have run.
-  // Uses requestIdleCallback where available to avoid competing with animations.
-  function firePageView() {
-    if (window.requestIdleCallback) {
-      requestIdleCallback(function () { send('pageview'); }, { timeout: 3000 });
-    } else {
-      setTimeout(function () { send('pageview'); }, 300);
-    }
-  }
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    firePageView();
-  } else {
-    document.addEventListener('DOMContentLoaded', firePageView, { once: true });
-  }
-
-  // ── Heartbeat ─────────────────────────────────────────────────────────
-  // Keeps the session "live" in the Control Room.
-  // Pauses when the tab is hidden to save bandwidth.
-  var heartbeatTimer = null;
-
-  function startHeartbeat() {
-    if (heartbeatTimer) return;
-    heartbeatTimer = setInterval(function () {
-      if (!document.hidden) send('heartbeat');
-    }, HEARTBEAT_INTERVAL_MS);
-  }
-
-  function stopHeartbeat() {
-    if (heartbeatTimer) {
-      clearInterval(heartbeatTimer);
-      heartbeatTimer = null;
-    }
-  }
-
-  // Start heartbeat after first page view fires
-  setTimeout(startHeartbeat, 1500);
-
-  // Pause heartbeat when tab is hidden, resume when visible
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
-      stopHeartbeat();
-    } else {
-      // Re-fire a pageview on tab return (new activity burst)
-      send('heartbeat');
-      startHeartbeat();
-    }
-  });
-
-  // ── Project view tracking ─────────────────────────────────────────────
-  // The portfolio uses data-project attributes on cards.
-  // We listen for the custom transition events the existing JS fires,
-  // or fall back to observing data-project link clicks.
-  // This is entirely passive ═ never interferes with existing animations.
-  document.addEventListener('click', function (e) {
-    var target = e.target;
-    // Walk up the DOM to find a project link or card
-    for (var i = 0; i < 6 && target && target !== document.body; i++) {
-      var el = target;
-      var href = el.getAttribute && el.getAttribute('href');
-      // Match known project paths: /nexus, /darkfile, /deadcore, etc.
-      if (href && /^\/(nexus|darkfile|deadcore|lab)/i.test(href)) {
-        send('project_view', href);
-        break;
-      }
-      target = el.parentElement;
-    }
-  }, { passive: true });
-
-})();
-</script>
+<!-- Control Room analytics: Inactive placeholder removed during security hardening -->
 
 <!-- ============================================================
      LEGAL PAGES ═ INTERNAL VIEWS
@@ -14938,71 +14805,71 @@ const SELF_ASSESSMENT = [
       src: 'assets/novara/hero-novara-skyline.png',
       number: '01',
       short: 'SKYLINE',
-      title: '01 &middot; DOWNTOWN SKYLINE',
-      caption: 'Crown Plaza Skyscraper Core &middot; Golden Hour Sunlight (17:21) &middot; ACES Tone Mapping'
+      title: '01 · DOWNTOWN SKYLINE',
+      caption: 'Crown Plaza Skyscraper Core · Golden Hour Sunlight (17:21) · ACES Tone Mapping'
     },
     {
       src: 'assets/novara/novara-airport-apron.png',
       number: '02',
       short: 'AIRPORT',
-      title: '02 &middot; SKYPORT APRON &amp; FLEET',
-      caption: 'Skyport International Gates A2–A5 &middot; Lofted Procedural Airliners &middot; Jet Bridges'
+      title: '02 · SKYPORT APRON & FLEET',
+      caption: 'Skyport International Gates A2–A5 · Lofted Procedural Airliners · Jet Bridges'
     },
     {
       src: 'assets/novara/novara-metro-transit.png',
       number: '03',
       short: 'METRO',
-      title: '03 &middot; ELEVATED METRO NETWORK',
-      caption: 'Metro Line M1 Elevated Concrete Viaduct &middot; Passenger Station &middot; Downtown North'
+      title: '03 · ELEVATED METRO NETWORK',
+      caption: 'Metro Line M1 Elevated Concrete Viaduct · Passenger Station · Downtown North'
     },
     {
       src: 'assets/novara/novara-rail-central.png',
       number: '04',
       short: 'RAILWAY',
-      title: '04 &middot; HEAVY RAILWAY TRUNK LINE',
-      caption: 'Central Line Passenger Train Viaduct &middot; Linden Quarter Embankment &middot; Valemont Central'
+      title: '04 · HEAVY RAILWAY TRUNK LINE',
+      caption: 'Central Line Passenger Train Viaduct · Linden Quarter Embankment · Valemont Central'
     },
     {
       src: 'assets/novara/novara-street-commercial.png',
       number: '05',
       short: 'STREETS',
-      title: '05 &middot; COMMERCIAL ARTERIAL &amp; TRAFFIC',
-      caption: 'Exchange Avenue Retail District &middot; Multi-Lane Autonomous Traffic Flow &middot; Pedestrians'
+      title: '05 · COMMERCIAL ARTERIAL & TRAFFIC',
+      caption: 'Exchange Avenue Retail District · Multi-Lane Autonomous Traffic Flow · Pedestrians'
     },
     {
       src: 'assets/novara/novara-skyscraper-canyon.png',
       number: '06',
       short: 'CANYON',
-      title: '06 &middot; SKYSCRAPER CANYON',
-      caption: 'Central Arterial Soaring Facades &middot; Monumental Vertical Upward Perspective'
+      title: '06 · SKYSCRAPER CANYON',
+      caption: 'Central Arterial Soaring Facades · Monumental Vertical Upward Perspective'
     },
     {
       src: 'assets/novara/novara-aerial-metropolis.png',
       number: '07',
       short: 'AERIAL',
-      title: '07 &middot; AERIAL METROPOLIS PANORAMA',
-      caption: 'High-Altitude Establishing Shot &middot; Airport Runway to Distant Mountain Horizon'
+      title: '07 · AERIAL METROPOLIS PANORAMA',
+      caption: 'High-Altitude Establishing Shot · Airport Runway to Distant Mountain Horizon'
     },
     {
       src: 'assets/novara/novara-waterfront-lake.png',
       number: '08',
       short: 'WATERFRONT',
-      title: '08 &middot; CROWN LAKE &amp; GREENWAYS',
-      caption: 'Waterfront District &middot; Dynamic Animated Water Surface &middot; Sunset Glow (17:57)'
+      title: '08 · CROWN LAKE & GREENWAYS',
+      caption: 'Waterfront District · Dynamic Animated Water Surface · Sunset Glow (17:57)'
     },
     {
       src: 'assets/novara/novara-skyline-night.png',
       number: '09',
       short: 'NIGHT',
-      title: '09 &middot; TWILIGHT &amp; NIGHT ILLUMINATION',
-      caption: 'Nighttime Metropolitan Horizon (21:00) &middot; Glowing Window Grids &middot; Aviation Beacons'
+      title: '09 · TWILIGHT & NIGHT ILLUMINATION',
+      caption: 'Nighttime Metropolitan Horizon (21:00) · Glowing Window Grids · Aviation Beacons'
     },
     {
       src: 'assets/novara/novara-director-mode.png',
       number: '10',
       short: 'DIRECTOR',
-      title: '10 &middot; CINEMATIC DIRECTOR SUITE',
-      caption: 'In-Engine Filming Studio &middot; Scrubbable Timeline &middot; 21 Choreographed Camera Routes'
+      title: '10 · CINEMATIC DIRECTOR SUITE',
+      caption: 'In-Engine Filming Studio · Scrubbable Timeline · 21 Choreographed Camera Routes'
     }
   ];
 
@@ -15048,8 +14915,8 @@ const SELF_ASSESSMENT = [
       }, 120);
     }
 
-    if (labelEl) labelEl.innerHTML = slide.title;
-    if (subEl) subEl.innerHTML = slide.caption;
+    if (labelEl) labelEl.textContent = slide.title;
+    if (subEl) subEl.textContent = slide.caption;
     if (counterCurr) counterCurr.textContent = slide.number;
 
     // Update active thumb
