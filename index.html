@@ -432,7 +432,7 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
 <meta name="description" content="Personal portfolio of Aasif featuring flagship messaging platform Nexus.talks, creative engineering projects, and experimental web systems." />
 <meta name="theme-color" content="#F6ECE3" />
 <!-- Canonical & Portfolio Identity -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Ibju0+rY3mpkmhx+NEy9T+xJlpEF6+oxG7ZSUvnULgQ=' 'sha256-k5IrBBS/imKyyAb1tKIQees1aNzzw24wqVAdnTXRc74=' 'sha256-qRuzv6pk6aYO1HHGYN3Z5vH1sE2nXOhMTBXKUZ9gP7g=' 'sha256-4c/5UB/mZVLT0xU3j9iPA4DNR1qlfjxpydYnXdKZ0r4=' 'sha256-op8UUKD8qNb5fgQrDWjh9ISRIkm8+ei7p7uZ6uj54e4=' 'sha256-31nUQgkDg3Dq4tLpyiiOm7iWjlOdnkr5RPyfIWup9BU=' 'sha256-UdppmHujIEfqeYx9rn8OwTZm3GcmFDfTSxxgXc+tWRY=' 'sha256-ArHZslXTtOA54ax2jPheoQSOtKJWR3iSizQsATV7g8I=' 'sha256-yQHKtlj8cW3FQNJ2j783lvyM6cw2ZymHHa9irOYx2ds=' 'sha256-UyLNbCpCcbP6PmiiQtmN9kqIV+pFEfrCIrHTi3TBx3A=' 'sha256-ID9ZQvC2rAUr0EdQKYFnws5Pvkzc/CHR6KJYfWn3S7M='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Ibju0+rY3mpkmhx+NEy9T+xJlpEF6+oxG7ZSUvnULgQ=' 'sha256-HQ803A0SbjUWGRCGEToq4YZz6QhayyJeQWswWbM7glU=' 'sha256-qRuzv6pk6aYO1HHGYN3Z5vH1sE2nXOhMTBXKUZ9gP7g=' 'sha256-4c/5UB/mZVLT0xU3j9iPA4DNR1qlfjxpydYnXdKZ0r4=' 'sha256-op8UUKD8qNb5fgQrDWjh9ISRIkm8+ei7p7uZ6uj54e4=' 'sha256-MT5uy8jH5SzGXkbbi7I6lGVhCphOkmd1anpSCe2ACpo=' 'sha256-ZqHQt90aD4S66/c2vaofD+25exxwL3DJTbza5OHDoyk=' 'sha256-NZRhxw5mF67ibWNpt7sYy5Sk7VuqsFG880XhQta8IEc=' 'sha256-yQHKtlj8cW3FQNJ2j783lvyM6cw2ZymHHa9irOYx2ds=' 'sha256-sKGrux9fvRCIM2ALk/jm53VRCEiZ2+dK/RjhvGKVPYA=' 'sha256-seDsRNz2gc6yGk/m/+s4EIlL38RMjgUNiocbXCU0IEY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <link rel="canonical" href="https://theaasiff.github.io/" />
 
 <!-- Open Graph / Facebook -->
@@ -515,7 +515,7 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
   --container:    1280px;
   --pad:          clamp(1.25rem, 5vw, 4rem);
   --section-pad:  clamp(5.5rem, 11vw, 9.5rem);
-  --nav-clearance: 6.5rem;
+  --nav-clearance: 7rem;
 
   /* ── MOTION ──────────────────────────────────────────── */
   --ease:          cubic-bezier(.16,.84,.44,1);  /* Signature deceleration  */
@@ -539,7 +539,7 @@ END DOCUMENTATION ═ Last Updated: 2026-08-21
 
 /* Anchor targets: keep section headings clear of the fixed nav when
    navigating from desktop nav, mobile nav, or the hero CTA. */
-#work, #about, #lab, #contact{
+#work, #about, #lab, #learning, #contact{
   scroll-margin-top: var(--nav-clearance);
 }
 
@@ -566,6 +566,9 @@ html{ scroll-behavior: auto; }
   }
 }
 
+html{
+  overflow-x: clip;
+}
 body{
   margin: 0;
   background: var(--bg);
@@ -574,7 +577,7 @@ body{
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection{ background: var(--granite); color: var(--ink-light); }
@@ -660,7 +663,7 @@ a:focus-visible, button:focus-visible{
   content: "";
   position: absolute;
   border-radius: 50%;
-  filter: blur(180px);
+  filter: blur(40px);
   opacity: 0.035;
 }
 .atmosphere::before{
@@ -973,6 +976,7 @@ a:focus-visible, button:focus-visible{
   letter-spacing: 0.08em;
   font-weight: 600;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color var(--dur-m) var(--ease);
 }
 
@@ -3704,9 +3708,9 @@ body.intro-done .dual-flagship-grid {
 }
 
 @media (max-width: 768px) {
-  /* Zero horizontal overflow safeguard */
+  /* Zero horizontal overflow safeguard without breaking sticky or IntersectionObserver */
   body, html {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   .hero.cinematic-hero,
   .nexus-story-section,
@@ -4387,11 +4391,14 @@ body.intro-done .dual-flagship-grid {
 #nexus-showcase,
 #nexus-features,
 #about,
+.now,
 #novara,
 #work,
 #lab,
+#learning,
+.learning,
 #contact {
-  scroll-margin-top: 85px !important;
+  scroll-margin-top: var(--nav-clearance, 7rem) !important;
 }
 
 /* Featured Preview Frame Chrome Responsiveness (320px - 768px) */
@@ -4549,10 +4556,13 @@ body.intro-done .dual-flagship-grid {
 }
 .novara-slide-progress-bar {
   height: 100%;
-  width: 0%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   background: #E5A93C;
   box-shadow: 0 0 6px #E5A93C;
-  transition: width 0.1s linear;
+  transition: transform 0.1s linear;
+  will-change: transform;
 }
 
 /* Numbered Thumbnail Track */
@@ -7352,7 +7362,7 @@ span.social-link:active{ scale: 1; }
 
   [data-atm-period] .atmosphere::before,
   [data-atm-period] .atmosphere::after {
-    filter: blur(180px) brightness(1.0) !important;
+    filter: blur(20px) brightness(1.0) !important;
   }
 }
 
@@ -7378,7 +7388,7 @@ span.social-link:active{ scale: 1; }
 
   [data-atm-period] .atmosphere::before,
   [data-atm-period] .atmosphere::after {
-    filter: blur(180px) !important;
+    filter: blur(20px) !important;
   }
 }
 
@@ -8272,13 +8282,18 @@ body.intro-done .nav {
       to  { clip-path: inset(-.2em -.05em -.2em -.05em); translate: 0 0; }
     }
 
-    /* hairline between sections draws itself as it rises into view */
+    /* hairline between sections draws cleanly at the true section boundary */
+    .about, .work, .lab, .learning, .contact {
+      position: relative;
+    }
     .mx-seam{
       display: block;
-      position: relative;
-      top: calc(var(--section-pad) * -1);   /* visual offset only: zero layout impact */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      margin-bottom: -1px;
+      margin: 0;
       background: var(--line-strong);
       transform-origin: 0 50%;
       pointer-events: none;
@@ -8981,15 +8996,13 @@ body {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  z-index: 100 !important;
+  z-index: 500 !important;
 }
 
 .nav .container {
-  max-width: 960px !important;
+  max-width: 1060px !important;
   margin-inline: auto !important;
-  background: rgba(250, 248, 245, 0.88) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
+  background: transparent !important;
   border-radius: 999px !important;
   border: 1px solid rgba(84, 44, 56, 0.08) !important;
   box-shadow: 0 16px 36px -10px rgba(84, 44, 56, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.85) inset !important;
@@ -10227,8 +10240,10 @@ body {
     padding-block: 0.85rem !important;
   }
   .nav .container {
-    padding: 0.5rem 1.25rem !important;
-    margin-inline: 0.85rem !important;
+    width: calc(100% - 1.5rem) !important;
+    max-width: calc(100% - 1.5rem) !important;
+    padding: 0.5rem 1rem !important;
+    margin-inline: auto !important;
   }
   .editorial-folio {
     flex-wrap: wrap !important;
@@ -11153,14 +11168,7 @@ body {
 
 /* ── 1. Hero Asymmetric Studio Typography & Spatial Tension ── */
 .studio-hero {
-  padding-top: clamp(5.5rem, 8vw, 7.5rem) !important;
-  padding-bottom: clamp(4rem, 6vw, 6rem) !important;
-  background: var(--bg) !important;
-  overflow: visible !important;
-}
-
-.studio-hero {
-  padding-top: clamp(5.5rem, 8vw, 7.5rem) !important;
+  padding-top: max(var(--nav-clearance, 7rem), clamp(6.75rem, 8.5vw, 8rem)) !important;
   padding-bottom: clamp(4rem, 6vw, 6rem) !important;
   background: var(--bg) !important;
   overflow: visible !important;
@@ -11175,7 +11183,7 @@ body {
 
 .studio-persona-col {
   position: sticky !important;
-  top: 5.5rem !important;
+  top: var(--nav-clearance, 7rem) !important;
 }
 
 .studio-folio-header {
@@ -11760,7 +11768,7 @@ body {
 /* ── Mobile Ergonomics & Zero Overflow Fix ── */
 @media (max-width: 600px) {
   .studio-hero {
-    padding-top: 5rem !important;
+    padding-top: max(var(--nav-clearance, 7rem), 7rem) !important;
     padding-inline: 1.25rem !important;
   }
   .studio-hero-container {
@@ -12140,6 +12148,69 @@ body {
   }
 }
 
+
+/* ── PHASE 2: MOBILE GPU RENDERING OPTIMIZATION (STUDIO ATELIER) ── */
+@media (max-width: 768px) {
+  .nav, #siteNav, .nav.is-scrolled, #siteNav.is-scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(250, 248, 245, 0.96) !important;
+  }
+  .nav .container {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+  }
+  .atmosphere::before,
+  .atmosphere::after {
+    filter: blur(20px) !important;
+  }
+  .novara-slideshow-btn,
+  .novara-arrow-btn,
+  .novara-caption-bar,
+  .novara-thumbnail-track,
+  .novara-thumb-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* ── POSITIONING, NAVBAR CLEARANCE & TRANSITION RHYTHM SAFEGUARDS ── */
+/* Keep anchor targets (#novara) from shifting -16px into the navbar on reveal */
+#novara[data-reveal].pre-reveal:not(.is-visible):not(.is-revealed),
+.featured-case[id][data-reveal].pre-reveal:not(.is-visible):not(.is-revealed) {
+  transform: none !important;
+}
+
+/* Harmonize adjacent section padding to eliminate excessive blank voids while preserving navbar headroom */
+.nexus-story-section,
+.nexus-showcase-section {
+  padding-block: clamp(4.25rem, 6.5vw, 6rem) !important;
+}
+.about,
+.work,
+.lab {
+  padding-top: clamp(4.5rem, 6.5vw, 6rem) !important;
+  padding-bottom: clamp(3.5rem, 5.5vw, 5rem) !important;
+}
+.learning {
+  padding-top: clamp(4rem, 5.5vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 5.5vw, 5rem) !important;
+}
+.contact {
+  padding-top: max(var(--nav-clearance, 7rem), clamp(4.5rem, 6.5vw, 6rem)) !important;
+  padding-bottom: clamp(4.5rem, 7vw, 6.5rem) !important;
+}
+
+/* Compact nav links spacing slightly at mid desktop viewports so pill stays crisp single-line */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav-links {
+    gap: 1.15rem !important;
+  }
+  .nav-links a {
+    padding: 0.45rem 0.65rem !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -12416,7 +12487,7 @@ body {
                   <div class="chrome-tag novara-tag">THREE.JS &middot; 60FPS</div>
                 </div>
                 <div class="window-body studio-window-body">
-                  <img src="assets/novara/hero-novara-skyline.png" alt="NOVARA 3D City Simulator — Downtown Skyline at Golden Hour" class="hero-screen-img" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
+                  <img src="assets/novara/hero-novara-skyline.webp" alt="NOVARA 3D City Simulator — Downtown Skyline at Golden Hour" class="hero-screen-img" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
                 </div>
               </div>
 
@@ -12965,7 +13036,7 @@ body {
 
             <!-- Screen Image -->
             <div class="novara-screen-wrap">
-              <img id="novaraMainImg" src="assets/novara/hero-novara-skyline.png" alt="NOVARA 3D City Simulator — Downtown Skyline at Golden Hour" width="1920" height="1080" loading="eager" decoding="async">
+              <img id="novaraMainImg" src="assets/novara/hero-novara-skyline.webp" alt="NOVARA 3D City Simulator — Downtown Skyline at Golden Hour" width="1920" height="1080" loading="eager" decoding="async">
             </div>
 
             <!-- Autoplay Progress Line (Golden Hairline Bar) -->
@@ -13113,7 +13184,7 @@ body {
           </div>
           <div class="novara-video-viewport">
             <div class="novara-video-placeholder">
-              <div class="placeholder-poster" style="background-image: url('assets/novara/hero-novara-skyline.png');"></div>
+              <div class="placeholder-poster" style="background-image: url('assets/novara/hero-novara-skyline.webp');"></div>
               <div class="placeholder-overlay">
                 <div class="play-orb-large">
                   <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -13163,7 +13234,7 @@ body {
   </section>
 
   <!-- ===================== CURRENTLY LEARNING ===================== -->
-  <section class="learning">
+  <section class="learning" id="learning">
     <div class="container">
       <p class="eyebrow" data-reveal>CURRENTLY LEARNING</p>
       <h2 class="section-heading" data-reveal>CURRENTLY LEARNING</h2>
@@ -13575,8 +13646,9 @@ const SELF_ASSESSMENT = [
       }
     });
 
-    // ── Active Section Indication (ScrollSpy) ──────────────────────────
-    // Order strictly matches vertical scroll order on page:
+    // ── Active Section Indication (ScrollSpy — Optimized Phase 1+) ──────
+    // Cached section offsets + dynamic navbar clearance to eliminate forced
+    // synchronous layouts during scrolling while guaranteeing zero nav overlap.
     const navSections = [
       { id: "top", selector: "#top" },
       { id: "nexus-showcase", selector: "#nexus-showcase" },
@@ -13587,32 +13659,49 @@ const SELF_ASSESSMENT = [
       { id: "contact", selector: "#contact" }
     ];
 
-    function updateActiveNav() {
-      const scrollPos = window.scrollY + 130;
-      let activeSectionId = "top";
+    let cachedSectionTops = [];
+    let cachedDocHeight = 0;
+    let cachedNavClearance = 112;
+    const deskLinks = document.querySelectorAll(".nav-links a");
+    const mobLinks = document.querySelectorAll(".mobile-menu nav a");
+    let lastActiveSectionId = null;
+    let navRafPending = false;
+    let isClickScrolling = false;
+    let clickScrollTimer = null;
 
-      // If scrolled to bottom of page, highlight last section (contact)
-      if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
-        activeSectionId = "contact";
-      } else {
-        for (let i = navSections.length - 1; i >= 0; i--) {
-          const item = navSections[i];
-          const el = document.getElementById(item.id);
-          if (el) {
-            const top = el.getBoundingClientRect().top + window.scrollY;
-            if (scrollPos >= top) {
-              activeSectionId = item.id;
-              break;
-            }
-          }
-        }
+    function updateNavClearance() {
+      const navRect = nav.getBoundingClientRect();
+      const pill = nav.querySelector(".container");
+      const pillRect = pill ? pill.getBoundingClientRect() : navRect;
+      const clearance = Math.ceil(Math.max(navRect.bottom, pillRect.bottom)) + 20;
+      if (clearance >= 80 && clearance !== cachedNavClearance) {
+        cachedNavClearance = clearance;
+        document.documentElement.style.setProperty("--nav-clearance", clearance + "px");
+      } else if (clearance >= 80) {
+        document.documentElement.style.setProperty("--nav-clearance", clearance + "px");
       }
+      return cachedNavClearance;
+    }
+
+    function cacheNavLayout() {
+      updateNavClearance();
+      cachedDocHeight = document.documentElement.scrollHeight;
+      cachedSectionTops = navSections.map((item) => {
+        const el = document.getElementById(item.id);
+        if (!el) return { id: item.id, top: 0 };
+        const rect = el.getBoundingClientRect();
+        return { id: item.id, top: rect.top + window.scrollY };
+      });
+    }
+
+    function applyActiveNavState(activeSectionId) {
+      if (activeSectionId === lastActiveSectionId) return; // Short-circuit no-op updates
+      lastActiveSectionId = activeSectionId;
 
       // Root data-current-section sync
       document.documentElement.setAttribute("data-current-section", activeSectionId);
 
       // Desktop nav links sync
-      const deskLinks = document.querySelectorAll(".nav-links a");
       deskLinks.forEach((a) => {
         const href = a.getAttribute("href") || "";
         const targetId = href.startsWith("#") ? href.substring(1) : "";
@@ -13623,7 +13712,6 @@ const SELF_ASSESSMENT = [
       });
 
       // Mobile nav links sync
-      const mobLinks = document.querySelectorAll(".mobile-menu nav a");
       mobLinks.forEach((a) => {
         const href = a.getAttribute("href") || "";
         const targetId = href.startsWith("#") ? href.substring(1) : "";
@@ -13634,38 +13722,135 @@ const SELF_ASSESSMENT = [
       });
     }
 
-    onScrollFrame(updateActiveNav);
+    function updateActiveNav() {
+      if (isClickScrolling) return;
+      if (navRafPending) return;
+      navRafPending = true;
+      requestAnimationFrame(() => {
+        navRafPending = false;
+        if (isClickScrolling) return;
+        const scrollY = window.scrollY;
+        const scrollPos = scrollY + cachedNavClearance + 40;
+        let activeSectionId = "top";
+
+        const docH = cachedDocHeight || document.documentElement.scrollHeight;
+        if ((window.innerHeight + scrollY) >= (docH - 60)) {
+          activeSectionId = "contact";
+        } else {
+          for (let i = cachedSectionTops.length - 1; i >= 0; i--) {
+            const item = cachedSectionTops[i];
+            if (scrollPos >= item.top) {
+              activeSectionId = item.id;
+              break;
+            }
+          }
+        }
+        applyActiveNavState(activeSectionId);
+      });
+    }
+
+    // Cache offsets on initial parse, after fonts, on window load, and on layout size changes
+    cacheNavLayout();
+    let navResizeTimeout;
+    const scheduleNavRecache = () => {
+      clearTimeout(navResizeTimeout);
+      navResizeTimeout = setTimeout(() => {
+        cacheNavLayout();
+        updateActiveNav();
+      }, 100);
+    };
+    window.addEventListener("resize", scheduleNavRecache, { passive: true });
+    let userHasInteractedScroll = false;
+    window.addEventListener("wheel", () => { userHasInteractedScroll = true; }, { passive: true, once: true });
+    window.addEventListener("touchstart", () => { userHasInteractedScroll = true; }, { passive: true, once: true });
+
+    const alignHashTarget = (behavior) => {
+      if (window.location.hash && window.location.hash.length > 1) {
+        const hashId = window.location.hash.substring(1);
+        if (hashId !== "privacy" && hashId !== "terms") {
+          const hashTarget = document.getElementById(hashId);
+          if (hashTarget) {
+            cacheNavLayout();
+            hashTarget.scrollIntoView({ behavior: behavior || "instant", block: "start" });
+            if (typeof window.__revealInViewport === "function") window.__revealInViewport();
+            updateActiveNav();
+          }
+        }
+      }
+    };
+    window.addEventListener("load", () => {
+      cacheNavLayout();
+      updateActiveNav();
+      alignHashTarget("instant");
+    }, { once: true });
+    window.addEventListener("hashchange", () => alignHashTarget("instant"), { passive: true });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        cacheNavLayout();
+        if (!userHasInteractedScroll && window.location.hash && window.location.hash.length > 1) {
+          alignHashTarget("instant");
+        } else {
+          updateActiveNav();
+        }
+      });
+    }
+    if ("ResizeObserver" in window) {
+      let lastObservedH = document.documentElement.scrollHeight;
+      const bodyRO = new ResizeObserver(() => {
+        const currH = document.documentElement.scrollHeight;
+        if (Math.abs(currH - lastObservedH) > 2) {
+          lastObservedH = currH;
+          scheduleNavRecache();
+        }
+      });
+      bodyRO.observe(document.body);
+    }
+
     window.addEventListener("scroll", updateActiveNav, { passive: true });
-    window.addEventListener("resize", updateActiveNav, { passive: true });
+    window.addEventListener("scrollend", () => {
+      if (isClickScrolling) {
+        isClickScrolling = false;
+        clearTimeout(clickScrollTimer);
+        cacheNavLayout();
+        updateActiveNav();
+      }
+      if (typeof window.__revealInViewport === "function") window.__revealInViewport();
+    }, { passive: true });
     updateActiveNav();
 
-    // ── Smooth Scrolling with Mobile Menu Auto-Close ───────────────────
-    const allNavAnchors = document.querySelectorAll(".nav-links a, .mobile-menu nav a, .nav-logo");
+    // ── Smooth Scrolling with Mobile Menu Auto-Close & Clearance Sync ──
+    const allNavAnchors = document.querySelectorAll(".nav-links a, .mobile-menu nav a, .nav-logo, .btn-studio-secondary[href^='#'], .btn-flagship-secondary[href^='#'], .btn-flagship-primary[href^='#']");
     allNavAnchors.forEach((a) => {
       a.addEventListener("click", function(e) {
         const href = this.getAttribute("href");
-        if (href && href.startsWith("#")) {
+        if (href && href.startsWith("#") && href.length > 1) {
           const target = document.getElementById(href.substring(1));
           if (target) {
             e.preventDefault();
+            const wasMenuOpen = mobileMenu.classList.contains("is-open");
             closeMobileMenu();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (wasMenuOpen) {
+              void document.body.offsetHeight;
+            }
+            cacheNavLayout();
+            const clickedId = href.substring(1);
+            // Lock ScrollSpy until smooth scroll finishes (scrollend unlocks immediately; 2400ms fallback covers 15k+ px jumps)
+            const isPrimarySection = navSections.some(s => s.id === clickedId);
+            if (isPrimarySection) {
+              isClickScrolling = true;
+              clearTimeout(clickScrollTimer);
+              applyActiveNavState(clickedId);
+              clickScrollTimer = setTimeout(() => {
+                isClickScrolling = false;
+                cacheNavLayout();
+                updateActiveNav();
+                if (typeof window.__revealInViewport === "function") window.__revealInViewport();
+              }, 2400);
+            }
             if (history.pushState) {
               history.pushState(null, "", href);
             }
-            const clickedId = href.substring(1);
-            document.documentElement.setAttribute("data-current-section", clickedId);
-            document.querySelectorAll(".nav-links a").forEach((link) => {
-              const linkHref = link.getAttribute("href") || "";
-              link.classList.toggle("is-active", linkHref === href);
-            });
-            document.querySelectorAll(".mobile-menu nav a").forEach((link) => {
-              const linkHref = link.getAttribute("href") || "";
-              link.classList.toggle("is-active", linkHref === href);
-            });
-            setTimeout(updateActiveNav, 200);
-            setTimeout(updateActiveNav, 600);
-            setTimeout(updateActiveNav, 1200);
+            target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
           }
         }
       });
@@ -14145,11 +14330,17 @@ const SELF_ASSESSMENT = [
         } else {
           dur = 860; // Slow: full cinematic
         }
-        document.documentElement.style.setProperty('--dur-l', `${dur}ms`);
+        if (typeof window.__lastDurL === 'undefined' || window.__lastDurL !== dur) {
+          window.__lastDurL = dur;
+          document.documentElement.style.setProperty('--dur-l', `${dur}ms`);
+        }
 
-        // Expose normalized velocity as CSS variable (0-1, consolidated)
+        // Expose normalized velocity as CSS variable - only mutate if delta >= 0.05
         const normalizedV = Math.min(scrollVelocity / 4, 1);
-        document.documentElement.style.setProperty('--sv', normalizedV.toFixed(3));
+        if (typeof window.__lastNormV === 'undefined' || Math.abs(normalizedV - window.__lastNormV) >= 0.05 || (normalizedV === 0 && window.__lastNormV !== 0)) {
+          window.__lastNormV = normalizedV;
+          document.documentElement.style.setProperty('--sv', normalizedV.toFixed(3));
+        }
       }
 
       lastScrollY   = window.scrollY;
@@ -14329,10 +14520,17 @@ const SELF_ASSESSMENT = [
 
     // Mobile gets extended rootMargin for earlier preparation (prevents flash)
     // Desktop uses tighter margin for more precise timing
-    const isMobile = 'ontouchstart' in window;
+    const isMobile = 'ontouchstart' in window || window.innerWidth <= 768;
     const observerConfig = isMobile
-      ? { threshold: 0.15, rootMargin: "0px 0px 5% 0px" }  // Mobile: +5% below viewport for earlier prep
-      : { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }; // Desktop: -8% for precise timing
+      ? { threshold: 0.05, rootMargin: "40px 0px 80px 0px" }
+      : { threshold: 0.1, rootMargin: "0px 0px -4% 0px" };
+
+    window.__revealInViewport = () => {
+      document.querySelectorAll('[data-reveal].pre-reveal').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) revealElement(el);
+      });
+    };
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -15508,9 +15706,6 @@ const SELF_ASSESSMENT = [
     function updateAasifSystem(sectionId) {
       if (!aasifSystem || !aasifCode || !aasifSection) return;
 
-      // Update data-current-section on root for atmosphere (System 03)
-      document.documentElement.setAttribute('data-current-section', sectionId);
-
       const meta = sectionMeta[sectionId];
       if (!meta) {
         aasifCode.textContent = 'AASIF / 001';
@@ -15676,6 +15871,10 @@ const SELF_ASSESSMENT = [
     }, 5000);
 
     // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    // Expose scroll sampler cleanly for Living Interface consolidation
+    window.__sampleScrollBehavior = sampleScrollBehavior;
+    window.__scrollSampleInterval = SCROLL_SAMPLE_INTERVAL;
+
     // DEBUG (remove in production)
     // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
@@ -16071,7 +16270,9 @@ const SELF_ASSESSMENT = [
 
       // Interaction fingerprint sampling (debounced 150ms) - consolidated from line ~4681
       clearTimeout(fingerprintScrollTimeout);
-      fingerprintScrollTimeout = setTimeout(sampleScrollBehavior, SCROLL_SAMPLE_INTERVAL);
+      if (typeof window.__sampleScrollBehavior === 'function') {
+        fingerprintScrollTimeout = setTimeout(window.__sampleScrollBehavior, window.__scrollSampleInterval || 150);
+      }
 
       // Fingerprint profile update (debounced 2000ms)
       clearTimeout(intentScrollTimeout);
@@ -16528,6 +16729,7 @@ const SELF_ASSESSMENT = [
     // •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     setInterval(() => {
+      if (document.hidden) return;
       AttentionTracker.detectFocus();
     }, 500); // Check twice per second
 
@@ -17353,6 +17555,8 @@ const SELF_ASSESSMENT = [
   const heroButton = hero?.querySelector('.btn-ghost');
 
   let ticking = false;
+  let cachedHeroHeight = 0;
+  let lastParallaxProgress = -1;
 
   function updateHeroParallax() {
     if (!hero) return;
@@ -17363,9 +17567,17 @@ const SELF_ASSESSMENT = [
       return;
     }
 
+    if (!cachedHeroHeight) cachedHeroHeight = hero.offsetHeight;
     const scrollY = window.scrollY;
-    const heroHeight = hero.offsetHeight;
+    const heroHeight = cachedHeroHeight || 800;
     const scrollProgress = Math.min(scrollY / heroHeight, 1);
+
+    // If already scrolled past hero and reached full progress, avoid further DOM writes
+    if (scrollProgress === 1 && lastParallaxProgress === 1) {
+      ticking = false;
+      return;
+    }
+    lastParallaxProgress = scrollProgress;
 
     // Only apply on desktop
     if (window.innerWidth >= 1025) {
@@ -17827,7 +18039,7 @@ const SELF_ASSESSMENT = [
   guard('seams', function () {
     if (!window.CSS || !CSS.supports || !CSS.supports('animation-timeline: view()')) return;
     Array.prototype.forEach.call(
-      document.querySelectorAll('.about, .work, .lab, .learning, .contact'),
+      document.querySelectorAll('.about, .work, .lab, .contact'),
       function (sec) {
         var s = document.createElement('span');
         s.className = 'mx-seam';
@@ -17877,11 +18089,30 @@ const SELF_ASSESSMENT = [
   // Update --gr-k (atmospheric depth) based on scroll position (0 at hero → 1 at contact)
   // MOBILE PERFORMANCE: Skip on touch devices for better scroll performance
   if(window.matchMedia('(pointer: fine)').matches){
+    var cachedScrollH = 0;
+    var lastGrK = -1;
+    var atmRafPending = false;
+
+    function cacheAtmH() {
+      cachedScrollH = document.documentElement.scrollHeight - window.innerHeight;
+    }
+    cacheAtmH();
+    window.addEventListener('resize', cacheAtmH, { passive: true });
+
     function updateAtmosphericDepth(){
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      if(h <= 0) return;
-      var k = Math.max(0, Math.min(1, window.pageYOffset / h));
-      document.documentElement.style.setProperty('--gr-k', k);
+      if (atmRafPending) return;
+      atmRafPending = true;
+      requestAnimationFrame(function() {
+        atmRafPending = false;
+        var h = cachedScrollH || (document.documentElement.scrollHeight - window.innerHeight);
+        if(h <= 0) return;
+        var rawK = Math.max(0, Math.min(1, window.pageYOffset / h));
+        var k = Math.round(rawK * 50) / 50; // 50 discrete levels (delta 0.02)
+        if(Math.abs(k - lastGrK) >= 0.02 || (k === 0 && lastGrK !== 0) || (k === 1 && lastGrK !== 1)){
+          lastGrK = k;
+          document.documentElement.style.setProperty('--gr-k', k);
+        }
+      });
     }
 
     window.addEventListener('scroll', updateAtmosphericDepth, {passive:true});
@@ -18118,70 +18349,70 @@ const SELF_ASSESSMENT = [
   // ── 1. NOVARA 10-Screenshot Slideshow Data ─────────────────────────────────
   const NOVARA_SLIDES = [
     {
-      src: 'assets/novara/hero-novara-skyline.png',
+      src: 'assets/novara/hero-novara-skyline.webp',
       number: '01',
       short: 'SKYLINE',
       title: '01 · DOWNTOWN SKYLINE',
       caption: 'Crown Plaza Skyscraper Core · Golden Hour Sunlight (17:21) · ACES Tone Mapping'
     },
     {
-      src: 'assets/novara/novara-airport-apron.png',
+      src: 'assets/novara/novara-airport-apron.webp',
       number: '02',
       short: 'AIRPORT',
       title: '02 · SKYPORT APRON & FLEET',
       caption: 'Skyport International Gates A2–A5 · Lofted Procedural Airliners · Jet Bridges'
     },
     {
-      src: 'assets/novara/novara-metro-transit.png',
+      src: 'assets/novara/novara-metro-transit.webp',
       number: '03',
       short: 'METRO',
       title: '03 · ELEVATED METRO NETWORK',
       caption: 'Metro Line M1 Elevated Concrete Viaduct · Passenger Station · Downtown North'
     },
     {
-      src: 'assets/novara/novara-rail-central.png',
+      src: 'assets/novara/novara-rail-central.webp',
       number: '04',
       short: 'RAILWAY',
       title: '04 · HEAVY RAILWAY TRUNK LINE',
       caption: 'Central Line Passenger Train Viaduct · Linden Quarter Embankment · Valemont Central'
     },
     {
-      src: 'assets/novara/novara-street-commercial.png',
+      src: 'assets/novara/novara-street-commercial.webp',
       number: '05',
       short: 'STREETS',
       title: '05 · COMMERCIAL ARTERIAL & TRAFFIC',
       caption: 'Exchange Avenue Retail District · Multi-Lane Autonomous Traffic Flow · Pedestrians'
     },
     {
-      src: 'assets/novara/novara-skyscraper-canyon.png',
+      src: 'assets/novara/novara-skyscraper-canyon.webp',
       number: '06',
       short: 'CANYON',
       title: '06 · SKYSCRAPER CANYON',
       caption: 'Central Arterial Soaring Facades · Monumental Vertical Upward Perspective'
     },
     {
-      src: 'assets/novara/novara-aerial-metropolis.png',
+      src: 'assets/novara/novara-aerial-metropolis.webp',
       number: '07',
       short: 'AERIAL',
       title: '07 · AERIAL METROPOLIS PANORAMA',
       caption: 'High-Altitude Establishing Shot · Airport Runway to Distant Mountain Horizon'
     },
     {
-      src: 'assets/novara/novara-waterfront-lake.png',
+      src: 'assets/novara/novara-waterfront-lake.webp',
       number: '08',
       short: 'WATERFRONT',
       title: '08 · CROWN LAKE & GREENWAYS',
       caption: 'Waterfront District · Dynamic Animated Water Surface · Sunset Glow (17:57)'
     },
     {
-      src: 'assets/novara/novara-skyline-night.png',
+      src: 'assets/novara/novara-skyline-night.webp',
       number: '09',
       short: 'NIGHT',
       title: '09 · TWILIGHT & NIGHT ILLUMINATION',
       caption: 'Nighttime Metropolitan Horizon (21:00) · Glowing Window Grids · Aviation Beacons'
     },
     {
-      src: 'assets/novara/novara-director-mode.png',
+      src: 'assets/novara/novara-director-mode.webp',
       number: '10',
       short: 'DIRECTOR',
       title: '10 · CINEMATIC DIRECTOR SUITE',
@@ -18210,11 +18441,32 @@ const SELF_ASSESSMENT = [
   const thumbTrack = document.getElementById('novaraThumbTrack');
   const thumbs = document.querySelectorAll('.novara-thumb-item');
 
-  // Preload all 10 genuine screenshots in background for instantaneous transitions
-  NOVARA_SLIDES.forEach(function(s) {
-    const preImg = new Image();
-    preImg.src = s.src;
-  });
+  // Intelligent deferred preloading: Prioritize visible slide, defer subsequent 9 slides
+  let novaraPreloadDone = false;
+  function preloadSubsequentNovaraSlides() {
+    if (novaraPreloadDone) return;
+    novaraPreloadDone = true;
+    for (let i = 1; i < NOVARA_SLIDES.length; i++) {
+      const preImg = new Image();
+      preImg.decoding = 'async';
+      preImg.src = NOVARA_SLIDES[i].src;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const novaraTarget = document.getElementById('novara');
+    if (novaraTarget) {
+      const novaraPreloadObs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          preloadSubsequentNovaraSlides();
+          novaraPreloadObs.disconnect();
+        }
+      }, { rootMargin: '600px 0px 600px 0px' });
+      novaraPreloadObs.observe(novaraTarget);
+    }
+  } else {
+    setTimeout(preloadSubsequentNovaraSlides, 2500);
+  }
 
   function updateSlide(index, manual) {
     currentIndex = (index + NOVARA_SLIDES.length) % NOVARA_SLIDES.length;
@@ -18263,48 +18515,41 @@ const SELF_ASSESSMENT = [
     updateSlide(currentIndex - 1, manual);
   }
 
-  // Viewport visibility observer: pause autoplay when NOVARA is not in view
+  // Viewport visibility observer & background pausing
   let isNovaraInView = false;
-  if ('IntersectionObserver' in window) {
-    const novaraSec = document.getElementById('novara');
-    if (novaraSec) {
-      const novaraObs = new IntersectionObserver(function(entries) {
-        isNovaraInView = entries[0].isIntersecting;
-        if (isNovaraInView && isPlaying) {
-          progressStart = Date.now();
-        }
-      }, { threshold: 0.1 });
-      novaraObs.observe(novaraSec);
-    }
-  } else {
-    isNovaraInView = true;
+
+  function stopAutoplay() {
+    if (slideTimer) { clearInterval(slideTimer); slideTimer = null; }
+    if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
   }
 
   function startAutoplay() {
-    clearInterval(slideTimer);
-    clearInterval(progressTimer);
+    stopAutoplay();
+    if (!isPlaying || !isNovaraInView || document.hidden) return;
     progressStart = Date.now();
-
-    if (progressBar) progressBar.style.width = '0%';
+    if (progressBar) progressBar.style.transform = 'scaleX(0)';
 
     progressTimer = setInterval(function() {
-      if (!isPlaying || !isNovaraInView) return;
+      if (!isPlaying || !isNovaraInView || document.hidden) {
+        stopAutoplay();
+        return;
+      }
       const elapsed = Date.now() - progressStart;
       const pct = Math.min(100, (elapsed / SLIDE_DURATION) * 100);
-      if (progressBar) progressBar.style.width = pct + '%';
+      if (progressBar) progressBar.style.transform = 'scaleX(' + (pct / 100).toFixed(4) + ')';
     }, 50);
 
     slideTimer = setInterval(function() {
-      if (isPlaying && isNovaraInView) {
+      if (isPlaying && isNovaraInView && !document.hidden) {
         nextSlide(false);
         progressStart = Date.now();
-        if (progressBar) progressBar.style.width = '0%';
+        if (progressBar) progressBar.style.transform = 'scaleX(0)';
       }
     }, SLIDE_DURATION);
   }
 
   function resetAutoplay() {
-    if (isPlaying) startAutoplay();
+    if (isPlaying && isNovaraInView && !document.hidden) startAutoplay();
   }
 
   function togglePlayback() {
@@ -18314,11 +18559,35 @@ const SELF_ASSESSMENT = [
     if (isPlaying) {
       startAutoplay();
     } else {
-      clearInterval(slideTimer);
-      clearInterval(progressTimer);
-      if (progressBar) progressBar.style.width = '0%';
+      stopAutoplay();
+      if (progressBar) progressBar.style.transform = 'scaleX(0)';
     }
   }
+
+  if ('IntersectionObserver' in window) {
+    const novaraSec = document.getElementById('novara');
+    if (novaraSec) {
+      const novaraObs = new IntersectionObserver(function(entries) {
+        isNovaraInView = entries[0].isIntersecting;
+        if (isNovaraInView && isPlaying && !document.hidden) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+        }
+      }, { threshold: 0.1 });
+      novaraObs.observe(novaraSec);
+    }
+  } else {
+    isNovaraInView = true;
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      stopAutoplay();
+    } else if (isPlaying && isNovaraInView) {
+      startAutoplay();
+    }
+  });
 
   // Bind clicks
   if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(true); });
@@ -18527,19 +18796,19 @@ const SELF_ASSESSMENT = [
   var ASSETS = [
     { url: 'assets/nexus/demo-desktop-active-chat.png', p: 1 },
     { url: 'assets/nexus/screenshot-mobile-nexustalks.jpg', p: 1 },
-    { url: 'assets/novara/hero-novara-skyline.png', p: 1 },
+    { url: 'assets/novara/hero-novara-skyline.webp', p: 1 },
     { url: 'assets/nexus/demo-avatar-showcase.png', p: 2 },
     { url: 'assets/nexus/demo-refinement-dark-profile.png', p: 2 },
     { url: 'assets/nexus/demo-refinement-dark-discovery.png', p: 2 },
-    { url: 'assets/novara/novara-airport-apron.png', p: 2 },
-    { url: 'assets/novara/novara-metro-transit.png', p: 2 },
-    { url: 'assets/novara/novara-rail-central.png', p: 3 },
-    { url: 'assets/novara/novara-street-commercial.png', p: 3 },
-    { url: 'assets/novara/novara-skyscraper-canyon.png', p: 3 },
-    { url: 'assets/novara/novara-aerial-metropolis.png', p: 3 },
-    { url: 'assets/novara/novara-waterfront-lake.png', p: 3 },
-    { url: 'assets/novara/novara-skyline-night.png', p: 3 },
-    { url: 'assets/novara/novara-director-mode.png', p: 3 }
+    { url: 'assets/novara/novara-airport-apron.webp', p: 2 },
+    { url: 'assets/novara/novara-metro-transit.webp', p: 2 },
+    { url: 'assets/novara/novara-rail-central.webp', p: 3 },
+    { url: 'assets/novara/novara-street-commercial.webp', p: 3 },
+    { url: 'assets/novara/novara-skyscraper-canyon.webp', p: 3 },
+    { url: 'assets/novara/novara-aerial-metropolis.webp', p: 3 },
+    { url: 'assets/novara/novara-waterfront-lake.webp', p: 3 },
+    { url: 'assets/novara/novara-skyline-night.webp', p: 3 },
+    { url: 'assets/novara/novara-director-mode.webp', p: 3 }
   ];
 
   var cache = new Map();
